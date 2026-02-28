@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://b6wgx1tkeiyr0"]
+
+[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_8y144"]
+[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_rvbti"]
+
+[sub_resource type="Resource" id="Resource_7amg0"]
+script = ExtResource("2_rvbti")
+position = Vector2i(13, 4)
+connections = PackedInt32Array(2, 1)
+
+[sub_resource type="Resource" id="Resource_j1l3g"]
+script = ExtResource("2_rvbti")
+position = Vector2i(12, 5)
+connections = PackedInt32Array(0, 4)
+
+[sub_resource type="Resource" id="Resource_hahi7"]
+script = ExtResource("2_rvbti")
+position = Vector2i(14, 5)
+connections = PackedInt32Array(0, 4, 3)
+
+[sub_resource type="Resource" id="Resource_jhlk0"]
+script = ExtResource("2_rvbti")
+position = Vector2i(17, 5)
+connections = PackedInt32Array(2)
+
+[sub_resource type="Resource" id="Resource_olgy8"]
+script = ExtResource("2_rvbti")
+position = Vector2i(13, 6)
+connections = PackedInt32Array(1, 2)
+
+[resource]
+script = ExtResource("1_8y144")
+level_number = 9
+level_name = "observation"
+xlen = 20
+ylen = 8
+color = 3
+enter_comment = "Look out, this is the lookout, haha. Sail ho, capt'n."
+background_song = "BYCOLOR"
+grid = PackedInt32Array(7, 10, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 32, 0, 0, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 7, 10, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 38, 0, 0, 0, 1, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 23, 0, 0, 0, 0, 0, 0, 32, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 0, 7, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 10, 10, 3, 33, 33, 33, 33)
+waypoints = Array[ExtResource("2_rvbti")]([SubResource("Resource_7amg0"), SubResource("Resource_j1l3g"), SubResource("Resource_hahi7"), SubResource("Resource_jhlk0"), SubResource("Resource_olgy8")])

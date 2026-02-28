@@ -1,0 +1,49 @@
+## Semantic tile type constants from legacy defs.h
+## Used by the data converter and will be consumed by Phase 2 TileMap builder.
+class_name TileTypes
+
+const FLOOR := 0
+const ECK_LU := 1 # Corner: left-up (└)
+const T_U := 2 # T-junction: up (┴)
+const ECK_RU := 3 # Corner: right-up (┘)
+const T_L := 4 # T-junction: left (├)
+const KREUZ := 5 # Cross (┼)
+const T_R := 6 # T-junction: right (┤)
+const ECK_LO := 7 # Corner: left-down (┌)
+const T_O := 8 # T-junction: down (┬)
+const ECK_RO := 9 # Corner: right-down (┐)
+const H_WALL := 10 # Horizontal wall (─)
+const V_WALL := 11 # Vertical wall (│)
+const INVISIBLE := 12
+const BLOCK1 := 13
+const BLOCK2 := 14
+const BLOCK3 := 15
+const BLOCK4 := 16
+const BLOCK5 := 17
+const H_ZUTUERE := 18 # Horizontal closed door
+const H_HALBTUERE1 := 19
+const H_HALBTUERE2 := 20
+const H_HALBTUERE3 := 21
+const H_GANZTUERE := 22 # Horizontal fully open door
+const KONSOLE_L := 23 # Console facing left
+const KONSOLE_R := 24 # Console facing right
+const KONSOLE_O := 25 # Console facing up
+const KONSOLE_U := 26 # Console facing down
+const V_ZUTUERE := 27 # Vertical closed door
+const V_HALBTUERE1 := 28
+const V_HALBTUERE2 := 29
+const V_HALBTUERE3 := 30
+const V_GANZTUERE := 31 # Vertical fully open door
+const LIFT := 32
+const VOID := 33 # Empty / outside area
+const REFRESH1 := 34
+const REFRESH2 := 35
+const REFRESH3 := 36
+const REFRESH4 := 37
+const ALERT_GREEN := 38
+const ALERT_YELLOW := 39
+const ALERT_AMBER := 40
+const ALERT_RED := 41
+const UNUSED2 := 42
+const FINE_GRID := 43
+const NUM_MAP_TILES := 44

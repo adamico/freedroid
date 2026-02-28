@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GameConstantsData" format=3 uid="uid://oui4ujp72jxt"]
+
+[ext_resource type="Script" uid="uid://cpylnh621bt6b" path="res://data/game_constants_data.gd" id="1_27jsk"]
+
+[resource]
+script = ExtResource("1_27jsk")
+collision_lose_energy_calibrator = 1.0
+blast_radius = 0.3
+blast_damage_per_second = 60.0
+droid_radius = 0.3
+time_for_door_phase = 0.05
+deathcount_drain_speed = 15.0
+alert_threshold = 700
+alert_bonus_per_sec = 5.0
+blast_one_animation_time = 0.5
+blast_two_animation_time = 0.4

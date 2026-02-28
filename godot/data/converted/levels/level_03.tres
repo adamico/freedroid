@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cwrnywrmo1hgp"]
+
+[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_3d7lg"]
+[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_c6mvx"]
+
+[sub_resource type="Resource" id="Resource_cqojd"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(2, 4)
+connections = PackedInt32Array(1, 12)
+
+[sub_resource type="Resource" id="Resource_14qon"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(5, 4)
+connections = PackedInt32Array(0, 2, 3, 4)
+
+[sub_resource type="Resource" id="Resource_046ou"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(16, 4)
+connections = PackedInt32Array(9, 3, 1)
+
+[sub_resource type="Resource" id="Resource_swkn2"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(20, 4)
+connections = PackedInt32Array(2, 10)
+
+[sub_resource type="Resource" id="Resource_3lg2d"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(5, 6)
+connections = PackedInt32Array(1, 5, 6)
+
+[sub_resource type="Resource" id="Resource_42jk3"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(10, 6)
+connections = PackedInt32Array(4, 6, 14)
+
+[sub_resource type="Resource" id="Resource_sgeha"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(14, 6)
+connections = PackedInt32Array(5, 15)
+
+[sub_resource type="Resource" id="Resource_5jjsl"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(23, 6)
+connections = PackedInt32Array(11, 8)
+
+[sub_resource type="Resource" id="Resource_kyhwb"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(28, 6)
+connections = PackedInt32Array(7)
+
+[sub_resource type="Resource" id="Resource_cnhrw"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(16, 7)
+connections = PackedInt32Array(2, 10)
+
+[sub_resource type="Resource" id="Resource_2hi2w"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(20, 7)
+connections = PackedInt32Array(9, 3, 11)
+
+[sub_resource type="Resource" id="Resource_l01lx"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(22, 7)
+connections = PackedInt32Array(10, 7)
+
+[sub_resource type="Resource" id="Resource_nags8"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(2, 9)
+connections = PackedInt32Array(0, 13)
+
+[sub_resource type="Resource" id="Resource_4fvln"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(6, 9)
+connections = PackedInt32Array(12)
+
+[sub_resource type="Resource" id="Resource_5jyje"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(10, 10)
+connections = PackedInt32Array(5, 15)
+
+[sub_resource type="Resource" id="Resource_7njg1"]
+script = ExtResource("2_c6mvx")
+position = Vector2i(14, 10)
+connections = PackedInt32Array(14, 6)
+
+[resource]
+script = ExtResource("1_3d7lg")
+level_number = 3
+level_name = "quarterd"
+xlen = 31
+ylen = 13
+enter_comment = "Oh no, the quarters deck, typically full of deadly bots."
+background_song = "BYCOLOR"
+grid = PackedInt32Array(7, 10, 10, 10, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 0, 0, 0, 4, 10, 10, 10, 10, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 0, 0, 0, 11, 34, 0, 0, 0, 0, 0, 34, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 4, 10, 10, 10, 8, 18, 10, 3, 0, 0, 0, 0, 0, 0, 0, 4, 10, 10, 10, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 27, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 4, 10, 10, 10, 9, 33, 33, 33, 33, 33, 11, 0, 0, 0, 11, 0, 7, 10, 10, 10, 10, 10, 10, 10, 10, 5, 18, 10, 10, 10, 18, 6, 0, 0, 0, 1, 10, 10, 10, 10, 9, 11, 0, 0, 0, 11, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 24, 11, 11, 0, 0, 0, 1, 10, 2, 9, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 27, 0, 0, 0, 7, 10, 10, 10, 10, 3, 11, 0, 0, 0, 0, 34, 25, 11, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 4, 10, 10, 10, 3, 33, 33, 33, 33, 33, 11, 23, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 4, 10, 10, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 13, 0, 0, 0, 0, 0, 4, 10, 10, 10, 10, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 10, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33)
+waypoints = Array[ExtResource("2_c6mvx")]([SubResource("Resource_cqojd"), SubResource("Resource_14qon"), SubResource("Resource_046ou"), SubResource("Resource_swkn2"), SubResource("Resource_3lg2d"), SubResource("Resource_42jk3"), SubResource("Resource_sgeha"), SubResource("Resource_5jjsl"), SubResource("Resource_kyhwb"), SubResource("Resource_cnhrw"), SubResource("Resource_2hi2w"), SubResource("Resource_l01lx"), SubResource("Resource_nags8"), SubResource("Resource_4fvln"), SubResource("Resource_5jyje"), SubResource("Resource_7njg1")])

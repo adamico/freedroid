@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://kpvtxtnmh64p"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_vn1xd"]
+
+[resource]
+script = ExtResource("1_vn1xd")
+droid_name = "999"
+maxspeed = 4.27
+droid_class = 9
+accel = 18.900000000000002
+maxenergy = 100.1
+lose_health = 3.03
+gun = 2
+aggression = 90
+flashimmune = true
+score = 225
+height = 1.87
+weight = 162
+drive = 2
+brain = 2
+sensor1 = 2
+sensor2 = 5
+sensor3 = 3
+notes = "experimental command cyborg. Fitted with a new type of brain. Mounted on a security droid anti-grav unit for convenience. warning: the influence device may not control a primode brain for long."

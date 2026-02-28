@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://bp3vki40rlvo2"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_3ngih"]
+
+[resource]
+script = ExtResource("1_3ngih")
+droid_name = "302"
+maxspeed = 4.97
+droid_class = 3
+accel = 9.9
+maxenergy = 40.1
+lose_health = 0.63
+score = 75
+height = 1.07
+weight = 23
+drive = 2
+sensor1 = 1
+notes = "common device for moving small packages. Clamp is mounted on the lower body."

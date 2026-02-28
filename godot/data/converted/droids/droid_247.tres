@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://cyh1rcxpf3p45"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_jhn57"]
+
+[resource]
+script = ExtResource("1_jhn57")
+droid_name = "247"
+maxspeed = 2.8699999999999997
+droid_class = 2
+accel = 9.9
+maxenergy = 20.1
+lose_health = 0.63
+score = 50
+height = 1.56
+weight = 78
+drive = 2
+brain = 1
+sensor1 = 1
+notes = "light duty servant robot. One of the first to use the anti-grav system."

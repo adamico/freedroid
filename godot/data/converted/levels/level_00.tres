@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dptbpvjl0ef4c"]
+
+[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_hjinf"]
+[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_qsssw"]
+
+[sub_resource type="Resource" id="Resource_m2jg1"]
+script = ExtResource("2_qsssw")
+position = Vector2i(11, 1)
+connections = PackedInt32Array(5, 1, 2, 3)
+
+[sub_resource type="Resource" id="Resource_5aqpd"]
+script = ExtResource("2_qsssw")
+position = Vector2i(13, 1)
+connections = PackedInt32Array(6, 0, 2, 3)
+
+[sub_resource type="Resource" id="Resource_8yvv6"]
+script = ExtResource("2_qsssw")
+position = Vector2i(19, 1)
+connections = PackedInt32Array(8, 3, 1, 0)
+
+[sub_resource type="Resource" id="Resource_rj0c6"]
+script = ExtResource("2_qsssw")
+position = Vector2i(24, 1)
+connections = PackedInt32Array(12, 2, 1, 0)
+
+[sub_resource type="Resource" id="Resource_3w3nl"]
+script = ExtResource("2_qsssw")
+position = Vector2i(1, 3)
+connections = PackedInt32Array(5, 6, 7)
+
+[sub_resource type="Resource" id="Resource_jyitg"]
+script = ExtResource("2_qsssw")
+position = Vector2i(9, 3)
+connections = PackedInt32Array(4, 6, 0, 7)
+
+[sub_resource type="Resource" id="Resource_v8f7o"]
+script = ExtResource("2_qsssw")
+position = Vector2i(13, 3)
+connections = PackedInt32Array(1, 7, 5, 9)
+
+[sub_resource type="Resource" id="Resource_pppx8"]
+script = ExtResource("2_qsssw")
+position = Vector2i(16, 3)
+connections = PackedInt32Array(6, 5, 4)
+
+[sub_resource type="Resource" id="Resource_snal0"]
+script = ExtResource("2_qsssw")
+position = Vector2i(19, 7)
+connections = PackedInt32Array(2)
+
+[sub_resource type="Resource" id="Resource_3e7gn"]
+script = ExtResource("2_qsssw")
+position = Vector2i(13, 8)
+connections = PackedInt32Array(6, 1)
+
+[sub_resource type="Resource" id="Resource_a4d4i"]
+script = ExtResource("2_qsssw")
+position = Vector2i(17, 9)
+connections = PackedInt32Array(15, 11, 12)
+
+[sub_resource type="Resource" id="Resource_tpfpa"]
+script = ExtResource("2_qsssw")
+position = Vector2i(19, 9)
+connections = PackedInt32Array(10, 12)
+
+[sub_resource type="Resource" id="Resource_oaa1c"]
+script = ExtResource("2_qsssw")
+position = Vector2i(24, 9)
+connections = PackedInt32Array(11, 10, 3)
+
+[sub_resource type="Resource" id="Resource_tjc8c"]
+script = ExtResource("2_qsssw")
+position = Vector2i(33, 9)
+connections = PackedInt32Array(16)
+
+[sub_resource type="Resource" id="Resource_2s318"]
+script = ExtResource("2_qsssw")
+position = Vector2i(11, 11)
+connections = PackedInt32Array(15)
+
+[sub_resource type="Resource" id="Resource_g8xjb"]
+script = ExtResource("2_qsssw")
+position = Vector2i(17, 11)
+connections = PackedInt32Array(14, 10)
+
+[sub_resource type="Resource" id="Resource_7jfhk"]
+script = ExtResource("2_qsssw")
+position = Vector2i(33, 11)
+connections = PackedInt32Array(17, 13)
+
+[sub_resource type="Resource" id="Resource_jb8my"]
+script = ExtResource("2_qsssw")
+position = Vector2i(36, 11)
+connections = PackedInt32Array(16)
+
+[resource]
+script = ExtResource("1_hjinf")
+level_name = "maintenance"
+xlen = 38
+ylen = 16
+enter_comment = "This is a level, like many other levels."
+background_song = "BYCOLOR"
+grid = PackedInt32Array(33, 33, 33, 33, 33, 33, 33, 33, 7, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 8, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 7, 10, 10, 10, 10, 10, 10, 10, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 15, 0, 0, 38, 11, 0, 0, 0, 13, 0, 7, 10, 10, 10, 8, 18, 10, 10, 10, 6, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 27, 0, 0, 0, 11, 0, 0, 0, 0, 11, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 26, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 0, 0, 11, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 10, 10, 10, 10, 10, 2, 10, 10, 10, 9, 0, 11, 0, 0, 34, 11, 0, 0, 0, 24, 11, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 4, 18, 2, 10, 8, 10, 6, 0, 0, 0, 0, 11, 0, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 34, 11, 32, 11, 0, 0, 0, 38, 11, 0, 11, 33, 33, 33, 33, 33, 33, 7, 10, 10, 9, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 11, 0, 0, 0, 11, 0, 4, 10, 10, 10, 10, 2, 18, 6, 33, 33, 33, 33, 33, 33, 11, 32, 0, 11, 33, 33, 7, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 6, 34, 0, 38, 11, 0, 27, 0, 0, 0, 0, 0, 0, 11, 33, 33, 33, 33, 33, 33, 11, 0, 0, 4, 10, 9, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 10, 10, 10, 2, 18, 5, 18, 10, 10, 10, 10, 10, 6, 33, 33, 33, 33, 33, 33, 11, 0, 0, 11, 34, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 11, 33, 33, 33, 33, 33, 33, 11, 0, 0, 27, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 13, 0, 13, 0, 11, 0, 0, 0, 0, 0, 0, 11, 33, 33, 33, 33, 33, 33, 11, 0, 0, 11, 34, 11, 1, 10, 10, 10, 10, 10, 10, 10, 9, 38, 0, 26, 11, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 24, 11, 33, 33, 33, 33, 33, 33, 11, 0, 0, 4, 10, 3, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 10, 2, 10, 10, 10, 10, 10, 2, 10, 10, 10, 10, 10, 10, 3, 33, 33, 33, 33, 33, 33, 11, 16, 38, 11, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 1, 10, 10, 3, 33, 33)
+waypoints = Array[ExtResource("2_qsssw")]([SubResource("Resource_m2jg1"), SubResource("Resource_5aqpd"), SubResource("Resource_8yvv6"), SubResource("Resource_rj0c6"), SubResource("Resource_3w3nl"), SubResource("Resource_jyitg"), SubResource("Resource_v8f7o"), SubResource("Resource_pppx8"), SubResource("Resource_snal0"), SubResource("Resource_3e7gn"), SubResource("Resource_a4d4i"), SubResource("Resource_tpfpa"), SubResource("Resource_oaa1c"), SubResource("Resource_tjc8c"), SubResource("Resource_2s318"), SubResource("Resource_g8xjb"), SubResource("Resource_7jfhk"), SubResource("Resource_jb8my")])

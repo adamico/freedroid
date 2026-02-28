@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://touepv8l5h8"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_t8pt4"]
+
+[resource]
+script = ExtResource("1_t8pt4")
+droid_name = "139"
+maxspeed = 1.47
+droid_class = 1
+accel = 9.9
+maxenergy = 20.1
+lose_health = 0.63
+score = 25
+height = 1.22
+weight = 61
+drive = 2
+sensor1 = 1
+notes = "created by Dr. Masternak to clean up large heaps of rubbish. Its large scoop is used to collect rubbish. It is then crushed internally."

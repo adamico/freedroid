@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://dq5k4yaovrvpn"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_a8rms"]
+
+[resource]
+script = ExtResource("1_a8rms")
+droid_name = "629"
+maxspeed = 2.17
+droid_class = 6
+accel = 9.9
+maxenergy = 100.1
+lose_health = 0.9299999999999999
+gun = 2
+aggression = 40
+score = 150
+height = 1.09
+weight = 59
+drive = 1
+brain = 1
+sensor1 = 1
+sensor2 = 3
+notes = "low sentinel droid. Lasers are built into the turret. These are mounted on a small tank body. May be fitted with an auto-cannon on-the Gillen version."

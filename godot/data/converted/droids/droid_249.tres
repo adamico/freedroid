@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://4dy13kuqmwig"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_xg4d4"]
+
+[resource]
+script = ExtResource("1_xg4d4")
+droid_name = "249"
+maxspeed = 2.17
+droid_class = 2
+accel = 9.9
+maxenergy = 24.1
+lose_health = 0.63
+score = 50
+height = 1.63
+weight = 83
+drive = 3
+brain = 1
+sensor1 = 1
+notes = "cheaper version of the anti-grav servant robot."

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://w30jvbodjpqf"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_gb7ff"]
+
+[resource]
+script = ExtResource("1_gb7ff")
+droid_name = "123"
+maxspeed = 1.47
+droid_class = 1
+accel = 9.9
+maxenergy = 20.1
+lose_health = 0.63
+score = 25
+height = 1.37
+weight = 85
+drive = 1
+sensor1 = 1
+sensor2 = 2
+notes = "simpe rubbish diposal robot. Common device in most space craft to maintain a clean ship."

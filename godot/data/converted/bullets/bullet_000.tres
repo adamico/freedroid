@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://do0rls33dyeob"]
+
+[ext_resource type="Script" uid="uid://bdoh0871kfils" path="res://data/bullet_data.gd" id="1_xpcwt"]
+
+[resource]
+script = ExtResource("1_xpcwt")
+recharging_time = 0.95
+speed = 8.0
+damage = 25

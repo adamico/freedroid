@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://begtc5pfj0i4k"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_8waxs"]
+
+[resource]
+script = ExtResource("1_8waxs")
+droid_name = "493"
+maxspeed = 2.8699999999999997
+droid_class = 4
+accel = 9.9
+maxenergy = 80.1
+lose_health = 0.9299999999999999
+score = 100
+height = 1.48
+weight = 51
+drive = 2
+brain = 1
+sensor1 = 1
+notes = "slave maintenance droid. Standard version will carry its own toolbox."

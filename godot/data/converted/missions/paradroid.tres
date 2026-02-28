@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://umlkkn4aiiav"]
+
+[ext_resource type="Script" uid="uid://s7qfentj571t" path="res://data/mission_data.gd" id="1_sfx0j"]
+
+[resource]
+script = ExtResource("1_sfx0j")
+mission_name = "Classical Paradroid Mission"
+ruleset_file = "freedroid.ruleset"
+ship_file = "Paradroid.maps"
+lift_file = "Paradroid.elevators"
+crew_file = "Paradroid.droids"
+start_comment = "Ok. I'm on board.  Let's get to work."
+title_picture = "title.jpg"
+title_song = "Paradroid.ogg"
+end_title_song = "android-commando_hiscore.mod"
+end_title_text = "Success!!! Congratulations!!
+You have made it!
+
+We hope you have enjoyed this piece of C64 nostalgia. 
+Watch out for further FreeDroid based games: 
+FreeDroidRPG for the role-play fans, and 
+FreeDroidWorld for a multi-player arcade version.
+
+See http://freedroid.sourceforge.net for further details.
+
+Press Fire to play again."
+briefing_pages = PackedStringArray("A fleet of Robo-freighters on its way to the Beta Ceti system reported entering an uncharted field of asteroids. Each ship carries a cargo of battle droids to reinforce the outworld defences. Two distress beacons have been discovered. Similar Messages were stored on each. The ships had been bombarded by a powerful radionic beam from one of the asteroids. All of the robots on the ships, including those in storage, became hyper-active. The crews report an attack by droids, isolating them on the bridge. They cannot reach the shuttle and can hold out for only a couple more hours.  Since these beacons were located two days ago, we can only fear the worst.  Some of the fleet was last seen heading for enemy space. In enemy hands the droids can be used against our forces. Docking would be impossible but we can beam aboard a prototype Influence Device.\n\nPress Fire to skip instructions", "The 001 Influence Device consists of a helmet, which, when placed over a robots control unit can halt the normal activities of that robot for a short time. The helmet has its own energy supply and powers the robot itself, at an upgraded capability. The helmet also uses an energy cloak for protection of the host. The helmet is fitted with twin lasers mounted in a turret. These can be focused on any target inside a range of eight metres. Most of the device\'s resources are channelled towards holding control of the host robot, as it attempts to resume \'normal\' operation. It is therefore necessary to change the host robot often to prevent the device from burning out. Transfer to a new robot requires the device to drain its host of energy in order to take  over. Failure to achieve transfer results in the device being a free agent once more.", "An Influence Device can transmit data to your console.  A small-scale plan of the whole deck is available, as well as a side elevation of the ship. Robots are represented on-screen as a symbol showing a three-digit number. The first digit shown is the important one, the class of the robot. It denotes the strength also. To find out more about any given robot, use the robot enquiry system at a console. Only data about units of a lower class than your current host is available, since it is the host\'s security clearance which is used to access the console. \n\n\nPress Fire to skip instructions", "Clear the freighter of robots by destroying them with twin lasers or by transferring control to them. \n\nControl is via keyboard, mouse or joystick.\n\nMotion control: a, s, d, w  or Cursor keys on the keyboard, or you can use the joystick.\nTo fire: press space-bar + direction, left mouse-button or first joystick-button + direction.\nTo enter takeover-mode: press fire without a direction, right mouse-key or second joystick-button.\nTo enter lifts or consoles: press \'e\' or RightShift on the keyboard, middle mouse-button or third joystick button.\nIf you collide with a droid while in takeover mode, you enter the takeover-game.\nIf you win, you can control this droid for a while, if you lose and you controlled another droid before, you revert to the 001 influence device, otherwise you are destroyed.\n\nTo enter the game-menu press Escape.\n\n\n    Press Fire to Play")
+start_points = Array[Dictionary]([{
+"level": 4,
+"x": 1,
+"y": 1
+}, {
+"level": 5,
+"x": 3,
+"y": 1
+}, {
+"level": 6,
+"x": 2,
+"y": 1
+}, {
+"level": 7,
+"x": 2,
+"y": 1
+}])

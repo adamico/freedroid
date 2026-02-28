@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://b65qe6n4fhlc7"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_6eulb"]
+
+[resource]
+script = ExtResource("1_6eulb")
+droid_name = "711"
+maxspeed = 3.5699999999999994
+droid_class = 7
+accel = 9.9
+maxenergy = 110.1
+lose_health = 1.2299999999999998
+gun = 3
+aggression = 60
+flashimmune = true
+score = 175
+height = 1.93
+weight = 102
+drive = 5
+brain = 1
+sensor1 = 4
+sensor2 = 5
+notes = "heavy duty battle droid. Disruptor is built into the head. One of the first in service with the Military."

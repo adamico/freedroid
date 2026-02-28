@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://bc1y3ikro8t8"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_omuj1"]
+
+[resource]
+script = ExtResource("1_omuj1")
+droid_name = "296"
+maxspeed = 2.17
+droid_class = 2
+accel = 9.9
+maxenergy = 40.1
+lose_health = 0.63
+score = 50
+height = 1.2
+weight = 47
+drive = 1
+brain = 1
+sensor1 = 1
+notes = "this robot is used mainly for serving drinks. A tray is mounted on the head. Built by Orchard and Marsden Enterprises."

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://dj0pshnletcj3"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_1effh"]
+
+[resource]
+script = ExtResource("1_1effh")
+droid_name = "329"
+maxspeed = 2.17
+droid_class = 3
+accel = 9.9
+maxenergy = 40.1
+lose_health = 0.63
+score = 75
+height = 1.07
+weight = 31
+drive = 4
+sensor1 = 1
+notes = "early type messenger robot. Large wheels impede motion on small craft.an"

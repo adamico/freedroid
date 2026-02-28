@@ -1,0 +1,315 @@
+[gd_resource type="Resource" script_class="ElevatorData" format=3 uid="uid://ddsawcj3ey8kq"]
+
+[ext_resource type="Script" uid="uid://d2idho7nxcv84" path="res://data/lift_entry_data.gd" id="1_riwwk"]
+[ext_resource type="Script" uid="uid://bilb4e16en44s" path="res://data/elevator_data.gd" id="2_7hjrt"]
+
+[sub_resource type="Resource" id="Resource_yudlp"]
+script = ExtResource("1_riwwk")
+label = 177110
+deck = 177110
+position = Vector2i(177110, 7110)
+level_up = 110
+level_down = -10
+
+[sub_resource type="Resource" id="Resource_a42ae"]
+script = ExtResource("1_riwwk")
+label = 11177200
+deck = 1177200
+position = Vector2i(177200, 7200)
+level_up = 200
+level_down = 0
+
+[sub_resource type="Resource" id="Resource_m0tyn"]
+script = ExtResource("1_riwwk")
+label = 21197310
+deck = 1197310
+position = Vector2i(97310, 7310)
+level_up = 310
+level_down = 10
+
+[sub_resource type="Resource" id="Resource_mlvsb"]
+script = ExtResource("1_riwwk")
+label = 31012420
+deck = 1012420
+position = Vector2i(12420, 2420)
+level_up = 420
+level_down = 20
+
+[sub_resource type="Resource" id="Resource_tg8a4"]
+script = ExtResource("1_riwwk")
+label = 4911130
+deck = 911130
+position = Vector2i(11130, 1130)
+level_up = -130
+level_down = 30
+
+[sub_resource type="Resource" id="Resource_yd8kr"]
+script = ExtResource("1_riwwk")
+label = 51415611
+deck = 1415611
+position = Vector2i(15611, 5611)
+level_up = 611
+level_down = -11
+lift_row = 1
+
+[sub_resource type="Resource" id="Resource_yce4n"]
+script = ExtResource("1_riwwk")
+label = 61314751
+deck = 1314751
+position = Vector2i(14751, 4751)
+level_up = 751
+level_down = 51
+lift_row = 1
+
+[sub_resource type="Resource" id="Resource_vy6k5"]
+script = ExtResource("1_riwwk")
+label = 71214161
+deck = 1214161
+position = Vector2i(14161, 4161)
+level_up = -161
+level_down = 61
+lift_row = 1
+
+[sub_resource type="Resource" id="Resource_5uf8w"]
+script = ExtResource("1_riwwk")
+label = 811297912
+deck = 11297912
+position = Vector2i(297912, 7912)
+level_up = 912
+level_down = -12
+lift_row = 2
+
+[sub_resource type="Resource" id="Resource_ppusu"]
+script = ExtResource("1_riwwk")
+label = 9894182
+deck = 894182
+position = Vector2i(94182, 4182)
+level_up = -182
+level_down = 82
+lift_row = 2
+
+[sub_resource type="Resource" id="Resource_k6uu2"]
+script = ExtResource("1_riwwk")
+label = 105471113
+deck = 5471113
+position = Vector2i(471113, 71113)
+level_up = 1113
+level_down = -13
+lift_row = 3
+
+[sub_resource type="Resource" id="Resource_33fvg"]
+script = ExtResource("1_riwwk")
+label = 1168712103
+deck = 68712103
+position = Vector2i(8712103, 712103)
+level_up = 12103
+level_down = 103
+lift_row = 3
+
+[sub_resource type="Resource" id="Resource_aoqos"]
+script = ExtResource("1_riwwk")
+label = 12712713113
+deck = 712713113
+position = Vector2i(12713113, 713113)
+level_up = 13113
+level_down = 113
+lift_row = 3
+
+[sub_resource type="Resource" id="Resource_aou5o"]
+script = ExtResource("1_riwwk")
+label = 13823414123
+deck = 823414123
+position = Vector2i(23414123, 414123)
+level_up = 14123
+level_down = 123
+lift_row = 3
+
+[sub_resource type="Resource" id="Resource_ilgl4"]
+script = ExtResource("1_riwwk")
+label = 1491851133
+deck = 91851133
+position = Vector2i(1851133, 51133)
+level_up = -1133
+level_down = 133
+lift_row = 3
+
+[sub_resource type="Resource" id="Resource_w6y0v"]
+script = ExtResource("1_riwwk")
+label = 15158131614
+deck = 158131614
+position = Vector2i(8131614, 131614)
+level_up = 1614
+level_down = -14
+lift_row = 4
+
+[sub_resource type="Resource" id="Resource_0jdou"]
+script = ExtResource("1_riwwk")
+label = 1613321417154
+deck = 13321417154
+position = Vector2i(321417154, 1417154)
+level_up = 17154
+level_down = 154
+lift_row = 4
+
+[sub_resource type="Resource" id="Resource_llp31"]
+script = ExtResource("1_riwwk")
+label = 1712321418164
+deck = 12321418164
+position = Vector2i(321418164, 1418164)
+level_up = 18164
+level_down = 164
+lift_row = 4
+
+[sub_resource type="Resource" id="Resource_gcoyn"]
+script = ExtResource("1_riwwk")
+label = 1854131174
+deck = 54131174
+position = Vector2i(4131174, 131174)
+level_up = -1174
+level_down = 174
+lift_row = 4
+
+[sub_resource type="Resource" id="Resource_vjns7"]
+script = ExtResource("1_riwwk")
+label = 1903382015
+deck = 3382015
+position = Vector2i(3382015, 82015)
+level_up = 2015
+level_down = -15
+lift_row = 5
+
+[sub_resource type="Resource" id="Resource_w2632"]
+script = ExtResource("1_riwwk")
+label = 20139821195
+deck = 139821195
+position = Vector2i(39821195, 821195)
+level_up = 21195
+level_down = 195
+lift_row = 5
+
+[sub_resource type="Resource" id="Resource_xmgnt"]
+script = ExtResource("1_riwwk")
+label = 212121205
+deck = 2121205
+position = Vector2i(121205, 21205)
+level_up = -1205
+level_down = 205
+lift_row = 5
+
+[sub_resource type="Resource" id="Resource_2cpvl"]
+script = ExtResource("1_riwwk")
+label = 222732316
+deck = 2732316
+position = Vector2i(732316, 32316)
+level_up = 2316
+level_down = -16
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_ifg0n"]
+script = ExtResource("1_riwwk")
+label = 2337424226
+deck = 37424226
+position = Vector2i(7424226, 424226)
+level_up = 24226
+level_down = 226
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_w2xtj"]
+script = ExtResource("1_riwwk")
+label = 2447425236
+deck = 47425236
+position = Vector2i(7425236, 425236)
+level_up = 25236
+level_down = 236
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_1vho1"]
+script = ExtResource("1_riwwk")
+label = 25511526246
+deck = 511526246
+position = Vector2i(11526246, 526246)
+level_up = 26246
+level_down = 246
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_cne2u"]
+script = ExtResource("1_riwwk")
+label = 26615527256
+deck = 615527256
+position = Vector2i(15527256, 527256)
+level_up = 27256
+level_down = 256
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_bjbuh"]
+script = ExtResource("1_riwwk")
+label = 2771951266
+deck = 71951266
+position = Vector2i(1951266, 51266)
+level_up = -1266
+level_down = 266
+lift_row = 6
+
+[sub_resource type="Resource" id="Resource_puq87"]
+script = ExtResource("1_riwwk")
+label = 2872772917
+deck = 72772917
+position = Vector2i(2772917, 72917)
+level_up = 2917
+level_down = -17
+lift_row = 7
+
+[sub_resource type="Resource" id="Resource_b04ai"]
+script = ExtResource("1_riwwk")
+label = 29833101287
+deck = 833101287
+position = Vector2i(33101287, 101287)
+level_up = -1287
+level_down = 287
+lift_row = 7
+
+[resource]
+script = ExtResource("2_7hjrt")
+area_name = "U.S.S. Paradroid"
+lifts = Array[ExtResource("1_riwwk")]([SubResource("Resource_yudlp"), SubResource("Resource_a42ae"), SubResource("Resource_m0tyn"), SubResource("Resource_mlvsb"), SubResource("Resource_tg8a4"), SubResource("Resource_yd8kr"), SubResource("Resource_yce4n"), SubResource("Resource_vy6k5"), SubResource("Resource_5uf8w"), SubResource("Resource_ppusu"), SubResource("Resource_k6uu2"), SubResource("Resource_33fvg"), SubResource("Resource_aoqos"), SubResource("Resource_aou5o"), SubResource("Resource_ilgl4"), SubResource("Resource_w6y0v"), SubResource("Resource_0jdou"), SubResource("Resource_llp31"), SubResource("Resource_gcoyn"), SubResource("Resource_vjns7"), SubResource("Resource_w2632"), SubResource("Resource_xmgnt"), SubResource("Resource_2cpvl"), SubResource("Resource_ifg0n"), SubResource("Resource_w2xtj"), SubResource("Resource_1vho1"), SubResource("Resource_cne2u"), SubResource("Resource_bjbuh"), SubResource("Resource_puq87"), SubResource("Resource_b04ai")])
+elevator_rects = Array[Rect2i]([Rect2i(681816160, 1816160, 16160, 160), Rect2i(1326616208, 6616208, 16208, 208), Rect2i(228341630, 341630, 1630, 30), Rect2i(308181678, 181678, 1678, 78), Rect2i(-1046751186, 8216110, 16110, 110), Rect2i(-733665650, 1301646, 1646, 46), Rect2i(404501694, 501694, 1694, 94), Rect2i(436341630, 341630, 1630, 30)])
+deck_rects = {
+1626816: [Rect2i(1626816, 1626816, 6816, 16)],
+1001466816: [Rect2i(1466816, 1466816, 6816, 16)],
+1841624816: [Rect2i(841624816, 1624816, 4816, 16)],
+9084183216: [Rect2i(84183216, 183216, 3216, 16)],
+11036503216: [Rect2i(36503216, 503216, 3216, 16)],
+11841464816: [Rect2i(841464816, 1464816, 4816, 16)],
+23401621616: [Rect2i(-893345680, 1621616, 1616, 16)],
+40340986416: [Rect2i(340986416, 986416, 6416, 16)],
+50340826416: [Rect2i(340826416, 826416, 6416, 16)],
+60276663216: [Rect2i(276663216, 663216, 3216, 16)],
+61324668016: [Rect2i(324668016, 668016, 8016, 16)],
+70244506416: [Rect2i(244506416, 506416, 6416, 16)],
+71324508016: [Rect2i(324508016, 508016, 8016, 16)],
+72420501616: [Rect2i(420501616, 501616, 1616, 16)],
+73452506416: [Rect2i(452506416, 506416, 6416, 16)],
+80244346416: [Rect2i(244346416, 346416, 6416, 16)],
+81324348016: [Rect2i(324348016, 348016, 8016, 16)],
+82452341616: [Rect2i(452341616, 341616, 1616, 16)],
+91292181616: [Rect2i(292181616, 181616, 1616, 16)],
+92324181816: [Rect2i(324181816, 181816, 1816, 16)],
+100843411216: [Rect2i(843411216, 3411216, 11216, 16)],
+111845014416: [Rect2i(845014416, 5014416, 14416, 16)],
+123401461616: [Rect2i(-893505680, 1461616, 1616, 16)],
+133721463216: [Rect2i(-573504080, 1463216, 3216, 16)],
+203401301616: [Rect2i(-893665680, 1301616, 1616, 16)],
+213721303216: [Rect2i(-573664080, 1303216, 3216, 16)],
+224201304816: [Rect2i(-93662480, 1304816, 4816, 16)],
+303401146416: [Rect2i(-893820880, 1146416, 6416, 16)],
+314201149616: [Rect2i(-93817680, 1149616, 9616, 16)],
+414209812816: [Rect2i(-85154480, 9812816, 12816, 16)],
+514208215616: [Rect2i(-86751680, 8215616, 15616, 16)],
+624206612816: [Rect2i(-88354480, 6612816, 12816, 16)],
+1201486612816: [Rect2i(1486612816, 6612816, 12816, 16)],
+1211488216016: [Rect2i(1488216016, 8216016, 16016, 16)],
+1221489817616: [Rect2i(1489817616, 9817616, 17616, 16)],
+1502761624832: [Rect2i(-1533342464, 1624832, 4832, 32)],
+13014811417648: [Rect2i(1926515760, 11417648, 17648, 48)],
+14014816212448: [Rect2i(1931310560, 16212448, 12448, 48)]
+}

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://bdjdss60awiab"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_ueck5"]
+
+[resource]
+script = ExtResource("1_ueck5")
+droid_name = "834"
+maxspeed = 5.669999999999999
+droid_class = 8
+accel = 9.9
+maxenergy = 140.1
+lose_health = 1.2299999999999998
+gun = 1
+aggression = 70
+score = 200
+height = 1.1
+weight = 34
+drive = 2
+brain = 1
+sensor1 = 1
+sensor2 = 5
+notes = "early type anti-grav security droid. Fitted with an over-driven anti-grav unit. This droid is very fast but is not reliable."

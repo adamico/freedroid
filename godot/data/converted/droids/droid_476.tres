@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://gopwo2q6ac2k"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_l8ym4"]
+
+[resource]
+script = ExtResource("1_l8ym4")
+droid_name = "476"
+maxspeed = 2.8699999999999997
+droid_class = 4
+accel = 9.9
+maxenergy = 70.1
+lose_health = 0.63
+gun = 1
+aggression = 30
+score = 100
+height = 1.32
+weight = 42
+drive = 2
+brain = 1
+sensor1 = 1
+sensor2 = 2
+notes = "ship maintenance robot. Fitted with multiple arms to carry out repairs to the ship efficiently. All craft built after the Jupiter-incident are supplied with a team of these."

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://picyh43tu2yk"]
+
+[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_j8kx8"]
+[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_tbykg"]
+
+[sub_resource type="Resource" id="Resource_s2u5d"]
+script = ExtResource("2_tbykg")
+position = Vector2i(1, 1)
+connections = PackedInt32Array(1)
+
+[sub_resource type="Resource" id="Resource_moyju"]
+script = ExtResource("2_tbykg")
+position = Vector2i(7, 1)
+connections = PackedInt32Array(4, 0)
+
+[sub_resource type="Resource" id="Resource_bgvdn"]
+script = ExtResource("2_tbykg")
+position = Vector2i(4, 4)
+connections = PackedInt32Array(6)
+
+[sub_resource type="Resource" id="Resource_e2146"]
+script = ExtResource("2_tbykg")
+position = Vector2i(1, 10)
+connections = PackedInt32Array(5, 0)
+
+[sub_resource type="Resource" id="Resource_oe70f"]
+script = ExtResource("2_tbykg")
+position = Vector2i(7, 11)
+connections = PackedInt32Array(7, 1)
+
+[sub_resource type="Resource" id="Resource_mmsui"]
+script = ExtResource("2_tbykg")
+position = Vector2i(3, 12)
+connections = PackedInt32Array(6, 3, 7)
+
+[sub_resource type="Resource" id="Resource_ea1o2"]
+script = ExtResource("2_tbykg")
+position = Vector2i(4, 12)
+connections = PackedInt32Array(5, 7, 2)
+
+[sub_resource type="Resource" id="Resource_w41iw"]
+script = ExtResource("2_tbykg")
+position = Vector2i(8, 12)
+connections = PackedInt32Array(4, 6, 5)
+
+[resource]
+script = ExtResource("1_j8kx8")
+level_number = 15
+level_name = "shuttle bay"
+xlen = 10
+ylen = 15
+color = 5
+enter_comment = "The shuttle is still there.  I looks like noone could manage to escap."
+background_song = "BYCOLOR"
+grid = PackedInt32Array(7, 10, 10, 10, 10, 10, 10, 10, 10, 9, 11, 0, 0, 0, 0, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 11, 11, 0, 0, 7, 10, 9, 0, 0, 0, 11, 11, 0, 7, 3, 43, 1, 9, 0, 0, 11, 11, 0, 11, 25, 43, 25, 11, 0, 0, 11, 11, 0, 11, 43, 43, 43, 11, 0, 0, 11, 11, 0, 11, 43, 43, 43, 11, 0, 0, 11, 11, 0, 11, 43, 43, 43, 11, 0, 0, 11, 11, 0, 1, 8, 18, 8, 3, 0, 0, 11, 11, 0, 0, 11, 43, 11, 0, 0, 0, 11, 11, 0, 0, 1, 18, 3, 0, 0, 24, 11, 11, 38, 0, 0, 0, 0, 0, 0, 0, 11, 1, 10, 10, 10, 10, 10, 10, 9, 32, 11, 33, 33, 33, 33, 33, 33, 33, 1, 10, 3)
+waypoints = Array[ExtResource("2_tbykg")]([SubResource("Resource_s2u5d"), SubResource("Resource_moyju"), SubResource("Resource_bgvdn"), SubResource("Resource_e2146"), SubResource("Resource_oe70f"), SubResource("Resource_mmsui"), SubResource("Resource_ea1o2"), SubResource("Resource_w41iw")])

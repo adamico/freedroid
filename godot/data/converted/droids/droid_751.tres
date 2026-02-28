@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://bgbbkyaycu5ou"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_tia1j"]
+
+[resource]
+script = ExtResource("1_tia1j")
+droid_name = "751"
+maxspeed = 3.5699999999999994
+droid_class = 7
+accel = 9.9
+maxenergy = 150.1
+lose_health = 1.2299999999999998
+gun = 1
+aggression = 80
+score = 175
+height = 1.93
+weight = 227
+drive = 5
+brain = 1
+sensor1 = 1
+notes = "very heavy duty battle droid. Only a few have so far entered service. These are the most powerful battle units ever built."

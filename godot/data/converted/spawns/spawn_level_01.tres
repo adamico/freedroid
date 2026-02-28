@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DroidSpawnData" format=3 uid="uid://db7cxsep7wvlb"]
+
+[ext_resource type="Script" uid="uid://cwbbf24djvxpe" path="res://data/droid_spawn_data.gd" id="1_3jiee"]
+
+[resource]
+script = ExtResource("1_3jiee")
+level_number = 1
+min_random_droids = 7
+max_random_droids = 8
+allowed_droid_types = PackedStringArray("420", "476", "493")

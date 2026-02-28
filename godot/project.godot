@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/data_converter/plugin.cfg")
+
 [input]
 
 move_left={

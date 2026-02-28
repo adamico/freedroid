@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://47dnk1klipl4"]
+
+[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_q2yjv"]
+[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_ic3a1"]
+
+[sub_resource type="Resource" id="Resource_tu01s"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(15, 1)
+connections = PackedInt32Array(4, 1)
+
+[sub_resource type="Resource" id="Resource_n3xw5"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(27, 1)
+connections = PackedInt32Array(6, 0)
+
+[sub_resource type="Resource" id="Resource_e4eud"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(4, 4)
+connections = PackedInt32Array(10, 3, 4, 16)
+
+[sub_resource type="Resource" id="Resource_vql0p"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(10, 4)
+connections = PackedInt32Array(2, 4)
+
+[sub_resource type="Resource" id="Resource_vb28o"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(15, 4)
+connections = PackedInt32Array(5, 3, 2, 0)
+
+[sub_resource type="Resource" id="Resource_3808r"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(16, 5)
+connections = PackedInt32Array(4, 6, 7)
+
+[sub_resource type="Resource" id="Resource_lm4t5"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(27, 5)
+connections = PackedInt32Array(5, 7)
+
+[sub_resource type="Resource" id="Resource_yram8"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(32, 5)
+connections = PackedInt32Array(9, 6, 5)
+
+[sub_resource type="Resource" id="Resource_32tub"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(26, 9)
+connections = PackedInt32Array(15, 9)
+
+[sub_resource type="Resource" id="Resource_e2vir"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(32, 9)
+connections = PackedInt32Array(8, 7)
+
+[sub_resource type="Resource" id="Resource_k8g0f"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(4, 10)
+connections = PackedInt32Array(11, 16, 2, 12)
+
+[sub_resource type="Resource" id="Resource_igjwm"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(10, 10)
+connections = PackedInt32Array(12, 17, 10, 13)
+
+[sub_resource type="Resource" id="Resource_lbgps"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(16, 10)
+connections = PackedInt32Array(13, 18, 11)
+
+[sub_resource type="Resource" id="Resource_olqaj"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(18, 10)
+connections = PackedInt32Array(14, 12)
+
+[sub_resource type="Resource" id="Resource_cgx3m"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(24, 10)
+connections = PackedInt32Array(15, 19, 13, 12)
+
+[sub_resource type="Resource" id="Resource_1t4p6"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(27, 10)
+connections = PackedInt32Array(8, 14, 13, 12)
+
+[sub_resource type="Resource" id="Resource_1dcbp"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(4, 14)
+connections = PackedInt32Array(10, 17, 2)
+
+[sub_resource type="Resource" id="Resource_j240i"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(10, 14)
+connections = PackedInt32Array(11, 16)
+
+[sub_resource type="Resource" id="Resource_uimbi"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(16, 14)
+connections = PackedInt32Array(12, 19)
+
+[sub_resource type="Resource" id="Resource_glh4p"]
+script = ExtResource("2_ic3a1")
+position = Vector2i(24, 14)
+connections = PackedInt32Array(14, 18)
+
+[resource]
+script = ExtResource("1_q2yjv")
+level_number = 12
+level_name = "upper cargo"
+xlen = 34
+ylen = 16
+enter_comment = "Upper cargo.  Here all the battle droids in storage became hyper-active."
+background_song = "BYCOLOR"
+grid = PackedInt32Array(7, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 8, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 8, 10, 10, 10, 10, 9, 11, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 14, 11, 11, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 15, 15, 15, 11, 4, 10, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 7, 10, 10, 10, 10, 10, 10, 10, 9, 0, 0, 11, 0, 0, 0, 0, 11, 11, 32, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 11, 38, 34, 0, 34, 0, 34, 38, 11, 0, 0, 11, 0, 0, 0, 0, 11, 4, 10, 2, 18, 18, 9, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 27, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 1, 10, 10, 10, 10, 18, 18, 10, 10, 5, 18, 18, 2, 10, 10, 10, 10, 10, 10, 10, 2, 10, 10, 5, 10, 10, 10, 18, 6, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 14, 14, 14, 15, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 38, 0, 0, 0, 34, 0, 0, 0, 0, 27, 0, 0, 0, 0, 38, 0, 0, 0, 34, 0, 0, 0, 0, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0, 0, 11, 0, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0, 14, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 14, 11, 0, 0, 0, 0, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 15, 11, 0, 26, 0, 32, 11, 1, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 10, 10, 10, 10, 3)
+waypoints = Array[ExtResource("2_ic3a1")]([SubResource("Resource_tu01s"), SubResource("Resource_n3xw5"), SubResource("Resource_e4eud"), SubResource("Resource_vql0p"), SubResource("Resource_vb28o"), SubResource("Resource_3808r"), SubResource("Resource_lm4t5"), SubResource("Resource_yram8"), SubResource("Resource_32tub"), SubResource("Resource_e2vir"), SubResource("Resource_k8g0f"), SubResource("Resource_igjwm"), SubResource("Resource_lbgps"), SubResource("Resource_olqaj"), SubResource("Resource_cgx3m"), SubResource("Resource_1t4p6"), SubResource("Resource_1dcbp"), SubResource("Resource_j240i"), SubResource("Resource_uimbi"), SubResource("Resource_glh4p")])

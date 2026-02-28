@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://comv6r7iimu1p"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_jc11t"]
+
+[resource]
+script = ExtResource("1_jc11t")
+droid_name = "821"
+maxspeed = 4.27
+droid_class = 8
+accel = 18.900000000000002
+maxenergy = 160.1
+lose_health = 1.2299999999999998
+gun = 2
+aggression = 65
+flashimmune = true
+score = 200
+height = 1.0
+weight = 28
+drive = 2
+brain = 1
+sensor1 = 1
+sensor2 = 5
+sensor3 = 2
+notes = "a very reliable anti-grav unit is fitted into this droid. It will patrol the ship and eliminate intruders as soon as detected by powerful sensors."

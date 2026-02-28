@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://cjk2sd2uhhdp2"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_xnt3i"]
+
+[resource]
+script = ExtResource("1_xnt3i")
+droid_name = "614"
+maxspeed = 2.17
+droid_class = 6
+accel = 9.9
+maxenergy = 100.1
+lose_health = 0.9299999999999999
+gun = 5
+aggression = 30
+score = 150
+height = 1.93
+weight = 121
+drive = 5
+brain = 1
+sensor1 = 1
+sensor2 = 3
+notes = "low security sentinel droid. Used to protect areas of the ship from intruders. A slow but sure device."

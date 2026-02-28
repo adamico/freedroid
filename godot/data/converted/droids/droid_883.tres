@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://b6nufavh56baj"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_wkvnm"]
+
+[resource]
+script = ExtResource("1_wkvnm")
+droid_name = "883"
+maxspeed = 1.47
+droid_class = 8
+accel = 9.9
+maxenergy = 180.1
+lose_health = 1.2299999999999998
+gun = 4
+aggression = 90
+score = 200
+height = 1.62
+weight = 79
+drive = 4
+brain = 1
+sensor1 = 1
+sensor2 = 5
+notes = "this droid was designed from archive data. For some unknown reason it instils great fear in Human adversaries."

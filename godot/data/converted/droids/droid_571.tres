@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DroidData" format=3 uid="uid://17f1dxfx67xo"]
+
+[ext_resource type="Script" uid="uid://bif2c0oh2wjyp" path="res://data/droid_data.gd" id="1_qfpo6"]
+
+[resource]
+script = ExtResource("1_qfpo6")
+droid_name = "571"
+maxspeed = 2.8699999999999997
+droid_class = 5
+accel = 9.9
+maxenergy = 80.1
+lose_health = 0.9299999999999999
+score = 125
+height = 1.76
+weight = 62
+drive = 5
+brain = 1
+sensor1 = 1
+notes = "standard crew droid. Supplied with the ship."
