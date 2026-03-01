@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cih8gkwc05q1f"]
+
+[ext_resource type="Script" path="res://entities/projectiles/blast.gd" id="1_blast_script"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="2_hitbox"]
+[ext_resource type="Texture2D" uid="uid://c67uqv83kgn2f" path="res://icon.svg" id="3_icon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blast"]
+radius = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blast"]
+
+[node name="Blast" type="Area2D" node_paths=PackedStringArray("hitbox", "animated_sprite")]
+script = ExtResource("1_blast_script")
+hitbox = NodePath("HitboxComponent")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("2_hitbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_blast")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_blast")

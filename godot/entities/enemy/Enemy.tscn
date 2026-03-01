@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://df2s4o8n4v7u"]
+
+[ext_resource type="Script" uid="uid://b53inuhavt105" path="res://entities/enemy/enemy.gd" id="1_enemy_script"]
+[ext_resource type="Resource" uid="uid://gopwo2q6ac2k" path="res://data/converted/droids/droid_476.tres" id="2_aay5c"]
+[ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_movement"]
+[ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
+[ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="4_hurtbox"]
+[ext_resource type="Script" uid="uid://c288gyfohmnpd" path="res://components/weapon_component.gd" id="5_weapon"]
+[ext_resource type="PackedScene" uid="uid://dph7aq1oesven" path="res://components/animation_component.tscn" id="7_aay5c"]
+[ext_resource type="Script" uid="uid://d3qh4qqwjy3ch" path="res://components/ai_component.gd" id="8_ai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_host"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 16.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1221773361]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_enemy_script")
+droid_data = ExtResource("2_aay5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599001092]
+shape = SubResource("CircleShape2D_host")
+
+[node name="AnimationComponent" parent="." unique_id=54456394 instance=ExtResource("7_aay5c")]
+modulate = Color(0, 0, 0, 1)
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=34773015 node_paths=PackedStringArray("health_component")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("4_hurtbox")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=365805940]
+shape = SubResource("CircleShape2D_hurtbox")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=653743194]
+script = ExtResource("2_movement")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1870690549]
+script = ExtResource("3_health")
+
+[node name="WeaponComponent" type="Node" parent="." unique_id=1159468644]
+script = ExtResource("5_weapon")
+
+[node name="AIComponent" type="Node2D" parent="." unique_id=83304370]
+script = ExtResource("8_ai")
+metadata/_custom_type_script = "uid://d3qh4qqwjy3ch"

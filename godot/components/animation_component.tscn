@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dph7aq1oesven"]
+
+[ext_resource type="Texture2D" uid="uid://cdmnlgs3jl17d" path="res://assets/sprites/droids.png" id="1_mjcgi"]
+[ext_resource type="Script" uid="uid://djs0xr3c1vya4" path="res://components/animation_component.gd" id="2_k3kkf"]
+[ext_resource type="Script" uid="uid://lue7kp8e7yha" path="res://components/digit_display_component.gd" id="3_02ti8"]
+[ext_resource type="Texture2D" uid="uid://dtw135xt25pug" path="res://assets/sprites/digits.png" id="4_d0fhu"]
+
+[node name="AnimationComponent" type="Sprite2D" unique_id=54456394]
+texture = ExtResource("1_mjcgi")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+script = ExtResource("2_k3kkf")
+
+[node name="DigitDisplayComponent" type="Node2D" parent="." unique_id=963593367]
+position = Vector2(3, 1)
+script = ExtResource("3_02ti8")
+digits_texture = ExtResource("4_d0fhu")
+
+[node name="Digit1" type="Sprite2D" parent="DigitDisplayComponent" unique_id=785171207]
+position = Vector2(-16, 0)
+
+[node name="Digit2" type="Sprite2D" parent="DigitDisplayComponent" unique_id=1669369855]
+
+[node name="Digit3" type="Sprite2D" parent="DigitDisplayComponent" unique_id=1510056366]
+position = Vector2(16, 0)

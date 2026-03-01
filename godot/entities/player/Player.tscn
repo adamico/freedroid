@@ -3,14 +3,11 @@
 [ext_resource type="Script" uid="uid://broi0xra1ax3r" path="res://entities/player/player.gd" id="1_player"]
 [ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_move"]
 [ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
+[ext_resource type="PackedScene" uid="uid://dph7aq1oesven" path="res://components/animation_component.tscn" id="3_q57vx"]
 [ext_resource type="Script" uid="uid://c288gyfohmnpd" path="res://components/weapon_component.gd" id="4_weapon"]
 [ext_resource type="Script" uid="uid://cnxpxf7m246ur" path="res://components/player_input_component.gd" id="5_input"]
-[ext_resource type="Script" uid="uid://djs0xr3c1vya4" path="res://components/animation_component.gd" id="6_anim"]
 [ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="7_hurtbox"]
 [ext_resource type="Script" uid="uid://bbpofw0h4ia3j" path="res://components/state_machine_component.gd" id="8_sm"]
-[ext_resource type="Texture2D" uid="uid://cdmnlgs3jl17d" path="res://assets/sprites/droids.png" id="9_droids"]
-[ext_resource type="Texture2D" uid="uid://dtw135xt25pug" path="res://assets/sprites/digits.png" id="10_digits"]
-[ext_resource type="Script" uid="uid://lue7kp8e7yha" path="res://components/digit_display_component.gd" id="11_digits_script"]
 [ext_resource type="Resource" uid="uid://iejej6qdclek" path="res://data/converted/droids/droid_001.tres" id="12_droid001"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
@@ -20,36 +17,26 @@ radius = 19.0
 radius = 19.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1516925833 node_paths=PackedStringArray("input")]
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("1_player")
 droid_data = ExtResource("12_droid001")
 input = NodePath("PlayerInputComponent")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2080189033]
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612233373]
 shape = SubResource("CircleShape2D_body")
 
-[node name="AnimationComponent" type="Sprite2D" parent="." unique_id=1804234620]
-texture = ExtResource("9_droids")
-region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
-script = ExtResource("6_anim")
+[node name="AnimationComponent" parent="." unique_id=54456394 instance=ExtResource("3_q57vx")]
 
-[node name="DigitDisplayComponent" type="Node2D" parent="AnimationComponent" unique_id=914782446]
-position = Vector2(3, 1)
-script = ExtResource("11_digits_script")
-digits_texture = ExtResource("10_digits")
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=292634009]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("7_hurtbox")
+health_component = NodePath("../HealthComponent")
 
-[node name="Digit1" type="Sprite2D" parent="AnimationComponent/DigitDisplayComponent" unique_id=818911262]
-position = Vector2(-16, 0)
-
-[node name="Digit2" type="Sprite2D" parent="AnimationComponent/DigitDisplayComponent" unique_id=619032988]
-
-[node name="Digit3" type="Sprite2D" parent="AnimationComponent/DigitDisplayComponent" unique_id=1154319728]
-position = Vector2(16, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1746224398]
+shape = SubResource("CircleShape2D_hurtbox")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=1303202569]
 script = ExtResource("2_move")
@@ -62,15 +49,6 @@ script = ExtResource("4_weapon")
 
 [node name="PlayerInputComponent" type="Node" parent="." unique_id=1455823847]
 script = ExtResource("5_input")
-
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=292634009]
-collision_layer = 2
-collision_mask = 4
-script = ExtResource("7_hurtbox")
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1746224398]
-shape = SubResource("CircleShape2D_hurtbox")
 
 [node name="StateMachineComponent" type="Node" parent="." unique_id=1545435884]
 script = ExtResource("8_sm")
