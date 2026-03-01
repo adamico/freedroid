@@ -4,27 +4,8 @@ var _door: Door
 
 
 func before_each() -> void:
-	_door = Door.new()
-
-	var col := CollisionShape2D.new()
-	col.name = "CollisionShape2D"
-	var shape := RectangleShape2D.new()
-	shape.size = Vector2(64, 64)
-	col.shape = shape
-	_door.add_child(col)
-
-	var detect := Area2D.new()
-	detect.name = "DetectionArea"
-	detect.monitoring = true
-	detect.monitorable = false
-	_door.add_child(detect)
-
-	var detect_col := CollisionShape2D.new()
-	var detect_shape := RectangleShape2D.new()
-	detect_shape.size = Vector2(96, 96)
-	detect_col.shape = detect_shape
-	detect.add_child(detect_col)
-
+	var door_scene = load("res://entities/door/Door.tscn")
+	_door = door_scene.instantiate()
 	add_child(_door)
 
 

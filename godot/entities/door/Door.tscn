@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://djoqon53syfqw"]
 
-[ext_resource type="Script" path="res://entities/door/door.gd" id="1_door"]
+[ext_resource type="Script" uid="uid://c4u0pnqblu5rc" path="res://entities/door/door.gd" id="1_door"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(64, 64)
@@ -8,24 +8,21 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
 size = Vector2(96, 96)
 
-[node name="Door" type="AnimatableBody2D"]
-collision_layer = 1
+[node name="Door" type="AnimatableBody2D" unique_id=814216151]
 collision_mask = 0
 script = ExtResource("1_door")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799317281]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_body")
 
-[node name="DoorSprite" type="Sprite2D" parent="."]
+[node name="DoorSprite" type="Sprite2D" parent="." unique_id=644393397]
 position = Vector2(32, 32)
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2001762210]
 collision_layer = 0
-collision_mask = 1
-monitoring = true
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=615579283]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_detect")
