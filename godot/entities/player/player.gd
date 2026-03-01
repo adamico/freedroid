@@ -10,19 +10,23 @@ extends CharacterBody2D
 @onready var movement: MovementComponent = $MovementComponent
 @onready var health: HealthComponent = $HealthComponent
 @onready var animation: AnimationComponent = $AnimationComponent
+@onready var digits: DigitDisplayComponent = $AnimationComponent/DigitDisplayComponent
 @onready var weapon: WeaponComponent = $WeaponComponent
 
 
 func _ready() -> void:
-	if droid_data:
-		movement.max_speed = droid_data.maxspeed
-		movement.acceleration = droid_data.accel
-		health.max_energy = droid_data.maxenergy
-		health.lose_health_rate = droid_data.lose_health
-		health.health = droid_data.maxenergy
-		health.energy = droid_data.maxenergy
+	assert(droid_data != null, "Player must have a DroidData resource assigned.")
+
+	movement.max_speed = droid_data.maxspeed
+	movement.acceleration = droid_data.accel
+	health.max_energy = droid_data.maxenergy
+	health.lose_health_rate = droid_data.lose_health
+	health.health = droid_data.maxenergy
+	health.energy = droid_data.maxenergy
 
 	health.died.connect(_on_died)
+
+	digits.set_digits(droid_data.droid_name)
 
 
 func _physics_process(delta: float) -> void:
