@@ -1,12 +1,10 @@
 extends GutTest
 
-const HealthScript = preload("res://components/health_component.gd")
-
-var _health: Node
+var _health: HealthComponent
 
 
 func before_each() -> void:
-	_health = HealthScript.new()
+	_health = HealthComponent.new()
 	_health.max_energy = 100.0
 	_health.lose_health_rate = 0.0
 	add_child(_health)

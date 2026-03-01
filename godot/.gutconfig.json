@@ -1,0 +1,8 @@
+{
+    "dirs": ["res://tests/"],
+    "include_subdirs": true,
+    "should_exit": true,
+    "should_exit_on_success": false,
+    "log_level": 1,
+    "compact_mode": false
+}

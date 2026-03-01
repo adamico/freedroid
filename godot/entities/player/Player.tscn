@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6dymhsxer5oq"]
+
+[ext_resource type="Script" uid="uid://broi0xra1ax3r" path="res://entities/player/player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_move"]
+[ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
+[ext_resource type="Script" uid="uid://c288gyfohmnpd" path="res://components/weapon_component.gd" id="4_weapon"]
+[ext_resource type="Script" uid="uid://cnxpxf7m246ur" path="res://components/player_input_component.gd" id="5_input"]
+[ext_resource type="Script" uid="uid://djs0xr3c1vya4" path="res://components/animation_component.gd" id="6_anim"]
+[ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="7_hurtbox"]
+[ext_resource type="Script" uid="uid://bbpofw0h4ia3j" path="res://components/state_machine_component.gd" id="8_sm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 19.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1516925833]
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612233373]
+shape = SubResource("CircleShape2D_body")
+
+[node name="AnimationComponent" type="Sprite2D" parent="." unique_id=1804234620]
+script = ExtResource("6_anim")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1303202569]
+script = ExtResource("2_move")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1044390469]
+script = ExtResource("3_health")
+
+[node name="WeaponComponent" type="Node" parent="." unique_id=241693846]
+script = ExtResource("4_weapon")
+
+[node name="PlayerInputComponent" type="Node" parent="." unique_id=1455823847]
+script = ExtResource("5_input")
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=292634009]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("7_hurtbox")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1746224398]
+shape = SubResource("CircleShape2D_hurtbox")
+
+[node name="StateMachineComponent" type="Node" parent="." unique_id=1545435884]
+script = ExtResource("8_sm")

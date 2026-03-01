@@ -1,8 +1,6 @@
 extends GutTest
 
-const WeaponScript = preload("res://components/weapon_component.gd")
-
-var _weapon: Node
+var _weapon: WeaponComponent
 var _bullet: BulletData
 
 
@@ -12,7 +10,7 @@ func before_each() -> void:
 	_bullet.speed = 8.0
 	_bullet.damage = 10
 
-	_weapon = WeaponScript.new()
+	_weapon = WeaponComponent.new()
 	_weapon.bullet_data = _bullet
 	add_child(_weapon)
 

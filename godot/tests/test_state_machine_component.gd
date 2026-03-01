@@ -1,19 +1,16 @@
 extends GutTest
 
-const SMScript = preload("res://components/state_machine_component.gd")
-const StateScript = preload("res://components/state.gd")
-
-var _sm: Node
+var _sm: StateMachineComponent
 var _state_a: Node
 var _state_b: Node
 
 
 func before_each() -> void:
-	_sm = SMScript.new()
+	_sm = StateMachineComponent.new()
 
-	_state_a = StateScript.new()
+	_state_a = State.new()
 	_state_a.name = "Mobile"
-	_state_b = StateScript.new()
+	_state_b = State.new()
 	_state_b.name = "Weapon"
 
 	_sm.add_child(_state_a)

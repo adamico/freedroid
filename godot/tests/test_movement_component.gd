@@ -1,12 +1,10 @@
 extends GutTest
 
-const MovementScript = preload("res://components/movement_component.gd")
-
-var _movement: Node
+var _movement: MovementComponent
 
 
 func before_each() -> void:
-	_movement = MovementScript.new()
+	_movement = MovementComponent.new()
 	_movement.max_speed = 5.0
 	_movement.acceleration = 10.0
 	_movement.friction = 7.0
