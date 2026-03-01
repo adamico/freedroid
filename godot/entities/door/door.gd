@@ -6,6 +6,8 @@ extends AnimatableBody2D
 
 ## 0 = horizontal, 1 = vertical
 @export var orientation: int = 0
+## Level color row index (0–6) from LevelData.color.
+@export var color: int = 0
 ## Time per animation phase in seconds (from GameConstantsData.time_for_door_phase).
 @export var phase_time: float = 0.3
 
@@ -66,15 +68,14 @@ func _update_sprite_region() -> void:
 	var base_index: int = 27 if orientation == 1 else 18
 	var tile_idx: int = base_index + _phase
 
-	# classic_map_blocks.png uses 64x64 tiles with a 2px margin.
-	var x_offset = tile_idx * (64 + 2)
-	# Assuming row 0 for basic colors.
-	_sprite.region_rect = Rect2(x_offset, 0, 64, 64)
+	# classic_map_blocks.png uses 64x64 tiles with 2px separation.
+	var x_offset := tile_idx * (64 + 2)
+	var y_offset := color * (64 + 2)
+	_sprite.region_rect = Rect2(x_offset, y_offset, 64, 64)
 
 
 func _on_detection_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("Player entered door detection zone")
 		_bodies_inside += 1
 		if _state == DoorState.CLOSED or _state == DoorState.CLOSING:
 			_state = DoorState.OPENING
@@ -83,7 +84,6 @@ func _on_detection_body_entered(body: Node2D) -> void:
 
 func _on_detection_body_exited(body: Node2D) -> void:
 	if body is Player:
-		print("Player exited door detection zone")
 		_bodies_inside = maxi(_bodies_inside - 1, 0)
 		if _bodies_inside == 0 and (_state == DoorState.OPEN or _state == DoorState.OPENING):
 			_state = DoorState.CLOSING

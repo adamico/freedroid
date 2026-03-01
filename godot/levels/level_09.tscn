@@ -1,6 +1,10 @@
 [gd_scene format=4]
 
 [ext_resource type="TileSet" path="res://assets/tilesets/classic_tileset.tres" id="1_oaeiq"]
+[ext_resource type="PackedScene" path="res://entities/elevator/Elevator.tscn" id="2_voxu1"]
+[ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="3_lpedq"]
+[ext_resource type="PackedScene" path="res://entities/console/Console.tscn" id="4_sepjv"]
+[ext_resource type="Script" path="res://entities/console/console.gd" id="5_ccbon"]
 
 [node name="level_09" type="TileMapLayer" unique_id=2016766895]
 tile_map_data = PackedByteArray("AAAAAAAAAAAHAAMAAAABAAAAAAAKAAMAAAACAAAAAAAKAAMAAAADAAAAAAAKAAMAAAAEAAAAAAAKAAMAAAAFAAAAAAAJAAMAAAAAAAEAAAALAAMAAAABAAEAAAAgAAMAAAACAAEAAAAAAAMAAAADAAEAAAAAAAMAAAAEAAEAAAAAAAMAAAAFAAEAAAALAAMAAAAAAAIAAAABAAMAAAABAAIAAAAKAAMAAAACAAIAAAAKAAMAAAADAAIAAAAKAAMAAAAEAAIAAAAKAAMAAAAFAAIAAAADAAMAAAAKAAMAAAAHAAMAAAALAAMAAAAKAAMAAAAMAAMAAAAKAAMAAAANAAMAAAAKAAMAAAAOAAMAAAAKAAMAAAAPAAMAAAAJAAMAAAAKAAQAAAALAAMAAAALAAQAAAAmAAMAAAAMAAQAAAAAAAMAAAANAAQAAAAAAAMAAAAOAAQAAAAAAAMAAAAPAAQAAAABAAMAAAAQAAQAAAAKAAMAAAARAAQAAAAKAAMAAAASAAQAAAAKAAMAAAATAAQAAAAJAAMAAAAKAAUAAAALAAMAAAALAAUAAAAXAAMAAAAMAAUAAAAAAAMAAAANAAUAAAAAAAMAAAAOAAUAAAAAAAMAAAAPAAUAAAAAAAMAAAAQAAUAAAAAAAMAAAARAAUAAAAAAAMAAAASAAUAAAAgAAMAAAATAAUAAAALAAMAAAAKAAYAAAALAAMAAAALAAYAAAAAAAMAAAAMAAYAAAAAAAMAAAANAAYAAAAAAAMAAAAOAAYAAAAAAAMAAAAPAAYAAAAHAAMAAAAQAAYAAAAKAAMAAAARAAYAAAAKAAMAAAASAAYAAAAKAAMAAAATAAYAAAADAAMAAAAKAAcAAAABAAMAAAALAAcAAAAKAAMAAAAMAAcAAAAKAAMAAAANAAcAAAAKAAMAAAAOAAcAAAAKAAMAAAAPAAcAAAADAAMAAAA=")
@@ -20,3 +24,18 @@ position = Vector2(1088, 320)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=873402129]
 position = Vector2(832, 384)
+
+[node name="Elevator_00" type="Area2D" parent="." unique_id=300623142 instance=ExtResource("2_voxu1")]
+position = Vector2(64, 64)
+collision_layer = 8
+script = ExtResource("3_lpedq")
+
+[node name="Console_00" type="Area2D" parent="." unique_id=763397127 instance=ExtResource("4_sepjv")]
+position = Vector2(704, 320)
+collision_layer = 8
+script = ExtResource("5_ccbon")
+
+[node name="Elevator_01" type="Area2D" parent="." unique_id=2084164337 instance=ExtResource("2_voxu1")]
+position = Vector2(1152, 320)
+collision_layer = 8
+script = ExtResource("3_lpedq")

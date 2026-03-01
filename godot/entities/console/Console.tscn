@@ -1,15 +1,14 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://20pdtxpuo3wg"]
 
-[ext_resource type="Script" path="res://entities/console/console.gd" id="1_cons"]
+[ext_resource type="Script" uid="uid://donmyv8uv1yd2" path="res://entities/console/console.gd" id="1_cons"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cons"]
 size = Vector2(64, 64)
 
-[node name="Console" type="Area2D"]
+[node name="Console" type="Area2D" unique_id=2039009202]
 collision_layer = 8
-collision_mask = 1
 script = ExtResource("1_cons")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1831784765]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_cons")

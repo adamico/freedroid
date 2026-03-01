@@ -5,6 +5,7 @@ class_name InputComponent
 extends Node
 
 ## Emitted when the player presses the interact action.
+@warning_ignore("unused_signal")
 signal interact_pressed
 
 
