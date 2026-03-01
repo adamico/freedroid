@@ -33,10 +33,10 @@ func test_apply_input_diagonal() -> void:
 
 
 func test_clamp_speed_limits_velocity() -> void:
-	_movement.velocity = Vector2(100.0, -100.0)
+	_movement.velocity = Vector2(1000.0, -1000.0)
 	_movement.clamp_speed()
-	assert_eq(_movement.velocity.x, 5.0)
-	assert_eq(_movement.velocity.y, -5.0)
+	assert_eq(_movement.velocity.x, 300.0) # 5.0 * 60.0
+	assert_eq(_movement.velocity.y, -300.0)
 
 
 func test_friction_reduces_velocity_to_zero() -> void:

@@ -16,10 +16,12 @@ extends Node
 ## apply as a manual position offset.
 var velocity: Vector2 = Vector2.ZERO
 
+const FRAME_SCALE := 60.0
+
 
 ## Accelerate in the given direction. Direction should be normalized or zero.
 func apply_input(direction: Vector2, delta: float) -> void:
-	velocity += direction * acceleration * delta
+	velocity += direction * acceleration * (delta * FRAME_SCALE)
 
 
 ## Slow down on axes where no input is active.
@@ -27,13 +29,13 @@ func apply_input(direction: Vector2, delta: float) -> void:
 func apply_friction(active_direction: Vector2, delta: float) -> void:
 	if is_zero_approx(active_direction.x):
 		var old_sign := signf(velocity.x)
-		velocity.x -= old_sign * friction * delta
+		velocity.x -= old_sign * friction * (delta * FRAME_SCALE)
 		if signf(velocity.x) != old_sign:
 			velocity.x = 0.0
 
 	if is_zero_approx(active_direction.y):
 		var old_sign := signf(velocity.y)
-		velocity.y -= old_sign * friction * delta
+		velocity.y -= old_sign * friction * (delta * FRAME_SCALE)
 		if signf(velocity.y) != old_sign:
 			velocity.y = 0.0
 
@@ -41,8 +43,9 @@ func apply_friction(active_direction: Vector2, delta: float) -> void:
 ## Clamp velocity to max_speed on each axis independently
 ## (matches the original AdjustSpeed behaviour).
 func clamp_speed() -> void:
-	velocity.x = clampf(velocity.x, -max_speed, max_speed)
-	velocity.y = clampf(velocity.y, -max_speed, max_speed)
+	var scaled_max = max_speed * FRAME_SCALE
+	velocity.x = clampf(velocity.x, -scaled_max, scaled_max)
+	velocity.y = clampf(velocity.y, -scaled_max, scaled_max)
 
 
 ## Convenience: returns current velocity vector.
