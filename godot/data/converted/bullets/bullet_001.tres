@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://c3mse3mqaapix"]
 
 [ext_resource type="Script" uid="uid://bdoh0871kfils" path="res://data/bullet_data.gd" id="1_se32y"]
+[ext_resource type="Texture2D" uid="uid://btde4r0ddwypy" path="res://assets/sprites/bullet.png" id="2_obqlc"]
 
 [resource]
 script = ExtResource("1_se32y")
 recharging_time = 1.2
 speed = 8.0
 damage = 40
+texture = ExtResource("2_obqlc")

@@ -29,6 +29,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/data_converter/plugin.cfg", "res://addons/gut/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 move_left={

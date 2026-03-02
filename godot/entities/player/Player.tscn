@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="7_hurtbox"]
 [ext_resource type="Script" uid="uid://bbpofw0h4ia3j" path="res://components/state_machine_component.gd" id="8_sm"]
 [ext_resource type="Resource" uid="uid://iejej6qdclek" path="res://data/converted/droids/droid_001.tres" id="12_droid001"]
+[ext_resource type="PackedScene" uid="uid://ci745x8k6x3vw" path="res://entities/projectiles/Bullet.tscn" id="13_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 19.0
@@ -20,6 +21,7 @@ radius = 19.0
 script = ExtResource("1_player")
 droid_data = ExtResource("12_droid001")
 input = NodePath("PlayerInputComponent")
+bullet_scene = ExtResource("13_bullet")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2080189033]
 position_smoothing_enabled = true

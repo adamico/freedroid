@@ -14,6 +14,11 @@ func get_movement_direction() -> Vector2:
 	return Vector2.ZERO
 
 
+## Virtual: Returns the current aiming direction. Defaults to movement direction.
+func get_aim_direction() -> Vector2:
+	return get_movement_direction()
+
+
 ## Virtual: Returns true if the fire action is intended.
 func is_firing() -> bool:
 	return false

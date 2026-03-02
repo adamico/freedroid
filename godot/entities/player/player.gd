@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @export var droid_data: DroidData
 @export var input: InputComponent
+@export var bullet_scene: PackedScene
 
 @onready var movement: MovementComponent = $MovementComponent
 @onready var health: HealthComponent = $HealthComponent
@@ -16,6 +17,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	assert(droid_data != null, "Player must have a DroidData resource assigned.")
+	assert(bullet_scene != null, "Player must have a bullet_scene assigned.")
 
 	movement.max_speed = droid_data.maxspeed
 	movement.acceleration = droid_data.accel
@@ -25,6 +27,12 @@ func _ready() -> void:
 	health.energy = droid_data.maxenergy
 
 	health.died.connect(_on_died)
+	weapon.fired.connect(_on_weapon_fired)
+
+	var bullet_id := str(droid_data.gun).pad_zeros(3)
+	var bullet_path := "res://data/converted/bullets/bullet_%s.tres" % bullet_id
+	if ResourceLoader.exists(bullet_path):
+		weapon.bullet_data = load(bullet_path)
 
 	digits.set_digits(droid_data.droid_name)
 
@@ -34,12 +42,13 @@ func _physics_process(delta: float) -> void:
 
 	# Read intent from input component and drive movement + weapon.
 	var dir := input.get_movement_direction()
+	var aim_dir := input.get_aim_direction()
 	movement.apply_input(dir, delta)
 	movement.apply_friction(dir, delta)
 	movement.clamp_speed()
 
-	if input.is_firing() and dir != Vector2.ZERO:
-		weapon.try_fire(global_position, dir)
+	if input.is_firing() and aim_dir != Vector2.ZERO:
+		weapon.try_fire(global_position, aim_dir)
 
 	velocity = movement.velocity
 	move_and_slide()
@@ -52,3 +61,18 @@ func _physics_process(delta: float) -> void:
 
 func _on_died() -> void:
 	print("Player has been destroyed!")
+
+
+func _on_weapon_fired(bullet_data: BulletData, pos: Vector2, direction: Vector2) -> void:
+	if not bullet_scene:
+		push_warning("Player tried to fire but bullet_scene is null.")
+		return
+	print("Spawning bullet for Player at ", pos, " heading ", direction)
+	var bullet := bullet_scene.instantiate() as Node2D
+	bullet.data = bullet_data
+
+	get_parent().add_child(bullet)
+
+	bullet.global_position = pos
+	if bullet.has_method("setup"):
+		bullet.setup(direction)
