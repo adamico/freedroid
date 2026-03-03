@@ -1,6 +1,8 @@
 class_name DroidEntity
 extends CharacterBody2D
 
+const BULLET_OFFSET := 32
+
 @export var droid_data: DroidData
 
 @onready var animation: AnimationComponent = $AnimationComponent
@@ -90,6 +92,6 @@ func _on_weapon_fired(bul_data: BulletData, pos: Vector2, direction: Vector2) ->
 
 	# Setting global position must happen *after* adding to tree if not top level,
 	# but it's safe here.
-	bullet.global_position = pos
+	bullet.global_position = pos + direction * BULLET_OFFSET
 	if bullet.has_method("setup"):
 		bullet.setup(direction)
