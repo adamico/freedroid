@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://df2s4o8n4v7u"]
+[gd_scene format=3 uid="uid://dv1ckumb2ejip"]
 
 [ext_resource type="Script" uid="uid://b53inuhavt105" path="res://entities/enemy/enemy.gd" id="1_enemy_script"]
 [ext_resource type="Resource" uid="uid://gopwo2q6ac2k" path="res://data/converted/droids/droid_476.tres" id="2_aay5c"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://d3qh4qqwjy3ch" path="res://components/ai_component.gd" id="8_ai"]
 [ext_resource type="Resource" uid="uid://c3mse3mqaapix" path="res://data/converted/bullets/bullet_001.tres" id="8_k5kcc"]
 [ext_resource type="Script" uid="uid://bpm7603ov1vwd" path="res://components/ai_input_component.gd" id="9_ai_input"]
-[ext_resource type="PackedScene" uid="uid://ci745x8k6x3vw" path="res://entities/projectiles/Bullet.tscn" id="10_bullet"]
+[ext_resource type="PackedScene" uid="uid://bvlyrdpo2iymh" path="res://entities/projectiles/bullet.tscn" id="10_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_host"]
 radius = 16.0
@@ -33,7 +33,7 @@ shape = SubResource("CircleShape2D_host")
 modulate = Color(0, 0, 0, 1)
 
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=34773015 node_paths=PackedStringArray("health_component")]
-collision_layer = 8
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_hurtbox")
 health_component = NodePath("../HealthComponent")

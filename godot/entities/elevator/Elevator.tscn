@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://b3oir7yrxhayt"]
 
-[ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="1_elev"]
+[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="1_elev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elev"]
 size = Vector2(64, 64)
 
-[node name="Elevator" type="Area2D"]
+[node name="Elevator" type="Area2D" unique_id=939774510]
 collision_layer = 8
-collision_mask = 1
+collision_mask = 0
 script = ExtResource("1_elev")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1467000356]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_elev")
