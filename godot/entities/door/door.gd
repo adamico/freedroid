@@ -4,8 +4,10 @@
 class_name Door
 extends AnimatableBody2D
 
-## 0 = horizontal, 1 = vertical
-@export var orientation: int = 0
+enum Orientation { HORIZONTAL, VERTICAL }
+
+@export var orientation: Door.Orientation = Orientation.HORIZONTAL
+
 ## Level color row index (0–6) from LevelData.color.
 @export var color: int = 0
 ## Time per animation phase in seconds (from GameConstantsData.time_for_door_phase).
@@ -75,7 +77,7 @@ func _update_sprite_region() -> void:
 
 
 func _on_detection_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is DroidEntity:
 		_bodies_inside += 1
 		if _state == DoorState.CLOSED or _state == DoorState.CLOSING:
 			_state = DoorState.OPENING
@@ -83,7 +85,7 @@ func _on_detection_body_entered(body: Node2D) -> void:
 
 
 func _on_detection_body_exited(body: Node2D) -> void:
-	if body is Player:
+	if body is DroidEntity:
 		_bodies_inside = maxi(_bodies_inside - 1, 0)
 		if _bodies_inside == 0 and (_state == DoorState.OPEN or _state == DoorState.OPENING):
 			_state = DoorState.CLOSING
