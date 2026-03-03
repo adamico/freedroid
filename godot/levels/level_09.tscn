@@ -1,9 +1,9 @@
 [gd_scene format=4]
 
 [ext_resource type="TileSet" path="res://assets/tilesets/classic_tileset.tres" id="1_oaeiq"]
-[ext_resource type="PackedScene" path="res://entities/elevator/Elevator.tscn" id="2_voxu1"]
+[ext_resource type="PackedScene" path="res://entities/elevator/elevator.tscn" id="2_voxu1"]
 [ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="3_lpedq"]
-[ext_resource type="PackedScene" path="res://entities/console/Console.tscn" id="4_sepjv"]
+[ext_resource type="PackedScene" path="res://entities/console/console.tscn" id="4_sepjv"]
 [ext_resource type="Script" path="res://entities/console/console.gd" id="5_ccbon"]
 
 [node name="level_09" type="TileMapLayer" unique_id=2016766895]

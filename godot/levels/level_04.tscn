@@ -1,11 +1,11 @@
 [gd_scene format=4]
 
 [ext_resource type="TileSet" path="res://assets/tilesets/classic_tileset.tres" id="1_vosiq"]
-[ext_resource type="PackedScene" path="res://entities/elevator/Elevator.tscn" id="2_r8aof"]
-[ext_resource type="PackedScene" path="res://entities/door/Door.tscn" id="2_rpmp5"]
+[ext_resource type="PackedScene" path="res://entities/elevator/elevator.tscn" id="2_r8aof"]
+[ext_resource type="PackedScene" path="res://entities/door/door.tscn" id="2_rpmp5"]
 [ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="3_b2w0k"]
 [ext_resource type="Script" path="res://entities/door/door.gd" id="3_roa4n"]
-[ext_resource type="PackedScene" path="res://entities/console/Console.tscn" id="4_rpmp5"]
+[ext_resource type="PackedScene" path="res://entities/console/console.tscn" id="4_rpmp5"]
 [ext_resource type="Script" path="res://entities/console/console.gd" id="5_roa4n"]
 
 [node name="level_04" type="TileMapLayer" unique_id=1803594356]

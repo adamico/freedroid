@@ -6,5 +6,5 @@ extends Resource
 @export var speed: float = 0.0
 @export var damage: int = 0
 @export var blast_type: int = 0
-@export var range: float = 0.0
+@export var range_dist: float = 0.0
 @export var texture: Texture2D

@@ -4,9 +4,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var droid_data: DroidData
 @export var input: InputComponent
-@export var bullet_scene: PackedScene
 
 @onready var movement: MovementComponent = $MovementComponent
 @onready var health: HealthComponent = $HealthComponent
@@ -14,27 +12,26 @@ extends CharacterBody2D
 @onready var digits: DigitDisplayComponent = $AnimationComponent/DigitDisplayComponent
 @onready var weapon: WeaponComponent = $WeaponComponent
 
+var bullet_scene: PackedScene = preload("res://entities/projectiles/bullet.tscn")
+var droid_data: DroidData = preload("res://data/converted/droids/droid_001.tres")
+var bullet_data: BulletData = preload("res://data/converted/bullets/bullet_001.tres")
+
 
 func _ready() -> void:
-	assert(droid_data != null, "Player must have a DroidData resource assigned.")
-	assert(bullet_scene != null, "Player must have a bullet_scene assigned.")
-
 	movement.max_speed = droid_data.maxspeed
 	movement.acceleration = droid_data.accel
+
 	health.max_energy = droid_data.maxenergy
 	health.lose_health_rate = droid_data.lose_health
 	health.health = droid_data.maxenergy
 	health.energy = droid_data.maxenergy
 
-	health.died.connect(_on_died)
-	weapon.fired.connect(_on_weapon_fired)
-
-	var bullet_id := str(droid_data.gun).pad_zeros(3)
-	var bullet_path := "res://data/converted/bullets/bullet_%s.tres" % bullet_id
-	if ResourceLoader.exists(bullet_path):
-		weapon.bullet_data = load(bullet_path)
+	weapon.bullet_data = bullet_data
 
 	digits.set_digits(droid_data.droid_name)
+
+	health.died.connect(_on_died)
+	weapon.fired.connect(_on_weapon_fired)
 
 
 func _physics_process(delta: float) -> void:
@@ -63,13 +60,13 @@ func _on_died() -> void:
 	print("Player has been destroyed!")
 
 
-func _on_weapon_fired(bullet_data: BulletData, pos: Vector2, direction: Vector2) -> void:
+func _on_weapon_fired(bul_data: BulletData, pos: Vector2, direction: Vector2) -> void:
 	if not bullet_scene:
 		push_warning("Player tried to fire but bullet_scene is null.")
 		return
 	print("Spawning bullet for Player at ", pos, " heading ", direction)
 	var bullet := bullet_scene.instantiate() as Node2D
-	bullet.data = bullet_data
+	bullet.data = bul_data
 
 	get_parent().add_child(bullet)
 

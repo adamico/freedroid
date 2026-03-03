@@ -12,9 +12,9 @@ extends MainLoop
 const LEVELS_DIR := "res://levels/"
 const DATA_DIR := "res://data/converted/levels/"
 
-const DOOR_SCENE := "res://entities/door/Door.tscn"
-const CONSOLE_SCENE := "res://entities/console/Console.tscn"
-const ELEVATOR_SCENE := "res://entities/elevator/Elevator.tscn"
+const DOOR_SCENE := "res://entities/door/door.tscn"
+const CONSOLE_SCENE := "res://entities/console/console.tscn"
+const ELEVATOR_SCENE := "res://entities/elevator/elevator.tscn"
 
 ## From legacy defs.h:
 ## H_ZUTUERE=18..H_GANZTUERE=22  (horizontal door phases)
