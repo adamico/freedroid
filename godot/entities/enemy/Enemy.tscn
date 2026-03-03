@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dv1ckumb2ejip"]
 
 [ext_resource type="Script" uid="uid://b53inuhavt105" path="res://entities/enemy/enemy.gd" id="1_enemy_script"]
-[ext_resource type="Resource" uid="uid://gopwo2q6ac2k" path="res://data/converted/droids/droid_476.tres" id="2_aay5c"]
 [ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_movement"]
 [ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
 [ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="4_hurtbox"]
@@ -10,7 +9,6 @@
 [ext_resource type="Script" uid="uid://d3qh4qqwjy3ch" path="res://components/ai_component.gd" id="8_ai"]
 [ext_resource type="Resource" uid="uid://c3mse3mqaapix" path="res://data/converted/bullets/bullet_001.tres" id="8_k5kcc"]
 [ext_resource type="Script" uid="uid://bpm7603ov1vwd" path="res://components/ai_input_component.gd" id="9_ai_input"]
-[ext_resource type="PackedScene" uid="uid://bvlyrdpo2iymh" path="res://entities/projectiles/bullet.tscn" id="10_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_host"]
 radius = 16.0
@@ -18,13 +16,10 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
 radius = 16.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1221773361 node_paths=PackedStringArray("input")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1221773361]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_enemy_script")
-droid_data = ExtResource("2_aay5c")
-input = NodePath("AIInputComponent")
-bullet_scene = ExtResource("10_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599001092]
 shape = SubResource("CircleShape2D_host")

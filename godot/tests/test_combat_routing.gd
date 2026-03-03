@@ -28,7 +28,7 @@ func test_bullet_damages_enemy():
 	var mock_bullet_data = BulletData.new()
 	mock_bullet_data.damage = 15
 	mock_bullet_data.speed = 0
-	mock_bullet_data.range = 100
+	mock_bullet_data.range_dist = 100
 	bullet.data = mock_bullet_data
 
 	add_child_autofree(bullet)
@@ -48,7 +48,7 @@ func test_bullet_damages_enemy():
 func test_blast_damages_enemy():
 	blast = blast_scene.instantiate()
 	var mock_blast_data = BlastData.new()
-	mock_blast_data.damage = 25
+	mock_blast_data.damage = 25.0
 	blast.data = mock_blast_data
 
 	add_child_autofree(blast)

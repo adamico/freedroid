@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	position += step
 	_distance_traveled += step.length()
 
-	if _distance_traveled >= data.range:
+	if _distance_traveled >= data.range_dist:
 		queue_free()
 
 

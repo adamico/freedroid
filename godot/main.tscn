@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://dp3wxbkx8r50c"]
 
 [ext_resource type="PackedScene" uid="uid://rff6otvtvqt" path="res://levels/level_02.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dbaoq571pa8me" path="res://entities/player/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dv1ckumb2ejip" path="res://entities/enemy/enemy.tscn" id="3_h2yge"]
+[ext_resource type="Resource" uid="uid://gopwo2q6ac2k" path="res://data/converted/droids/droid_476.tres" id="4_1bvp3"]
 
 [node name="Main" type="Node" unique_id=1862035655]
 
 [node name="level_02" parent="." unique_id=1354161198 instance=ExtResource("1_0xm2m")]
+
+[node name="Player" parent="level_02" unique_id=1516925833 instance=ExtResource("2_0xm2m")]
+position = Vector2(160, 160)
+
+[node name="Enemy" parent="level_02" unique_id=1221773361 instance=ExtResource("3_h2yge")]
+position = Vector2(352, 224)
+droid_data = ExtResource("4_1bvp3")
