@@ -8,3 +8,4 @@ func _init() -> void:
 
 func _on_died() -> void:
 	print("Player has been destroyed!")
+	super._on_died()

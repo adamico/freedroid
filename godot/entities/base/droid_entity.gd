@@ -1,6 +1,8 @@
 class_name DroidEntity
 extends CharacterBody2D
 
+const GameConstants := preload("res://data/converted/game_constants.tres")
+
 const BULLET_OFFSET := 32
 
 @export var droid_data: DroidData
@@ -14,6 +16,9 @@ const BULLET_OFFSET := 32
 var input: InputComponent
 var bullet_data: BulletData
 var bullet_scene: PackedScene = preload("res://entities/projectiles/bullet.tscn")
+var blast_scene: PackedScene = preload("res://entities/projectiles/blast.tscn")
+
+var _bump_cooldown: float = 0.0
 
 
 func _ready() -> void:
@@ -66,14 +71,50 @@ func _physics_process(delta: float) -> void:
 
 	velocity = movement.velocity
 	move_and_slide()
-	movement.velocity = velocity
+
+	var pushed_velocity := Vector2.ZERO
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is DroidEntity:
+			var other_droid := collider as DroidEntity
+			_handle_droid_collision(other_droid)
+			pushed_velocity += collision.get_normal() * 400.0
+
+	movement.velocity = velocity + pushed_velocity
+
+	if _bump_cooldown > 0.0:
+		_bump_cooldown -= delta
 
 	var energy_ratio := health.energy / health.max_energy if health.max_energy > 0.0 else 0.0
 	animation.process_animation(delta, energy_ratio)
 
 
+func _handle_droid_collision(other: DroidEntity) -> void:
+	if _bump_cooldown > 0.0:
+		return
+	_bump_cooldown = 0.5
+
+	if not other.droid_data or not self.droid_data:
+		return
+
+	var class_diff = other.droid_data.droid_class - self.droid_data.droid_class
+	if class_diff > 0:
+		var dmg = class_diff * GameConstants.collision_lose_energy_calibrator
+		health.take_damage(dmg)
+	elif class_diff < 0:
+		var dmg = -class_diff * GameConstants.collision_lose_energy_calibrator
+		other.health.take_damage(dmg)
+
+
 func _on_died() -> void:
-	push_error("DroidEntity _on_died() must be implemented by subclasses.")
+	if blast_scene:
+		var blast = blast_scene.instantiate() as Blast
+		blast.global_position = global_position
+		blast.setup(1)
+		# Add to level
+		get_parent().call_deferred("add_child", blast)
+	queue_free()
 
 
 func _on_weapon_fired(bul_data: BulletData, pos: Vector2, direction: Vector2) -> void:
@@ -94,4 +135,4 @@ func _on_weapon_fired(bul_data: BulletData, pos: Vector2, direction: Vector2) ->
 	# but it's safe here.
 	bullet.global_position = pos + direction * BULLET_OFFSET
 	if bullet.has_method("setup"):
-		bullet.setup(direction)
+		bullet.setup(direction, droid_data.gun, is_in_group("player"))
