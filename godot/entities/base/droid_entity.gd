@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 const GameConstants := preload("res://data/converted/game_constants.tres")
 
-const BULLET_OFFSET := 32
-
 @export var droid_data: DroidData
 
 @onready var animation: AnimationComponent = $AnimationComponent
@@ -14,15 +12,13 @@ const BULLET_OFFSET := 32
 @onready var weapon: WeaponComponent = $WeaponComponent
 
 var input: InputComponent
-var bullet_data: BulletData
-var bullet_scene: PackedScene = preload("res://entities/projectiles/bullet.tscn")
+
 var blast_scene: PackedScene = preload("res://entities/projectiles/blast.tscn")
 
 var _bump_cooldown: float = 0.0
 
 
 func _ready() -> void:
-	# Resolve input component dynamically from children if one exists
 	for child in get_children():
 		if child is InputComponent:
 			input = child as InputComponent
@@ -39,16 +35,7 @@ func _ready() -> void:
 	health.health = droid_data.maxenergy
 	health.energy = droid_data.maxenergy
 
-	# REFACTOR: don't run this block if the droid has no weapon
-	# or better, move this logic to the weapon component?
-	var bullet_id := str(droid_data.gun).pad_zeros(3)
-	var bullet_path := "res://data/converted/bullets/bullet_%s.tres" % bullet_id
-	if ResourceLoader.exists(bullet_path):
-		bullet_data = load(bullet_path)
-	else:
-		push_warning("DroidEntity: Could not find bullet data for gun ID: %s" % droid_data.gun)
-	weapon.bullet_data = bullet_data
-	weapon.fired.connect(_on_weapon_fired)
+	weapon.setup(droid_data.gun)
 
 	health.died.connect(_on_died)
 
@@ -115,24 +102,3 @@ func _on_died() -> void:
 		# Add to level
 		get_parent().call_deferred("add_child", blast)
 	queue_free()
-
-
-func _on_weapon_fired(bul_data: BulletData, pos: Vector2, direction: Vector2) -> void:
-	if not bullet_scene:
-		push_warning(name, " tried to fire but bullet_scene is null.")
-		return
-	# TODO: Create a BulletManager so entities don't spawn their own bullets
-	#onto the main scene tree directly
-	# For now, just spawn it in the current level.
-	print("Spawning bullet for ", name, " at ", pos, " heading ", direction)
-	var bullet := bullet_scene.instantiate() as Node2D
-	bullet.data = bul_data
-
-	# Add to the same parent as the entity (the level)
-	get_parent().add_child(bullet)
-
-	# Setting global position must happen *after* adding to tree if not top level,
-	# but it's safe here.
-	bullet.global_position = pos + direction * BULLET_OFFSET
-	if bullet.has_method("setup"):
-		bullet.setup(direction, droid_data.gun, is_in_group("player"))

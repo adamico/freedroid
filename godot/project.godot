@@ -29,6 +29,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/data_converter/plugin.cfg", "res://addons/gut/plugin.cfg")
 
+[autoload]
+
+GlobalState="*res://autoloads/global_state.gd"
+
 [global_group]
 
 player=""
