@@ -54,8 +54,9 @@ func _spawn_special_forces() -> void:
 		elif enemy.has_node("EnemyEntity"):
 			pass # Or however enemy.tscn is arranged. Need to verify this later.
 
-		var pos = Vector2(sf["x"], sf["y"]) * 64.0
+		var pos = Vector2(sf["x"], sf["y"]) * GameConstantsData.TILE_SIZE
 		enemy.global_position = pos
+		_inject_ai_data(enemy, type_scene)
 		get_parent().add_child(enemy)
 
 
@@ -85,7 +86,7 @@ func _try_spawn_random_droid() -> void:
 	if _level_data.waypoints.is_empty():
 		return
 	var wp = _level_data.waypoints[randi() % _level_data.waypoints.size()]
-	var pos = Vector2(wp.position) * 64.0
+	var pos = Vector2(wp.position) * GameConstantsData.TILE_SIZE
 
 	var enemy = enemy_scene.instantiate() as Node2D
 	# Let's set the resource based on the structure of enemy.tscn
@@ -96,6 +97,7 @@ func _try_spawn_random_droid() -> void:
 
 	enemy.global_position = pos
 	enemy.add_to_group("enemy")
+	_inject_ai_data(enemy, type_res)
 	get_parent().add_child(enemy)
 
 
@@ -104,3 +106,10 @@ func _load_droid_data(droid_name: String) -> DroidData:
 	if ResourceLoader.exists(path):
 		return load(path) as DroidData
 	return null
+
+
+func _inject_ai_data(enemy: Node, droid_res: DroidData) -> void:
+	if enemy.has_node("WaypointPatrolComponent") and _level_data:
+		enemy.get_node("WaypointPatrolComponent").level_data = _level_data
+	if enemy.has_node("AIComponent") and droid_res:
+		enemy.get_node("AIComponent").aggression = droid_res.aggression

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d3qh4qqwjy3ch" path="res://components/ai_component.gd" id="8_ai"]
 [ext_resource type="Resource" uid="uid://c3mse3mqaapix" path="res://data/converted/bullets/bullet_001.tres" id="8_k5kcc"]
 [ext_resource type="Script" uid="uid://bpm7603ov1vwd" path="res://components/ai_input_component.gd" id="9_ai_input"]
+[ext_resource type="Script" uid="uid://bjnpvvuq5ugtr" path="res://components/waypoint_patrol_component.gd" id="10_patrol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_host"]
 radius = 16.0
@@ -49,7 +50,12 @@ bullet_data = ExtResource("8_k5kcc")
 [node name="AIInputComponent" type="Node" parent="." unique_id=83304375]
 script = ExtResource("9_ai_input")
 
-[node name="AIComponent" type="Node2D" parent="." unique_id=83304370 node_paths=PackedStringArray("input")]
+[node name="WaypointPatrolComponent" type="Node" parent="."]
+script = ExtResource("10_patrol")
+metadata/_custom_type_script = "uid://bjnpvvuq5ugtr"
+
+[node name="AIComponent" type="Node2D" parent="." unique_id=83304370 node_paths=PackedStringArray("input", "patrol")]
 script = ExtResource("8_ai")
 input = NodePath("../AIInputComponent")
+patrol = NodePath("../WaypointPatrolComponent")
 metadata/_custom_type_script = "uid://d3qh4qqwjy3ch"

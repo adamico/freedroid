@@ -2,6 +2,11 @@
 class_name GameConstantsData
 extends Resource
 
+## Size of a single map tile in pixels.
+const TILE_SIZE := 64.0
+## Maximum random wait time (seconds) at a waypoint before moving again.
+const ENEMY_MAX_WAIT := 2.0
+
 @export var collision_lose_energy_calibrator: float = 0.0
 @export var blast_radius: float = 0.0
 @export var blast_damage_per_second: float = 0.0

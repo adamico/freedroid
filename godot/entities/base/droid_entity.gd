@@ -35,6 +35,10 @@ func _ready() -> void:
 
 	weapon.setup(droid_data.gun)
 
+	var ai_node := get_node_or_null("AIComponent")
+	if ai_node and "aggression" in ai_node:
+		ai_node.aggression = droid_data.aggression
+
 	health.died.connect(_on_died)
 
 

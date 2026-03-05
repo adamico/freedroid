@@ -101,7 +101,7 @@ func _add_waypoint_markers(tile_map: TileMapLayer, waypoints: Array[WaypointData
 	for i in range(waypoints.size()):
 		var marker := Marker2D.new()
 		marker.name = "Waypoint_%02d" % i
-		marker.position = Vector2(waypoints[i].position) * 64.0
+		marker.position = Vector2(waypoints[i].position) * GameConstantsData.TILE_SIZE
 		tile_map.add_child(marker)
 		marker.owner = tile_map
 
