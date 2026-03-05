@@ -30,11 +30,11 @@ func get_patrol_direction(current_pos: Vector2) -> Vector2:
 		return Vector2.ZERO
 
 	var wp := level_data.waypoints[_current_wp_idx]
-	var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE \
-	+ _TILE_CENTER_OFFSET
+	var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE + _TILE_CENTER_OFFSET
 	var dist := current_pos.distance_to(wp_pos)
 
-	if dist < 2.0:
+	var snap_dist := GameConstantsData.TILE_SIZE / 2.0
+	if dist < snap_dist:
 		# Arrived — match legacy snap behavior
 		_on_waypoint_reached()
 		return Vector2.ZERO
@@ -53,8 +53,7 @@ func _find_closest_waypoint(current_pos: Vector2) -> void:
 	var min_dist := INF
 	for i in range(level_data.waypoints.size()):
 		var wp := level_data.waypoints[i]
-		var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE \
-		+ _TILE_CENTER_OFFSET
+		var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE + _TILE_CENTER_OFFSET
 		var d := current_pos.distance_to(wp_pos)
 		if d < min_dist:
 			min_dist = d
