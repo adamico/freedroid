@@ -15,6 +15,11 @@ run/main_scene="uid://dp3wxbkx8r50c"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalState="*res://autoloads/global_state.gd"
+BulletManager="*res://autoloads/bullet_manager.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -28,10 +33,6 @@ window/stretch/scale_mode="integer"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/data_converter/plugin.cfg", "res://addons/gut/plugin.cfg")
-
-[autoload]
-
-GlobalState="*res://autoloads/global_state.gd"
 
 [global_group]
 

@@ -13,8 +13,6 @@ const GameConstants := preload("res://data/converted/game_constants.tres")
 
 var input: InputComponent
 
-var blast_scene: PackedScene = preload("res://entities/projectiles/blast.tscn")
-
 var _bump_cooldown: float = 0.0
 
 
@@ -95,10 +93,8 @@ func _handle_droid_collision(other: DroidEntity) -> void:
 
 
 func _on_died() -> void:
-	if blast_scene:
-		var blast = blast_scene.instantiate() as Blast
-		blast.global_position = global_position
-		blast.setup(1)
-		# Add to level
-		get_parent().call_deferred("add_child", blast)
+	if BulletManager:
+		BulletManager.spawn_blast(global_position, 1)
+	else:
+		push_warning("BulletManager not found!")
 	queue_free()

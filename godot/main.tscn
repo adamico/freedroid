@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rff6otvtvqt" path="res://levels/level_02.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dbaoq571pa8me" path="res://entities/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dv1ckumb2ejip" path="res://entities/enemy/enemy.tscn" id="3_h2yge"]
-[ext_resource type="Resource" uid="uid://w30jvbodjpqf" path="res://data/converted/droids/droid_123.tres" id="4_1bvp3"]
+[ext_resource type="Resource" uid="uid://gopwo2q6ac2k" path="res://data/converted/droids/droid_476.tres" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cxydwvy62kxh1" path="res://ui/hud.tscn" id="5_hud"]
 
 [node name="Main" type="Node" unique_id=1862035655]
@@ -15,6 +15,6 @@ position = Vector2(160, 160)
 
 [node name="Enemy" parent="level_02" unique_id=1221773361 instance=ExtResource("3_h2yge")]
 position = Vector2(352, 224)
-droid_data = ExtResource("4_1bvp3")
+droid_data = ExtResource("4_lquwl")
 
 [node name="HUD" parent="." unique_id=2036769177 instance=ExtResource("5_hud")]

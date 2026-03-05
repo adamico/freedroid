@@ -11,7 +11,6 @@ const FRAME_RATE = 60.0
 
 var _direction := Vector2.ZERO
 var _distance_traveled := 0.0
-var _blast_scene: PackedScene = preload("res://entities/projectiles/blast.tscn")
 
 var _gun_id: int = 0
 var _anim_timer: float = 0.0
@@ -102,12 +101,10 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _spawn_blast() -> void:
-	if _blast_scene:
-		var blast = _blast_scene.instantiate() as Node2D
-		# Add to the same parent as the bullet (the level)
-		blast.global_position = global_position
-		blast.setup(0)
-		get_parent().call_deferred("add_child", blast)
+	if BulletManager:
+		BulletManager.spawn_blast(global_position, 0)
+	else:
+		push_warning("BulletManager not found!")
 
 
 func _on_hit(_hurtbox: Area2D) -> void:
