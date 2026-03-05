@@ -31,3 +31,23 @@ func set_current_level(level_name: String) -> void:
 	if current_level_name != level_name:
 		current_level_name = level_name
 		current_level_updated.emit(current_level_name)
+
+
+## Walk the scene tree from `from_node` to find and set the current level name.
+func detect_current_level(from_node: Node) -> void:
+	var root = from_node.get_tree().current_scene
+	if root and root.name == "Main":
+		for child in root.get_children():
+			if child.name.begins_with("level_"):
+				set_current_level(child.name)
+				return
+	elif root and root.name.begins_with("level_"):
+		set_current_level(root.name)
+		return
+
+	var curr = from_node
+	while is_instance_valid(curr):
+		if curr.name.begins_with("level_"):
+			set_current_level(curr.name)
+			return
+		curr = curr.get_parent()

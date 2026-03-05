@@ -13,46 +13,46 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAEAAAABAAAAAAAKAAEAAAACAAAAAAAKAAE
 tile_set = ExtResource("1_6k4bi")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=1536203857]
-position = Vector2(128, 64)
+position = Vector2(160, 96)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=1197760339]
-position = Vector2(256, 64)
+position = Vector2(288, 96)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=1819992623]
-position = Vector2(512, 64)
+position = Vector2(544, 96)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=463136470]
-position = Vector2(1024, 64)
+position = Vector2(1056, 96)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=836974472]
-position = Vector2(256, 256)
+position = Vector2(288, 288)
 
 [node name="Waypoint_05" type="Marker2D" parent="." unique_id=2128933157]
-position = Vector2(320, 320)
+position = Vector2(352, 352)
 
 [node name="Waypoint_06" type="Marker2D" parent="." unique_id=1101371078]
-position = Vector2(768, 320)
+position = Vector2(800, 352)
 
 [node name="Waypoint_07" type="Marker2D" parent="." unique_id=1541348607]
-position = Vector2(1280, 320)
+position = Vector2(1312, 352)
 
 [node name="Waypoint_08" type="Marker2D" parent="." unique_id=1468819806]
-position = Vector2(320, 640)
+position = Vector2(352, 672)
 
 [node name="Waypoint_09" type="Marker2D" parent="." unique_id=243269647]
-position = Vector2(128, 896)
+position = Vector2(160, 928)
 
 [node name="Waypoint_10" type="Marker2D" parent="." unique_id=146909463]
-position = Vector2(512, 896)
+position = Vector2(544, 928)
 
 [node name="Waypoint_11" type="Marker2D" parent="." unique_id=805611626]
-position = Vector2(768, 896)
+position = Vector2(800, 928)
 
 [node name="Waypoint_12" type="Marker2D" parent="." unique_id=201891311]
-position = Vector2(1024, 896)
+position = Vector2(1056, 928)
 
 [node name="Waypoint_13" type="Marker2D" parent="." unique_id=512815903]
-position = Vector2(1280, 896)
+position = Vector2(1312, 928)
 
 [node name="Door_00" type="AnimatableBody2D" parent="." unique_id=814216151 instance=ExtResource("2_bqnp1")]
 position = Vector2(384, 64)

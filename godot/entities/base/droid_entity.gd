@@ -3,7 +3,10 @@ extends CharacterBody2D
 
 const GameConstants := preload("res://data/converted/game_constants.tres")
 
+signal entity_died
+
 @export var droid_data: DroidData
+@export var input: InputComponent
 
 @onready var animation: AnimationComponent = $AnimationComponent
 @onready var digits: DigitDisplayComponent = $AnimationComponent/DigitDisplayComponent
@@ -11,17 +14,10 @@ const GameConstants := preload("res://data/converted/game_constants.tres")
 @onready var movement: MovementComponent = $MovementComponent
 @onready var weapon: WeaponComponent = $WeaponComponent
 
-var input: InputComponent
-
 var _bump_cooldown: float = 0.0
 
 
 func _ready() -> void:
-	for child in get_children():
-		if child is InputComponent:
-			input = child as InputComponent
-			break
-
 	assert(droid_data != null, "DroidEntity must have a DroidData resource assigned.")
 
 	digits.set_digits(droid_data.droid_name)
@@ -35,9 +31,20 @@ func _ready() -> void:
 
 	weapon.setup(droid_data.gun)
 
-	var ai_node := get_node_or_null("AIComponent")
-	if ai_node and "aggression" in ai_node:
-		ai_node.aggression = droid_data.aggression
+	var ai := get_node_or_null("AIComponent") as AIComponent
+	if ai:
+		ai.aggression = droid_data.aggression
+
+	var patrol := get_node_or_null("WaypointPatrolComponent") as WaypointPatrolComponent
+	if patrol and patrol.level_data == null:
+		patrol.level_data = _detect_level_data()
+		print(
+			"[DroidEntity] %s: patrol.level_data = %s (waypoints: %d)" % [
+				droid_data.droid_name,
+				patrol.level_data,
+				patrol.level_data.waypoints.size() if patrol.level_data else 0,
+			],
+		)
 
 	health.died.connect(_on_died)
 
@@ -68,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		if collider is DroidEntity:
 			var other_droid := collider as DroidEntity
 			_handle_droid_collision(other_droid)
-			pushed_velocity += collision.get_normal() * 400.0
+			pushed_velocity += collision.get_normal() * GameConstants.bump_force
 
 	movement.velocity = velocity + pushed_velocity
 
@@ -101,4 +108,20 @@ func _on_died() -> void:
 		BulletManager.spawn_blast(global_position, 1)
 	else:
 		push_warning("BulletManager not found!")
+	if is_in_group("enemy") and GlobalState:
+		GlobalState.increment_enemies_killed()
+	entity_died.emit()
 	queue_free()
+
+
+func _detect_level_data() -> LevelData:
+	var curr := get_parent()
+	while is_instance_valid(curr):
+		if curr.name.begins_with("level_"):
+			var level_num := curr.name.substr(6).to_int()
+			var path := "res://data/converted/levels/level_%02d.tres" % level_num
+			if ResourceLoader.exists(path):
+				return load(path) as LevelData
+			return null
+		curr = curr.get_parent()
+	return null

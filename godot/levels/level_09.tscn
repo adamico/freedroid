@@ -11,19 +11,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAMAAAABAAAAAAAKAAMAAAACAAAAAAAKAAM
 tile_set = ExtResource("1_oaeiq")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=17800339]
-position = Vector2(832, 256)
+position = Vector2(864, 288)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=2140370791]
-position = Vector2(768, 320)
+position = Vector2(800, 352)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=87967586]
-position = Vector2(896, 320)
+position = Vector2(928, 352)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=1220418165]
-position = Vector2(1088, 320)
+position = Vector2(1120, 352)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=873402129]
-position = Vector2(832, 384)
+position = Vector2(864, 416)
 
 [node name="Elevator_00" type="Area2D" parent="." unique_id=300623142 instance=ExtResource("2_voxu1")]
 position = Vector2(64, 64)

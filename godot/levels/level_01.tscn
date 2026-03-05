@@ -13,46 +13,46 @@ tile_map_data = PackedByteArray("AAAEAAAAAAAHAAUAAAAFAAAAAAAKAAUAAAAGAAAAAAAKAAU
 tile_set = ExtResource("1_ty3hu")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=1100930111]
-position = Vector2(1280, 64)
+position = Vector2(1312, 96)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=109687740]
-position = Vector2(1536, 64)
+position = Vector2(1568, 96)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=1943288570]
-position = Vector2(128, 192)
+position = Vector2(160, 224)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=1442494000]
-position = Vector2(192, 256)
+position = Vector2(224, 288)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=1708356053]
-position = Vector2(704, 256)
+position = Vector2(736, 288)
 
 [node name="Waypoint_05" type="Marker2D" parent="." unique_id=1186292022]
-position = Vector2(512, 448)
+position = Vector2(544, 480)
 
 [node name="Waypoint_06" type="Marker2D" parent="." unique_id=1486080829]
-position = Vector2(704, 448)
+position = Vector2(736, 480)
 
 [node name="Waypoint_07" type="Marker2D" parent="." unique_id=98570504]
-position = Vector2(1280, 448)
+position = Vector2(1312, 480)
 
 [node name="Waypoint_08" type="Marker2D" parent="." unique_id=1990759726]
-position = Vector2(2688, 512)
+position = Vector2(2720, 544)
 
 [node name="Waypoint_09" type="Marker2D" parent="." unique_id=1925607324]
-position = Vector2(1280, 704)
+position = Vector2(1312, 736)
 
 [node name="Waypoint_10" type="Marker2D" parent="." unique_id=119018072]
-position = Vector2(1536, 704)
+position = Vector2(1568, 736)
 
 [node name="Waypoint_11" type="Marker2D" parent="." unique_id=1260681768]
-position = Vector2(2688, 704)
+position = Vector2(2720, 736)
 
 [node name="Waypoint_12" type="Marker2D" parent="." unique_id=2016298375]
-position = Vector2(2944, 704)
+position = Vector2(2976, 736)
 
 [node name="Waypoint_13" type="Marker2D" parent="." unique_id=1137491901]
-position = Vector2(2496, 896)
+position = Vector2(2528, 928)
 
 [node name="Console_00" type="Area2D" parent="." unique_id=977767307 instance=ExtResource("2_mllcm")]
 position = Vector2(128, 128)

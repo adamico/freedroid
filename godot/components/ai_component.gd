@@ -72,6 +72,17 @@ func _physics_process(delta: float) -> void:
 	# Hide entity when player cannot see it (matches legacy PutEnemy visibility check)
 	get_parent().visible = can_see_target or target == null
 
+	if Engine.get_physics_frames() % 60 == 0:
+		print(
+			"[AIComponent] state=%s aggression=%d can_see=%s dist=%.0f patrol=%s" % [
+				State.keys()[current_state],
+				aggression,
+				can_see_target,
+				distance_to_target,
+				patrol,
+			],
+		)
+
 	match current_state:
 		State.IDLE:
 			input.current_aim_direction = Vector2.ZERO
@@ -90,8 +101,13 @@ func _physics_process(delta: float) -> void:
 
 func _process_patrol(delta: float) -> void:
 	if patrol == null:
+		if Engine.get_physics_frames() % 60 == 0:
+			print("[AIComponent] patrol is null!")
 		input.current_movement_direction = Vector2.ZERO
 		return
 
 	patrol.process_wait(delta)
-	input.current_movement_direction = patrol.get_patrol_direction(global_position)
+	var dir = patrol.get_patrol_direction(global_position)
+	if Engine.get_physics_frames() % 60 == 0:
+		print("[AIComponent] patrol dir=%s pos=%s" % [dir, global_position])
+	input.current_movement_direction = dir

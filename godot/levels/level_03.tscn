@@ -13,52 +13,52 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAKAAAAAAACAAAAAAAKAAA
 tile_set = ExtResource("1_0mo0b")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=2015148434]
-position = Vector2(128, 256)
+position = Vector2(160, 288)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=17946352]
-position = Vector2(320, 256)
+position = Vector2(352, 288)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=168512928]
-position = Vector2(1024, 256)
+position = Vector2(1056, 288)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=1057218235]
-position = Vector2(1280, 256)
+position = Vector2(1312, 288)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=1117474905]
-position = Vector2(320, 384)
+position = Vector2(352, 416)
 
 [node name="Waypoint_05" type="Marker2D" parent="." unique_id=1159308879]
-position = Vector2(640, 384)
+position = Vector2(672, 416)
 
 [node name="Waypoint_06" type="Marker2D" parent="." unique_id=1305545859]
-position = Vector2(896, 384)
+position = Vector2(928, 416)
 
 [node name="Waypoint_07" type="Marker2D" parent="." unique_id=776782026]
-position = Vector2(1472, 384)
+position = Vector2(1504, 416)
 
 [node name="Waypoint_08" type="Marker2D" parent="." unique_id=195805363]
-position = Vector2(1792, 384)
+position = Vector2(1824, 416)
 
 [node name="Waypoint_09" type="Marker2D" parent="." unique_id=1813529499]
-position = Vector2(1024, 448)
+position = Vector2(1056, 480)
 
 [node name="Waypoint_10" type="Marker2D" parent="." unique_id=988437673]
-position = Vector2(1280, 448)
+position = Vector2(1312, 480)
 
 [node name="Waypoint_11" type="Marker2D" parent="." unique_id=1949124742]
-position = Vector2(1408, 448)
+position = Vector2(1440, 480)
 
 [node name="Waypoint_12" type="Marker2D" parent="." unique_id=689350547]
-position = Vector2(128, 576)
+position = Vector2(160, 608)
 
 [node name="Waypoint_13" type="Marker2D" parent="." unique_id=305866110]
-position = Vector2(384, 576)
+position = Vector2(416, 608)
 
 [node name="Waypoint_14" type="Marker2D" parent="." unique_id=1181180048]
-position = Vector2(640, 640)
+position = Vector2(672, 672)
 
 [node name="Waypoint_15" type="Marker2D" parent="." unique_id=570772571]
-position = Vector2(896, 640)
+position = Vector2(928, 672)
 
 [node name="Door_00" type="AnimatableBody2D" parent="." unique_id=814216151 instance=ExtResource("2_6hrdw")]
 position = Vector2(320, 192)

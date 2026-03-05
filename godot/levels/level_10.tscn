@@ -11,19 +11,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAQAAAABAAAAAAAKAAQAAAACAAAAAAAKAAQ
 tile_set = ExtResource("1_tghxx")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=1996044387]
-position = Vector2(832, 64)
+position = Vector2(864, 96)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=76503910]
-position = Vector2(1088, 64)
+position = Vector2(1120, 96)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=1206804959]
-position = Vector2(128, 128)
+position = Vector2(160, 160)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=1341996987]
-position = Vector2(768, 128)
+position = Vector2(800, 160)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=16801783]
-position = Vector2(1152, 128)
+position = Vector2(1184, 160)
 
 [node name="Console_00" type="Area2D" parent="." unique_id=640993026 instance=ExtResource("2_tu44s")]
 position = Vector2(768, 64)

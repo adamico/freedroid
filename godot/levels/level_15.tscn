@@ -13,28 +13,28 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAUAAAABAAAAAAAKAAUAAAACAAAAAAAKAAU
 tile_set = ExtResource("1_hyfp4")
 
 [node name="Waypoint_00" type="Marker2D" parent="." unique_id=1540427951]
-position = Vector2(64, 64)
+position = Vector2(96, 96)
 
 [node name="Waypoint_01" type="Marker2D" parent="." unique_id=1875268083]
-position = Vector2(448, 64)
+position = Vector2(480, 96)
 
 [node name="Waypoint_02" type="Marker2D" parent="." unique_id=1739947646]
-position = Vector2(256, 256)
+position = Vector2(288, 288)
 
 [node name="Waypoint_03" type="Marker2D" parent="." unique_id=1259534051]
-position = Vector2(64, 640)
+position = Vector2(96, 672)
 
 [node name="Waypoint_04" type="Marker2D" parent="." unique_id=1915063869]
-position = Vector2(448, 704)
+position = Vector2(480, 736)
 
 [node name="Waypoint_05" type="Marker2D" parent="." unique_id=421683649]
-position = Vector2(192, 768)
+position = Vector2(224, 800)
 
 [node name="Waypoint_06" type="Marker2D" parent="." unique_id=143905056]
-position = Vector2(256, 768)
+position = Vector2(288, 800)
 
 [node name="Waypoint_07" type="Marker2D" parent="." unique_id=1192486169]
-position = Vector2(512, 768)
+position = Vector2(544, 800)
 
 [node name="Console_00" type="Area2D" parent="." unique_id=1597020226 instance=ExtResource("2_pmrv3")]
 position = Vector2(192, 320)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dv1ckumb2ejip"]
 
-[ext_resource type="Script" uid="uid://b53inuhavt105" path="res://entities/enemy/enemy.gd" id="1_enemy_script"]
+[ext_resource type="Script" uid="uid://b5ga256en4qw5" path="res://entities/base/droid_entity.gd" id="1_enemy_script"]
 [ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_movement"]
 [ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
 [ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="4_hurtbox"]
@@ -17,10 +17,11 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
 radius = 16.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1221773361]
+[node name="Enemy" type="CharacterBody2D" unique_id=1221773361 groups=["enemy"] node_paths=PackedStringArray("input")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_enemy_script")
+input = NodePath("AIInputComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599001092]
 shape = SubResource("CircleShape2D_host")

@@ -6,6 +6,9 @@ extends Node
 
 @export var level_data: LevelData
 
+const _HALF_TILE := GameConstantsData.TILE_SIZE / 2.0
+const _TILE_CENTER_OFFSET := Vector2(_HALF_TILE, _HALF_TILE)
+
 var _current_wp_idx: int = -1
 var _last_wp_idx: int = -1
 var _wait_timer: float = 0.0
@@ -27,7 +30,8 @@ func get_patrol_direction(current_pos: Vector2) -> Vector2:
 		return Vector2.ZERO
 
 	var wp := level_data.waypoints[_current_wp_idx]
-	var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE
+	var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE \
+	+ _TILE_CENTER_OFFSET
 	var dist := current_pos.distance_to(wp_pos)
 
 	if dist < 2.0:
@@ -49,7 +53,8 @@ func _find_closest_waypoint(current_pos: Vector2) -> void:
 	var min_dist := INF
 	for i in range(level_data.waypoints.size()):
 		var wp := level_data.waypoints[i]
-		var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE
+		var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE \
+		+ _TILE_CENTER_OFFSET
 		var d := current_pos.distance_to(wp_pos)
 		if d < min_dist:
 			min_dist = d
