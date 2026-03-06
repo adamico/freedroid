@@ -17,6 +17,7 @@ enum State {
 @export var input: AIInputComponent
 @export var patrol: WaypointPatrolComponent
 @export var aggression: int = 0
+@export var actor: Node2D
 
 var target: Node2D = null
 
@@ -24,6 +25,9 @@ var _los_raycast: RayCast2D
 
 
 func _ready() -> void:
+	if not actor:
+		actor = get_parent() as Node2D
+
 	target = get_tree().get_first_node_in_group("player")
 	_los_raycast = RayCast2D.new()
 	add_child(_los_raycast)
@@ -70,7 +74,7 @@ func _physics_process(delta: float) -> void:
 		current_state = State.IDLE
 
 	# Hide entity when player cannot see it (matches legacy PutEnemy visibility check)
-	get_parent().visible = can_see_target or target == null
+	actor.visible = can_see_target or target == null
 
 	if Engine.get_physics_frames() % 60 == 0:
 		print(
@@ -107,7 +111,7 @@ func _process_patrol(delta: float) -> void:
 		return
 
 	patrol.process_wait(delta)
-	var dir = patrol.get_patrol_direction(global_position)
+	var dir = patrol.get_patrol_direction(actor, delta)
 	if Engine.get_physics_frames() % 60 == 0:
 		print("[AIComponent] patrol dir=%s pos=%s" % [dir, global_position])
 	input.current_movement_direction = dir

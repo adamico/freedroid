@@ -14,17 +14,18 @@ var _last_wp_idx: int = -1
 var _wait_timer: float = 0.0
 
 
-## Returns the patrol movement direction for the given world position.
+## Returns the patrol movement direction for the given entity.
 ## Returns Vector2.ZERO when pausing at a waypoint or when no data exists.
-func get_patrol_direction(current_pos: Vector2) -> Vector2:
+func get_patrol_direction(entity: Node2D, _delta: float) -> Vector2:
+	var current_pos = entity.global_position
 	if level_data == null or level_data.waypoints.is_empty():
 		return Vector2.ZERO
 
 	if _current_wp_idx == -1:
 		_find_closest_waypoint(current_pos)
-
-	if _current_wp_idx == -1:
-		return Vector2.ZERO
+		# Fallback abort if finding a waypoint failed (e.g. empty waypoint list)
+		if _current_wp_idx == -1:
+			return Vector2.ZERO
 
 	if _wait_timer > 0.0:
 		return Vector2.ZERO
@@ -33,8 +34,42 @@ func get_patrol_direction(current_pos: Vector2) -> Vector2:
 	var wp_pos := Vector2(wp.position) * GameConstantsData.TILE_SIZE + _TILE_CENTER_OFFSET
 	var dist := current_pos.distance_to(wp_pos)
 
-	var snap_dist := GameConstantsData.TILE_SIZE / 2.0
-	if dist < snap_dist:
+	# To avoid jumping visually in the direction of movement, we do not teleport early.
+	# Instead, we wait until the precise frame the droid touches the center (< 2.0px).
+	# If the droid's speed is so fast that it overshoots the < 2.0px window entirely,
+	# we catch the overshoot instantly by checking if its velocity has suddenly crossed
+	# the waypoint and is now pointing away from it!
+	var arrived := false
+	if dist < 2.0:
+		arrived = true
+	else:
+		var movement_comp = entity.get_node_or_null("MovementComponent")
+		if movement_comp and "velocity" in movement_comp:
+			var vel: Vector2 = movement_comp.get("velocity")
+			if vel.length_squared() > 1.0:
+				var vel_dir = vel.normalized()
+				var dir_to_wp = current_pos.direction_to(wp_pos)
+				# If dot product is <= 0, we've crossed the plane of the waypoint!
+				if vel_dir.dot(dir_to_wp) <= 0.0:
+					# Bound the check so bumping a wall far away doesn't misfire
+					if dist < GameConstantsData.TILE_SIZE * 0.5:
+						arrived = true
+
+	if arrived:
+		# Perfectly center the entity
+		entity.global_position = wp_pos
+
+		# CRITICAL: We must instantly wipe the entity's physics inertia!
+		var movement_comp = entity.get_node_or_null("MovementComponent")
+		if movement_comp and "velocity" in movement_comp:
+			movement_comp.set("velocity", Vector2.ZERO)
+
+		# Debug trace for tuning
+		if Engine.get_physics_frames() % 10 == 0: # Throttle prints if stuck
+			var log_msg = "[Patrol] Arrived smoothly at WP %d, zeroed velocity " % _current_wp_idx \
+			+ "(dist was %.1f)" % dist
+			print(log_msg)
+
 		# Arrived — match legacy snap behavior
 		_on_waypoint_reached()
 		return Vector2.ZERO
