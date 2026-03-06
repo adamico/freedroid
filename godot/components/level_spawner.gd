@@ -7,6 +7,9 @@ var _spawn_data: DroidSpawnData
 var _level_data: LevelData
 var _spawn_timer: float = 0.0
 
+var _enemies_spawned: int = 0
+var _level_completed: bool = false
+
 var enemy_scene: PackedScene = preload("res://entities/enemy/enemy.tscn")
 
 
@@ -36,6 +39,9 @@ func _process(delta: float) -> void:
 	if not _spawn_data or not _level_data:
 		return
 
+	if not _level_completed:
+		_check_level_completed()
+
 	_spawn_timer -= delta
 	if _spawn_timer <= 0.0:
 		_spawn_timer = spawn_interval
@@ -59,6 +65,7 @@ func _spawn_special_forces() -> void:
 		enemy.global_position = pos
 		_inject_ai_data(enemy, type_scene)
 		get_parent().add_child(enemy)
+		_enemies_spawned += 1
 
 
 func _try_spawn_random_droid() -> void:
@@ -73,6 +80,12 @@ func _try_spawn_random_droid() -> void:
 			count += 1
 
 	if count >= _spawn_data.max_random_droids:
+		return
+
+	# Prevent spawning more than the maximum total allowed
+	var expected_special_forces_count = _spawn_data.special_forces.size()
+	var max_total_droids = expected_special_forces_count + _spawn_data.max_random_droids
+	if _enemies_spawned >= max_total_droids:
 		return
 
 	# Pick random type
@@ -102,6 +115,7 @@ func _try_spawn_random_droid() -> void:
 	enemy.add_to_group("enemy")
 	_inject_ai_data(enemy, type_res)
 	get_parent().add_child(enemy)
+	_enemies_spawned += 1
 
 
 func _load_droid_data(droid_name: String) -> DroidData:
@@ -116,3 +130,41 @@ func _inject_ai_data(enemy: Node, droid_res: DroidData) -> void:
 		enemy.get_node("WaypointPatrolComponent").level_data = _level_data
 	if enemy.has_node("AIComponent") and droid_res:
 		enemy.get_node("AIComponent").aggression = droid_res.aggression
+
+
+func _check_level_completed() -> void:
+	var expected_special_forces_count = _spawn_data.special_forces.size()
+	var max_total_droids = expected_special_forces_count + _spawn_data.max_random_droids
+
+	# First condition: all expected droids have been spawned
+	if _enemies_spawned >= max_total_droids:
+		var current_droids = get_tree().get_nodes_in_group("enemy")
+		var count = 0
+		# Count remaining enemies in this level
+		for d in current_droids:
+			if d.get_parent() == get_parent():
+				count += 1
+
+		# Second condition: no enemies left alive
+		if count == 0:
+			_level_completed = true
+			_convert_level_to_greyscale()
+
+
+func _convert_level_to_greyscale() -> void:
+	var level = get_parent()
+	if level is TileMapLayer:
+		var tilemap := level as TileMapLayer
+		var used_cells = tilemap.get_used_cells()
+		for cell in used_cells:
+			var source_id = tilemap.get_cell_source_id(cell)
+			var current_atlas_coords = tilemap.get_cell_atlas_coords(cell)
+			var alt_tile = tilemap.get_cell_alternative_tile(cell)
+
+			# Switch to row 6 (greyscale tiles)
+			var new_atlas_coords = Vector2i(current_atlas_coords.x, 6)
+			tilemap.set_cell(cell, source_id, new_atlas_coords, alt_tile)
+
+		for child in level.get_children():
+			if child is Door:
+				child.set_color(6)

@@ -105,3 +105,9 @@ func get_phase() -> int:
 ## Returns the current state for testing.
 func get_state() -> DoorState:
 	return _state
+
+
+## Change the current color index (0-6) of the door and immediately update visually.
+func set_color(new_color: int) -> void:
+	color = new_color
+	_update_sprite_region()
