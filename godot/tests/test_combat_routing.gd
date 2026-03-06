@@ -1,8 +1,8 @@
 extends GutTest
 
-var enemy_scene = preload("res://entities/enemy/Enemy.tscn")
-var bullet_scene = preload("res://entities/projectiles/Bullet.tscn")
-var blast_scene = preload("res://entities/projectiles/Blast.tscn")
+var enemy_scene = preload("res://entities/enemy/enemy.tscn")
+var bullet_scene = preload("res://entities/projectiles/bullet.tscn")
+var blast_scene = preload("res://entities/projectiles/blast.tscn")
 
 var enemy: Node
 var bullet: Node
@@ -38,7 +38,7 @@ func test_bullet_damages_enemy():
 	var enemy_hurtbox = enemy.get_node("HurtboxComponent")
 	var bullet_hitbox = bullet.get_node("HitboxComponent")
 
-	bullet_hitbox._on_area_entered(enemy_hurtbox)
+	bullet_hitbox.area_entered.emit(enemy_hurtbox)
 
 	# Enemy started with 50 health, took 15 damage -> should have 35 remaining
 	var health_comp = enemy.get_node("HealthComponent")
@@ -47,16 +47,16 @@ func test_bullet_damages_enemy():
 
 func test_blast_damages_enemy():
 	blast = blast_scene.instantiate()
-	var mock_blast_data = BlastData.new()
-	mock_blast_data.damage = 25.0
-	blast.data = mock_blast_data
+	blast.setup(1) # DAMAGING
 
 	add_child_autofree(blast)
 
 	var enemy_hurtbox = enemy.get_node("HurtboxComponent")
 	var blast_hitbox = blast.get_node("HitboxComponent")
 
-	blast_hitbox._on_area_entered(enemy_hurtbox)
+	blast_hitbox.area_entered.emit(enemy_hurtbox)
 
 	var health_comp = enemy.get_node("HealthComponent")
-	assert_eq(health_comp.energy, 25.0, "Enemy should have taken 25 damage from the blast")
+	# DAMAGING blast does 60 DPS * 0.4s = 24 damage
+	# 50 - 24 = 26
+	assert_eq(health_comp.energy, 26.0, "Enemy should have taken 24 damage from the blast")
