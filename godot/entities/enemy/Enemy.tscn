@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dv1ckumb2ejip"]
+[gd_scene format=3 uid="uid://dd12uxoh56ey7"]
 
 [ext_resource type="Script" uid="uid://b5ga256en4qw5" path="res://entities/base/droid_entity.gd" id="1_enemy_script"]
 [ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_movement"]
