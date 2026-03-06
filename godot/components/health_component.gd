@@ -49,15 +49,24 @@ func heal(amount: float) -> void:
 	if actual > 0.0:
 		healed.emit(actual)
 
+## Whether this health component belongs to the player.
+## If true, health permanently drains. If false, energy heals over time.
+@export var is_player: bool = false
 
-## Call every frame to apply the permanent health drain.
-## Mirrors PermanentLoseEnergy() — health cap shrinks, energy follows.
-func apply_permanent_drain(delta: float) -> void:
+
+## Call every frame to apply the permanent health drain or energy heal.
+## Mirrors original logic — player health cap shrinks, enemy energy heals.
+func process_time_tick(delta: float) -> void:
 	if lose_health_rate <= 0.0:
 		return
-	health -= lose_health_rate * delta
-	if energy > health:
-		energy = health
+
+	if is_player:
+		health -= lose_health_rate * delta
+		if energy > health:
+			energy = health
+	else:
+		if energy < health:
+			energy += lose_health_rate * delta
 
 
 func is_alive() -> bool:

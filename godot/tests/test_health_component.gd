@@ -73,16 +73,26 @@ func test_heal_emits_signal() -> void:
 	assert_signal_emitted(_health, "energy_changed")
 
 
-func test_permanent_drain_reduces_health() -> void:
+func test_permanent_drain_reduces_player_health() -> void:
+	_health.is_player = true
 	_health.lose_health_rate = 10.0
-	_health.apply_permanent_drain(1.0) # 1 second
+	_health.process_time_tick(1.0) # 1 second
 	assert_eq(_health.health, 90.0)
 	# energy should follow if it was above health
 	assert_eq(_health.energy, 90.0)
 
 
+func test_permanent_drain_heals_enemy_energy() -> void:
+	_health.is_player = false
+	_health.lose_health_rate = 10.0
+	_health.energy = 50.0 # simulate some damage
+	_health.process_time_tick(1.0) # 1 second
+	assert_eq(_health.health, 100.0) # cap should not change
+	assert_eq(_health.energy, 60.0) # energy should heal by 10
+
+
 func test_permanent_drain_zero_rate_does_nothing() -> void:
 	_health.lose_health_rate = 0.0
-	_health.apply_permanent_drain(1.0)
+	_health.process_time_tick(1.0)
 	assert_eq(_health.health, 100.0)
 	assert_eq(_health.energy, 100.0)

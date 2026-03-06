@@ -12,6 +12,7 @@ func _ready() -> void:
 		GlobalState.detect_current_level(self)
 
 		if health:
+			health.is_player = true
 			GlobalState.update_player_energy(health.energy)
 			health.energy_changed.connect(GlobalState.update_player_energy)
 

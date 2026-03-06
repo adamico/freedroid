@@ -50,8 +50,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	health.apply_permanent_drain(delta)
-
+	health.process_time_tick(delta)
 	var dir := Vector2.ZERO
 	var aim_dir := Vector2.ZERO
 	if input:
