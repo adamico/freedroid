@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DroidSpawnData" format=3 uid="uid://bixar2c7dttkl"]
+[gd_resource type="Resource" script_class="DroidSpawnData" format=3]
 
-[ext_resource type="Script" uid="uid://cwbbf24djvxpe" path="res://data/droid_spawn_data.gd" id="1_ami4o"]
+[ext_resource type="Script" path="res://data/droid_spawn_data.gd" id="1_ami4o"]
 
 [resource]
 script = ExtResource("1_ami4o")

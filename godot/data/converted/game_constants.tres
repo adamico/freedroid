@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="GameConstantsData" format=3 uid="uid://oui4ujp72jxt"]
+[gd_resource type="Resource" script_class="GameConstantsData" format=3]
 
-[ext_resource type="Script" uid="uid://cpylnh621bt6b" path="res://data/game_constants_data.gd" id="1_27jsk"]
+[ext_resource type="Script" path="res://data/game_constants_data.gd" id="1_27jsk"]
 
 [resource]
 script = ExtResource("1_27jsk")
@@ -10,7 +10,6 @@ blast_damage_per_second = 60.0
 blast_one_animation_time = 0.5
 blast_radius = 0.3
 blast_two_animation_time = 0.4
-bump_force = 400.0
 collision_lose_energy_calibrator = 1.0
 deathcount_drain_speed = 15.0
 droid_radius = 0.3

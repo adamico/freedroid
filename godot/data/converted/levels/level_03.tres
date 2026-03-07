@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cwrnywrmo1hgp"]
+[gd_resource type="Resource" script_class="LevelData" format=3]
 
-[ext_resource type="Script" uid="uid://cqd6jsgjl3jgo" path="res://data/level_data.gd" id="1_3d7lg"]
-[ext_resource type="Script" uid="uid://cby1hx6n0o5wn" path="res://data/waypoint_data.gd" id="2_c6mvx"]
+[ext_resource type="Script" path="res://data/level_data.gd" id="1_3d7lg"]
+[ext_resource type="Script" path="res://data/waypoint_data.gd" id="2_c6mvx"]
 
 [sub_resource type="Resource" id="Resource_cqojd"]
 script = ExtResource("2_c6mvx")
