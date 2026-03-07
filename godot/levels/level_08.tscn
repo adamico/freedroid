@@ -1,12 +1,12 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://bqgr3odcl1bmq"]
 
-[ext_resource type="TileSet" path="res://assets/tilesets/classic_tileset.tres" id="1_u8oyn"]
-[ext_resource type="PackedScene" path="res://entities/door/door.tscn" id="2_fenrf"]
-[ext_resource type="PackedScene" path="res://entities/console/console.tscn" id="2_wfv53"]
-[ext_resource type="Script" path="res://entities/console/console.gd" id="3_bcfex"]
-[ext_resource type="Script" path="res://entities/door/door.gd" id="3_oxu25"]
-[ext_resource type="PackedScene" path="res://entities/elevator/elevator.tscn" id="4_fenrf"]
-[ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="5_oxu25"]
+[ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_u8oyn"]
+[ext_resource type="PackedScene" uid="uid://cu20btrot15h1" path="res://entities/door/door.tscn" id="2_fenrf"]
+[ext_resource type="PackedScene" uid="uid://olp6ihn57lev" path="res://entities/console/console.tscn" id="2_wfv53"]
+[ext_resource type="Script" uid="uid://donmyv8uv1yd2" path="res://entities/console/console.gd" id="3_bcfex"]
+[ext_resource type="Script" uid="uid://c4u0pnqblu5rc" path="res://entities/door/door.gd" id="3_oxu25"]
+[ext_resource type="PackedScene" uid="uid://b3oir7yrxhayt" path="res://entities/elevator/elevator.tscn" id="4_fenrf"]
+[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="7_fenrf"]
 
 [node name="level_08" type="TileMapLayer" unique_id=1595169908]
 tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAAAAAAKAAAAAAACAAAAAAAKAAAAAAADAAAAAAAKAAAAAAAEAAAAAAAKAAAAAAAFAAAAAAAKAAAAAAAGAAAAAAAKAAAAAAAHAAAAAAAKAAAAAAAIAAAAAAAIAAAAAAAJAAAAAAAKAAAAAAAKAAAAAAAKAAAAAAALAAAAAAAKAAAAAAAMAAAAAAAKAAAAAAANAAAAAAAKAAAAAAAOAAAAAAAKAAAAAAAPAAAAAAAKAAAAAAAQAAAAAAAIAAAAAAARAAAAAAAKAAAAAAASAAAAAAAKAAAAAAATAAAAAAAJAAAAAAAAAAEAAAALAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEA//////////8JAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEA//////////8RAAEAAAAAAAAAAAASAAEAAAAYAAAAAAATAAEAAAALAAAAAAAAAAIAAAABAAAAAAABAAIAAAAKAAAAAAACAAIAAAAKAAAAAAADAAIAAAAKAAAAAAAEAAIAAAAKAAAAAAAFAAIAAAAKAAAAAAAGAAIAAAAKAAAAAAAHAAIAAAAKAAAAAAAIAAIAAAAGAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAHAAAAAAALAAIAAAAKAAAAAAAMAAIAAAAKAAAAAAANAAIAAAAKAAAAAAAOAAIAAAAKAAAAAAAPAAIA//////////8QAAIAAAAGAAAAAAARAAIAAAAAAAAAAAASAAIAAAAAAAAAAAATAAIAAAAEAAAAAAAUAAIAAAAKAAAAAAAVAAIAAAAKAAAAAAAWAAIAAAAKAAAAAAAXAAIAAAAKAAAAAAAYAAIAAAAKAAAAAAAZAAIAAAAKAAAAAAAaAAIAAAAKAAAAAAAbAAIAAAAJAAAAAAAIAAMAAAALAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAALAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAABAAAAAAARAAMAAAAKAAAAAAASAAMAAAAKAAAAAAATAAMAAAAGAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAAYAAMAAAAAAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAEAAAAAAAcAAMAAAAKAAAAAAAdAAMAAAAKAAAAAAAeAAMAAAAKAAAAAAAfAAMAAAAJAAAAAAAIAAQAAAALAAAAAAAJAAQAAAAgAAAAAAAKAAQAAAALAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQA//////////8UAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAgAAAAAAAYAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAbAAQA//////////8cAAQAAAAAAAAAAAAdAAQAAAAAAAAAAAAeAAQAAAAYAAAAAAAfAAQAAAALAAAAAAAIAAUAAAAEAAAAAAAJAAUAAAAKAAAAAAAKAAUAAAADAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAQAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAUAAAAAAAAAAAATAAUAAAALAAAAAAAUAAUAAAAAAAAAAAAVAAUAAAAAAAAAAAAWAAUAAAAAAAAAAAAXAAUAAAAAAAAAAAAYAAUAAAAAAAAAAAAZAAUAAAAAAAAAAAAaAAUAAAAAAAAAAAAbAAUAAAAEAAAAAAAcAAUAAAAKAAAAAAAdAAUAAAAKAAAAAAAeAAUAAAAKAAAAAAAfAAUAAAADAAAAAAAAAAYAAAAHAAAAAAABAAYAAAAKAAAAAAACAAYAAAAKAAAAAAADAAYAAAAKAAAAAAAEAAYAAAAKAAAAAAAFAAYAAAAKAAAAAAAGAAYAAAAKAAAAAAAHAAYAAAAKAAAAAAAIAAYAAAAGAAAAAAAJAAYAAAAmAAAAAAAKAAYAAAAXAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAYAAAAAAATAAYAAAAEAAAAAAAUAAYAAAAKAAAAAAAVAAYAAAAKAAAAAAAWAAYAAAAKAAAAAAAXAAYAAAAKAAAAAAAYAAYAAAAKAAAAAAAZAAYAAAAKAAAAAAAaAAYAAAAKAAAAAAAbAAYAAAADAAAAAAAAAAcAAAALAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcA//////////8JAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAaAAAAAAAQAAcAAAAAAAAAAAARAAcAAAAaAAAAAAASAAcAAAAmAAAAAAATAAcAAAALAAAAAAAAAAgAAAABAAAAAAABAAgAAAAKAAAAAAACAAgAAAAKAAAAAAADAAgAAAAKAAAAAAAEAAgAAAAKAAAAAAAFAAgAAAAKAAAAAAAGAAgAAAAKAAAAAAAHAAgAAAAKAAAAAAAIAAgAAAACAAAAAAAJAAgAAAAKAAAAAAAKAAgAAAAKAAAAAAALAAgAAAAKAAAAAAAMAAgAAAAKAAAAAAANAAgAAAAKAAAAAAAOAAgAAAAKAAAAAAAPAAgAAAAKAAAAAAAQAAgAAAAKAAAAAAARAAgAAAAKAAAAAAASAAgAAAAKAAAAAAATAAgAAAADAAAAAAAgAAkAAAAHAAAAAAAhAAkAAAAKAAAAAAAiAAkAAAAKAAAAAAAjAAkAAAAKAAAAAAAkAAkAAAAKAAAAAAAlAAkAAAAJAAAAAAAgAAoAAAALAAAAAAAhAAoAAAAgAAAAAAAiAAoAAAAAAAAAAAAjAAoAAAAAAAAAAAAkAAoAAAAAAAAAAAAlAAoAAAALAAAAAAAgAAsAAAABAAAAAAAhAAsAAAAKAAAAAAAiAAsAAAAKAAAAAAAjAAsAAAAKAAAAAAAkAAsAAAAKAAAAAAAlAAsAAAADAAAAAAA=")
@@ -53,85 +53,100 @@ position = Vector2(2336, 672)
 
 [node name="Door_00" type="AnimatableBody2D" parent="." unique_id=814216151 instance=ExtResource("2_fenrf")]
 position = Vector2(512, 64)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 orientation = 1
 
-[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=778808703 instance=ExtResource("2_fenrf")]
+[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=2041344508 instance=ExtResource("2_fenrf")]
 position = Vector2(1024, 64)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 orientation = 1
 
-[node name="Console_00" type="Area2D" parent="." unique_id=1592985701 instance=ExtResource("2_wfv53")]
+[node name="Console_00" type="Area2D" parent="." unique_id=2039009202 instance=ExtResource("2_wfv53")]
 position = Vector2(1152, 64)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 facing = 1
 
-[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=939616380 instance=ExtResource("2_fenrf")]
+[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=248725647 instance=ExtResource("2_fenrf")]
 position = Vector2(960, 128)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 
-[node name="Elevator_00" type="Area2D" parent="." unique_id=1140147448 instance=ExtResource("4_fenrf")]
+[node name="Elevator_00" type="Area2D" parent="." unique_id=939774510 instance=ExtResource("4_fenrf")]
 position = Vector2(576, 256)
 collision_layer = 8
-script = ExtResource("5_oxu25")
+script = ExtResource("7_fenrf")
+lift_index = 9
 
-[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=649743240 instance=ExtResource("2_fenrf")]
+[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=1071888674 instance=ExtResource("2_fenrf")]
 position = Vector2(1216, 256)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 orientation = 1
 
-[node name="Elevator_01" type="Area2D" parent="." unique_id=740524316 instance=ExtResource("4_fenrf")]
+[node name="Elevator_01" type="Area2D" parent="." unique_id=819715579 instance=ExtResource("4_fenrf")]
 position = Vector2(1472, 256)
 collision_layer = 8
-script = ExtResource("5_oxu25")
+script = ExtResource("7_fenrf")
+lift_index = 13
 
-[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=2080625844 instance=ExtResource("2_fenrf")]
+[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=1776521236 instance=ExtResource("2_fenrf")]
 position = Vector2(1728, 256)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 orientation = 1
 
-[node name="Console_01" type="Area2D" parent="." unique_id=192883174 instance=ExtResource("2_wfv53")]
+[node name="Console_01" type="Area2D" parent="." unique_id=1809113868 instance=ExtResource("2_wfv53")]
 position = Vector2(1920, 256)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 facing = 1
 
-[node name="Console_02" type="Area2D" parent="." unique_id=1958671333 instance=ExtResource("2_wfv53")]
+[node name="Console_02" type="Area2D" parent="." unique_id=701261252 instance=ExtResource("2_wfv53")]
 position = Vector2(640, 384)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 
-[node name="Console_03" type="Area2D" parent="." unique_id=2069425061 instance=ExtResource("2_wfv53")]
+[node name="Console_03" type="Area2D" parent="." unique_id=143788916 instance=ExtResource("2_wfv53")]
 position = Vector2(1152, 384)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 facing = 1
 
-[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=714394310 instance=ExtResource("2_fenrf")]
+[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=394732488 instance=ExtResource("2_fenrf")]
 position = Vector2(512, 448)
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_oxu25")
 orientation = 1
 
-[node name="Console_04" type="Area2D" parent="." unique_id=926795959 instance=ExtResource("2_wfv53")]
+[node name="Console_04" type="Area2D" parent="." unique_id=1092000517 instance=ExtResource("2_wfv53")]
 position = Vector2(960, 448)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 facing = 3
 
-[node name="Console_05" type="Area2D" parent="." unique_id=1371659874 instance=ExtResource("2_wfv53")]
+[node name="Console_05" type="Area2D" parent="." unique_id=1509286023 instance=ExtResource("2_wfv53")]
 position = Vector2(1088, 448)
-collision_layer = 8
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("3_bcfex")
 facing = 3
 
-[node name="Elevator_02" type="Area2D" parent="." unique_id=49633319 instance=ExtResource("4_fenrf")]
+[node name="Elevator_02" type="Area2D" parent="." unique_id=2147068761 instance=ExtResource("4_fenrf")]
 position = Vector2(2112, 640)
 collision_layer = 8
-script = ExtResource("5_oxu25")
+script = ExtResource("7_fenrf")
+lift_index = 29
