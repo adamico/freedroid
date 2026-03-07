@@ -65,10 +65,10 @@ func get_patrol_direction(entity: Node2D, _delta: float) -> Vector2:
 			movement_comp.set("velocity", Vector2.ZERO)
 
 		# Debug trace for tuning
-		if Engine.get_physics_frames() % 10 == 0: # Throttle prints if stuck
-			var log_msg = "[Patrol] Arrived smoothly at WP %d, zeroed velocity " % _current_wp_idx \
-			+ "(dist was %.1f)" % dist
-			print(log_msg)
+		# if Engine.get_physics_frames() % 10 == 0: # Throttle prints if stuck
+		# 	var log_msg = "[Patrol] Arrived smoothly at WP %d, zeroed velocity " % _current_wp_idx \
+		# 	+ "(dist was %.1f)" % dist
+		# 	print(log_msg)
 
 		# Arrived — match legacy snap behavior
 		_on_waypoint_reached()

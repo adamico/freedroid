@@ -4,11 +4,16 @@ signal enemy_killed_updated(new_count: int)
 signal player_energy_updated(new_energy: float)
 signal player_pos_updated(new_pos: Vector2)
 signal current_level_updated(new_level: String)
+signal elevator_requested(lift_index: int)
 
 var enemies_killed: int = 0
 var player_energy: float = 0.0
 var player_grid_pos: Vector2 = Vector2.ZERO
 var current_level_name: String = "Unknown"
+
+
+func request_elevator(lift_index: int) -> void:
+	elevator_requested.emit(lift_index)
 
 
 func increment_enemies_killed() -> void:

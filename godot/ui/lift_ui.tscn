@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://djq1k6rnl2h3b"]
+
+[ext_resource type="Script" path="res://ui/lift_ui.gd" id="1_lift"]
+
+[node name="LiftUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_lift")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+custom_minimum_size = Vector2(578, 211)
+layout_mode = 2
+
+[node name="ShipBg" type="TextureRect" parent="CenterContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlays" type="Control" parent="CenterContainer/Control/ShipBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlinkTimer" type="Timer" parent="."]

@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://dd12uxoh56ey7"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://b5ga256en4qw5" path="res://entities/base/droid_entity.gd" id="1_enemy_script"]
-[ext_resource type="Script" uid="uid://y64ihsongh05" path="res://components/movement_component.gd" id="2_movement"]
-[ext_resource type="Script" uid="uid://8f75wg1tb2pq" path="res://components/health_component.gd" id="3_health"]
-[ext_resource type="Script" uid="uid://cbkem7nixqst1" path="res://components/hurtbox_component.gd" id="4_hurtbox"]
-[ext_resource type="Script" uid="uid://c288gyfohmnpd" path="res://components/weapon_component.gd" id="5_weapon"]
-[ext_resource type="PackedScene" uid="uid://dph7aq1oesven" path="res://components/animation_component.tscn" id="7_aay5c"]
-[ext_resource type="Script" uid="uid://d3qh4qqwjy3ch" path="res://components/ai_component.gd" id="8_ai"]
-[ext_resource type="Resource" uid="uid://c3mse3mqaapix" path="res://data/converted/bullets/bullet_001.tres" id="8_k5kcc"]
-[ext_resource type="Script" uid="uid://bpm7603ov1vwd" path="res://components/ai_input_component.gd" id="9_ai_input"]
-[ext_resource type="Script" uid="uid://bjnpvvuq5ugtr" path="res://components/waypoint_patrol_component.gd" id="10_patrol"]
+[ext_resource type="Script" path="res://entities/base/droid_entity.gd" id="1_enemy_script"]
+[ext_resource type="Script" path="res://components/movement_component.gd" id="2_movement"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="3_health"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_hurtbox"]
+[ext_resource type="Script" path="res://components/weapon_component.gd" id="5_weapon"]
+[ext_resource type="PackedScene" path="res://components/animation_component.tscn" id="7_aay5c"]
+[ext_resource type="Script" path="res://components/ai_component.gd" id="8_ai"]
+[ext_resource type="Resource" path="res://data/converted/bullets/bullet_001.tres" id="8_k5kcc"]
+[ext_resource type="Script" path="res://components/ai_input_component.gd" id="9_ai_input"]
+[ext_resource type="Script" path="res://components/waypoint_patrol_component.gd" id="10_patrol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_host"]
 radius = 16.0
@@ -17,7 +17,7 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
 radius = 16.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1221773361 groups=["enemy"] node_paths=PackedStringArray("input")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1221773361 node_paths=PackedStringArray("input") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_enemy_script")
@@ -51,7 +51,7 @@ bullet_data = ExtResource("8_k5kcc")
 [node name="AIInputComponent" type="Node" parent="." unique_id=83304375]
 script = ExtResource("9_ai_input")
 
-[node name="WaypointPatrolComponent" type="Node" parent="."]
+[node name="WaypointPatrolComponent" type="Node" parent="." unique_id=1100828499]
 script = ExtResource("10_patrol")
 metadata/_custom_type_script = "uid://bjnpvvuq5ugtr"
 

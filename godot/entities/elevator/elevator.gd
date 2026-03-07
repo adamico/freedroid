@@ -37,7 +37,9 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _on_player_interacted() -> void:
+	print("[Elevator] Player interacted")
 	if _player_inside:
+		print("[Elevator] Player inside")
 		_try_activate(_player_inside)
 
 
@@ -55,3 +57,4 @@ func _try_activate(player: Player) -> void:
 
 	print("[Elevator] Activated — lift_index=%d" % lift_index)
 	elevator_activated.emit(lift_index)
+	GlobalState.request_elevator(lift_index)

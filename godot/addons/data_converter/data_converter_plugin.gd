@@ -19,7 +19,7 @@ var _button: Button
 func _enter_tree() -> void:
 	_button = Button.new()
 	_button.text = "Convert Legacy Data"
-	_button.pressed.connect(_on_convert_pressed)
+	_button.pressed.connect(convert_all)
 	add_control_to_container(CONTAINER_TOOLBAR, _button)
 
 
@@ -30,7 +30,7 @@ func _exit_tree() -> void:
 		_button = null
 
 
-func _on_convert_pressed() -> void:
+func convert_all() -> void:
 	print("=== Freedroid Legacy Data Converter ===")
 	_ensure_dirs()
 
@@ -130,7 +130,22 @@ func _extract_float(text: String, label: String) -> float:
 	var line_end := after.find("\n")
 	if line_end != -1:
 		after = after.substr(0, line_end)
-	return after.strip_edges().to_float()
+
+	after = after.strip_edges()
+	var space_idx := after.find(" ")
+	var tab_idx := after.find("\t")
+	var end_idx := -1
+	if space_idx != -1 and tab_idx != -1:
+		end_idx = min(space_idx, tab_idx)
+	elif space_idx != -1:
+		end_idx = space_idx
+	elif tab_idx != -1:
+		end_idx = tab_idx
+
+	if end_idx != -1:
+		after = after.substr(0, end_idx)
+
+	return after.to_float()
 
 
 ## Extract an int value after a label string on the same line.
@@ -143,7 +158,22 @@ func _extract_int(text: String, label: String) -> int:
 	var line_end := after.find("\n")
 	if line_end != -1:
 		after = after.substr(0, line_end)
-	return after.strip_edges().to_int()
+
+	after = after.strip_edges()
+	var space_idx := after.find(" ")
+	var tab_idx := after.find("\t")
+	var end_idx := -1
+	if space_idx != -1 and tab_idx != -1:
+		end_idx = min(space_idx, tab_idx)
+	elif space_idx != -1:
+		end_idx = space_idx
+	elif tab_idx != -1:
+		end_idx = tab_idx
+
+	if end_idx != -1:
+		after = after.substr(0, end_idx)
+
+	return after.to_int()
 
 
 ## Extract a string value after a label, up to end of line.
