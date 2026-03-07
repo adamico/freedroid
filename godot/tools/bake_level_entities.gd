@@ -6,8 +6,8 @@
 ## so re-baking is idempotent.
 ##
 ## Run headless:
-##   godot --headless --path . --script tools/bake_level_entities.gd
-extends MainLoop
+##   godot --headless --path . --script tools/bake_level_entities.gd --quit
+extends SceneTree
 
 const LEVELS_DIR := "res://levels/"
 const DATA_DIR := "res://data/converted/levels/"
@@ -15,6 +15,9 @@ const DATA_DIR := "res://data/converted/levels/"
 const DOOR_SCENE := "res://entities/door/door.tscn"
 const CONSOLE_SCENE := "res://entities/console/console.tscn"
 const ELEVATOR_SCENE := "res://entities/elevator/elevator.tscn"
+const ELEVATORS_DATA_PATH := "res://data/converted/elevators.tres"
+
+var _elevators_data: ElevatorData
 
 ## From legacy defs.h:
 ## H_ZUTUERE=18..H_GANZTUERE=22  (horizontal door phases)
@@ -40,9 +43,10 @@ func _initialize() -> void:
 	var door_scene := load(DOOR_SCENE) as PackedScene
 	var console_scene := load(CONSOLE_SCENE) as PackedScene
 	var elevator_scene := load(ELEVATOR_SCENE) as PackedScene
+	_elevators_data = load(ELEVATORS_DATA_PATH) as ElevatorData
 
-	if not door_scene or not console_scene or not elevator_scene:
-		printerr("ERROR: Could not load entity scenes")
+	if not door_scene or not console_scene or not elevator_scene or not _elevators_data:
+		printerr("ERROR: Could not load entity scenes or data")
 		return
 
 	for i in range(16):
@@ -69,27 +73,27 @@ func _process_level(
 		printerr("  SKIP (no data): ", data_path)
 		return
 
-	var root := scene.instantiate() as Node
-	if root == null:
+	var scene_root := scene.instantiate() as Node
+	if scene_root == null:
 		return
 
-	# Find the TileMapLayer (root itself or a child).
+	# Find the TileMapLayer (scene_root itself or a child).
 	var tilemap: TileMapLayer = null
-	if root is TileMapLayer:
-		tilemap = root
+	if scene_root is TileMapLayer:
+		tilemap = scene_root
 	else:
-		for child in root.get_children():
+		for child in scene_root.get_children():
 			if child is TileMapLayer:
 				tilemap = child
 				break
 
 	if tilemap == null:
-		root.free()
+		scene_root.free()
 		return
 
 	# Remove previously baked entities to allow re-bake.
 	var to_remove: Array[Node] = []
-	for child in root.get_children():
+	for child in scene_root.get_children():
 		if child is Door or child is Console or child is Elevator:
 			to_remove.append(child)
 	for n in to_remove:
@@ -116,7 +120,7 @@ func _process_level(
 
 		# --- Doors ---
 		if col in H_DOOR_RANGE:
-			var door := _add_entity(root, door_scene, "Door_%02d" % doors, pos)
+			var door := _add_entity(scene_root, door_scene, "Door_%02d" % doors, pos)
 			door.set("orientation", 0)
 			door.set("color", level_color)
 			tilemap.erase_cell(cell)
@@ -124,7 +128,7 @@ func _process_level(
 			continue
 
 		if col in V_DOOR_RANGE:
-			var door := _add_entity(root, door_scene, "Door_%02d" % doors, pos)
+			var door := _add_entity(scene_root, door_scene, "Door_%02d" % doors, pos)
 			door.set("orientation", 1)
 			door.set("color", level_color)
 			tilemap.erase_cell(cell)
@@ -134,27 +138,50 @@ func _process_level(
 		# --- Consoles ---
 		if col in CONSOLE_TILES:
 			var facing: int = CONSOLE_TILES[col]
-			var console := _add_entity(root, console_scene, "Console_%02d" % consoles, pos)
+			var console := _add_entity(scene_root, console_scene, "Console_%02d" % consoles, pos)
 			console.set("facing", facing)
 			consoles += 1
 			continue
 
 		# --- Elevators ---
 		if col == LIFT_TILE:
-			_add_entity(root, elevator_scene, "Elevator_%02d" % elevators, pos)
+			var elevator := _add_entity(
+				scene_root,
+				elevator_scene,
+				"Elevator_%02d" % elevators,
+				pos,
+			)
+
+			var found_index := -1
+			for idx in range(_elevators_data.lifts.size()):
+				var lift: LiftEntryData = _elevators_data.lifts[idx]
+				if lift.deck == level_data.level_number and lift.position == cell:
+					found_index = idx
+					break
+
+			if found_index == -1:
+				printerr(
+					"  WARNING: Could not find lift index for level ",
+					level_data.level_number,
+					" cell ",
+					cell,
+				)
+			else:
+				elevator.set("lift_index", found_index)
+
 			elevators += 1
 			continue
 
 	var total := doors + consoles + elevators
 	if total == 0:
-		root.free()
+		scene_root.free()
 		return
 
 	var packed := PackedScene.new()
-	var err := packed.pack(root)
+	var err := packed.pack(scene_root)
 	if err != OK:
 		printerr("  ERROR packing: ", path, " code=", err)
-		root.free()
+		scene_root.free()
 		return
 
 	err = ResourceSaver.save(packed, path)
@@ -163,15 +190,15 @@ func _process_level(
 	else:
 		print("  ", path, ": ", doors, "D ", consoles, "C ", elevators, "E")
 
-	root.free()
+	scene_root.free()
 
 
-func _add_entity(root: Node, scene: PackedScene, node_name: String, pos: Vector2) -> Node2D:
+func _add_entity(parent_node: Node, scene: PackedScene, node_name: String, pos: Vector2) -> Node2D:
 	var inst := scene.instantiate() as Node2D
 	inst.name = node_name
 	inst.position = pos
-	root.add_child(inst)
-	inst.owner = root
+	parent_node.add_child(inst)
+	inst.owner = parent_node
 	return inst
 
 

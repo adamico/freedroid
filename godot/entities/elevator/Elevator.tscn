@@ -7,7 +7,6 @@ size = Vector2(64, 64)
 
 [node name="Elevator" type="Area2D" unique_id=939774510]
 collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_elev")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1467000356]

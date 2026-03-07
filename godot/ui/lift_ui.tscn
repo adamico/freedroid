@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://djq1k6rnl2h3b"]
+[gd_scene format=3 uid="uid://djq1k6rnl2h3b"]
 
-[ext_resource type="Script" path="res://ui/lift_ui.gd" id="1_lift"]
+[ext_resource type="Script" uid="uid://b2uusimeam7wn" path="res://ui/lift_ui.gd" id="1_lift"]
 
-[node name="LiftUI" type="CanvasLayer"]
+[node name="LiftUI" type="CanvasLayer" unique_id=1230561267]
 process_mode = 3
 script = ExtResource("1_lift")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=22985630]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,18 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1940181347]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="CenterContainer"]
+[node name="Control" type="Control" parent="CenterContainer" unique_id=301864607]
 custom_minimum_size = Vector2(578, 211)
 layout_mode = 2
 
-[node name="ShipBg" type="TextureRect" parent="CenterContainer/Control"]
+[node name="ShipBg" type="TextureRect" parent="CenterContainer/Control" unique_id=1415002667]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Overlays" type="Control" parent="CenterContainer/Control/ShipBg"]
+[node name="Overlays" type="Control" parent="CenterContainer/Control/ShipBg" unique_id=1151105922]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,4 +41,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BlinkTimer" type="Timer" parent="."]
+[node name="BlinkTimer" type="Timer" parent="." unique_id=327568049]

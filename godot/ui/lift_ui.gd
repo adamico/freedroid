@@ -25,6 +25,9 @@ func _ready() -> void:
 	bg_rect.texture = ShipOffTex
 	blink_timer.timeout.connect(_on_blink)
 
+	if get_tree().current_scene == self:
+		call_deferred("open", 0)
+
 
 func open(start_lift_index: int) -> void:
 	if start_lift_index < 0 or start_lift_index >= ELEVATORS_DATA.lifts.size():
@@ -68,6 +71,17 @@ func _build_overlays() -> void:
 		child.queue_free()
 	_active_overlays.clear()
 
+	if _reachable_lifts.is_empty():
+		return
+
+	# 1. Create the vertical strut
+	var lift_row = _reachable_lifts[0].lift_row
+	if lift_row >= 0 and lift_row < ELEVATORS_DATA.elevator_rects.size():
+		var elevator_rect: Rect2i = ELEVATORS_DATA.elevator_rects[lift_row]
+		_create_overlay_rect(elevator_rect, -1)
+		# -1 list_idx means it's always visible and not blinking
+
+	# 2. Create the horizontal decks
 	for i in range(_reachable_lifts.size()):
 		var lift = _reachable_lifts[i]
 		var deck_id = lift.deck
@@ -78,30 +92,38 @@ func _build_overlays() -> void:
 		var rects = ELEVATORS_DATA.deck_rects[deck_id]
 		# Sometimes keys are auto-cast to string from JSON, but in tres they can be ints.
 		# If it fails, we fall back to string lookup.
-		if typeof(rects) == TYPE_NIL and ELEVATORS_DATA.deck_rects.has(str(deck_id)):
-			rects = ELEVATORS_DATA.deck_rects[str(deck_id)]
+		if typeof(rects) == TYPE_NIL:
+			if ELEVATORS_DATA.deck_rects.has(str(deck_id)):
+				rects = ELEVATORS_DATA.deck_rects[str(deck_id)]
 
 		for r in rects:
-			var rect = r as Rect2i
-			var texture = TextureRect.new()
-			var atlas = AtlasTexture.new()
-			atlas.atlas = ShipOnTex
-			atlas.region = rect
-			texture.texture = atlas
-			texture.position = rect.position
-
-			overlays_parent.add_child(texture)
-			# Store a reference to metadata so we know which deck this belongs to
-			texture.set_meta("list_idx", i)
-			_active_overlays.append(texture)
+			_create_overlay_rect(r as Rect2i, i)
 
 	_update_selection()
 
 
+func _create_overlay_rect(rect: Rect2i, list_idx: int) -> void:
+	var texture = TextureRect.new()
+	var atlas = AtlasTexture.new()
+	atlas.atlas = ShipOnTex
+	atlas.region = rect
+	texture.texture = atlas
+	texture.position = rect.position
+
+	overlays_parent.add_child(texture)
+	texture.set_meta("list_idx", list_idx)
+	_active_overlays.append(texture)
+
+
 func _update_selection() -> void:
-	# Make all visible, but later blink the selected one
+	# Show only the vertical strut and the currently selected horizontal deck
 	for texture in _active_overlays:
-		texture.modulate.a = 1.0
+		var list_idx = texture.get_meta("list_idx")
+		if list_idx == -1 or list_idx == _selected_idx:
+			texture.show()
+			texture.modulate.a = 1.0
+		else:
+			texture.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -131,8 +153,6 @@ func _on_blink() -> void:
 	for texture in _active_overlays:
 		if texture.get_meta("list_idx") == _selected_idx:
 			texture.modulate.a = 1.0 if texture.modulate.a < 0.5 else 0.0
-		else:
-			texture.modulate.a = 1.0
 
 
 func _confirm_selection() -> void:

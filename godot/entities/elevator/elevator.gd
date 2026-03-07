@@ -37,22 +37,27 @@ func _on_body_exited(body: Node2D) -> void:
 
 
 func _on_player_interacted() -> void:
-	print("[Elevator] Player interacted")
 	if _player_inside:
-		print("[Elevator] Player inside")
 		_try_activate(_player_inside)
 
 
 ## Try to activate — only succeeds if player is slow and near tile centre.
 func _try_activate(player: Player) -> void:
+	print("[Elevator] Trying to activate")
+	print("[Elevator] player velocity: ", player.velocity)
 	var speed_sq := player.velocity.length_squared()
+	print("[Elevator] player speed_sq: ", speed_sq)
 	if speed_sq > SPEED_THRESHOLD:
+		print("[Elevator] player moving too fast")
 		return
 
 	# Check if the player is near the centre of this tile (within droid_radius).
 	var centre := global_position + Vector2(32, 32)
 	var offset := player.global_position - centre
+	print("[Elevator] player offset: ", offset)
+	print("[Elevator] player offset_sq: ", offset.length_squared())
 	if offset.length_squared() > 19.0 * 19.0:
+		print("[Elevator] player not near centre")
 		return
 
 	print("[Elevator] Activated — lift_index=%d" % lift_index)
