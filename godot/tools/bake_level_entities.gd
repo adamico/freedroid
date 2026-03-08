@@ -15,6 +15,7 @@ const DATA_DIR := "res://data/converted/levels/"
 const DOOR_SCENE := "res://entities/door/door.tscn"
 const CONSOLE_SCENE := "res://entities/console/console.tscn"
 const ELEVATOR_SCENE := "res://entities/elevator/elevator.tscn"
+const RECHARGER_SCENE := "res://entities/recharger/recharger.tscn"
 const ELEVATORS_DATA_PATH := "res://data/converted/elevators.tres"
 
 var _elevators_data: ElevatorData
@@ -35,6 +36,7 @@ const CONSOLE_TILES := {
 }
 
 const LIFT_TILE := 32
+const REFRESH_TILES := [34, 35, 36, 37]
 
 
 func _initialize() -> void:
@@ -43,16 +45,25 @@ func _initialize() -> void:
 	var door_scene := load(DOOR_SCENE) as PackedScene
 	var console_scene := load(CONSOLE_SCENE) as PackedScene
 	var elevator_scene := load(ELEVATOR_SCENE) as PackedScene
+	var recharger_scene := load(RECHARGER_SCENE) as PackedScene
 	_elevators_data = load(ELEVATORS_DATA_PATH) as ElevatorData
 
-	if not door_scene or not console_scene or not elevator_scene or not _elevators_data:
+	if not door_scene or not console_scene \
+	or not elevator_scene or not _elevators_data or not recharger_scene:
 		printerr("ERROR: Could not load entity scenes or data")
 		return
 
 	for i in range(16):
 		var level_path := "%slevel_%02d.tscn" % [LEVELS_DIR, i]
 		var data_path := "%slevel_%02d.tres" % [DATA_DIR, i]
-		_process_level(level_path, data_path, door_scene, console_scene, elevator_scene)
+		_process_level(
+			level_path,
+			data_path,
+			door_scene,
+			console_scene,
+			elevator_scene,
+			recharger_scene,
+		)
 
 	print("=== Done ===")
 
@@ -63,6 +74,7 @@ func _process_level(
 		door_scene: PackedScene,
 		console_scene: PackedScene,
 		elevator_scene: PackedScene,
+		recharger_scene: PackedScene,
 ) -> void:
 	var scene := load(path) as PackedScene
 	if scene == null:
@@ -94,7 +106,7 @@ func _process_level(
 	# Remove previously baked entities to allow re-bake.
 	var to_remove: Array[Node] = []
 	for child in scene_root.get_children():
-		if child is Door or child is Console or child is Elevator:
+		if child is Door or child is Console or child is Elevator or child is Recharger:
 			to_remove.append(child)
 	for n in to_remove:
 		n.free()
@@ -112,6 +124,7 @@ func _process_level(
 	var doors := 0
 	var consoles := 0
 	var elevators := 0
+	var rechargers := 0
 
 	for cell in tilemap.get_used_cells():
 		var atlas := tilemap.get_cell_atlas_coords(cell)
@@ -167,15 +180,27 @@ func _process_level(
 					cell,
 				)
 			else:
+				elevator.set_script(load("res://entities/elevator/elevator.gd"))
 				elevator.set("lift_index", found_index)
 
 			elevators += 1
 			continue
 
-	var total := doors + consoles + elevators
+		# --- Rechargers ---
+		if col in REFRESH_TILES:
+			_add_entity(scene_root, recharger_scene, "Recharger_%02d" % rechargers, pos)
+			rechargers += 1
+			# Do NOT erase the tilemap cell visually. Rechargers are just triggers placed ON top.
+			continue
+
+	var total := doors + consoles + elevators + rechargers
 	if total == 0:
 		scene_root.free()
 		return
+
+	# Clear scene_file_path so the packer doesn't attempt to diff
+	# against the poorly-saved previous version of this same file.
+	scene_root.scene_file_path = ""
 
 	var packed := PackedScene.new()
 	var err := packed.pack(scene_root)
@@ -188,7 +213,7 @@ func _process_level(
 	if err != OK:
 		printerr("  ERROR saving: ", path, " code=", err)
 	else:
-		print("  ", path, ": ", doors, "D ", consoles, "C ", elevators, "E")
+		print("  ", path, ": ", doors, "D ", consoles, "C ", elevators, "E ", rechargers, "R")
 
 	scene_root.free()
 

@@ -1,12 +1,14 @@
-[gd_scene format=4 uid="uid://cg83w0efcnuy7"]
+[gd_scene format=4 uid="uid://co1r26s4j24aa"]
 
 [ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_vosiq"]
 [ext_resource type="PackedScene" uid="uid://b3oir7yrxhayt" path="res://entities/elevator/elevator.tscn" id="2_r8aof"]
 [ext_resource type="PackedScene" uid="uid://cu20btrot15h1" path="res://entities/door/door.tscn" id="2_rpmp5"]
+[ext_resource type="PackedScene" uid="uid://bwoywjrei1bbl" path="res://entities/recharger/recharger.tscn" id="3_g141h"]
 [ext_resource type="Script" uid="uid://c4u0pnqblu5rc" path="res://entities/door/door.gd" id="3_roa4n"]
+[ext_resource type="Script" uid="uid://b4xyrmfo75fv5" path="res://entities/recharger/recharger.gd" id="4_hapfj"]
 [ext_resource type="PackedScene" uid="uid://olp6ihn57lev" path="res://entities/console/console.tscn" id="4_rpmp5"]
 [ext_resource type="Script" uid="uid://donmyv8uv1yd2" path="res://entities/console/console.gd" id="5_roa4n"]
-[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="5_rpmp5"]
+[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="7_g141h"]
 
 [node name="level_04" type="TileMapLayer" unique_id=1803594356]
 tile_map_data = PackedByteArray("AAAAAAAAAAAHAAQAAAABAAAAAAAKAAQAAAACAAAAAAAKAAQAAAADAAAAAAAKAAQAAAAEAAAAAAAKAAQAAAAFAAAAAAAKAAQAAAAGAAAAAAAKAAQAAAAHAAAAAAAJAAQAAAAAAAEAAAALAAQAAAABAAEAAAAAAAQAAAACAAEAAAAAAAQAAAADAAEAAAAAAAQAAAAEAAEAAAAAAAQAAAAFAAEAAAAAAAQAAAAGAAEAAAAAAAQAAAAHAAEAAAAEAAQAAAAIAAEAAAAKAAQAAAAJAAEAAAAKAAQAAAAKAAEAAAAKAAQAAAALAAEAAAAKAAQAAAAMAAEAAAAKAAQAAAANAAEAAAAKAAQAAAAOAAEAAAAKAAQAAAAPAAEAAAAKAAQAAAAQAAEAAAAKAAQAAAARAAEAAAAJAAQAAAAAAAIAAAALAAQAAAABAAIAAAAAAAQAAAACAAIAAAAAAAQAAAADAAIAAAAAAAQAAAAEAAIAAAAAAAQAAAAFAAIAAAAAAAQAAAAGAAIAAAAAAAQAAAAHAAIAAAALAAQAAAAIAAIAAAAiAAQAAAAJAAIAAAAAAAQAAAAKAAIAAAAAAAQAAAALAAIAAAAAAAQAAAAMAAIAAAAAAAQAAAANAAIAAAAAAAQAAAAOAAIAAAAAAAQAAAAPAAIAAAAAAAQAAAAQAAIAAAAiAAQAAAARAAIAAAALAAQAAAAAAAMAAAAEAAQAAAABAAMAAAAKAAQAAAACAAMAAAAKAAQAAAADAAMAAAAKAAQAAAAEAAMAAAAIAAQAAAAFAAMA//////////8GAAMAAAAKAAQAAAAHAAMAAAADAAQAAAAIAAMAAAAAAAQAAAAJAAMAAAAAAAQAAAAKAAMAAAAAAAQAAAALAAMAAAAAAAQAAAAMAAMAAAAAAAQAAAANAAMAAAAAAAQAAAAOAAMAAAAAAAQAAAAPAAMAAAAAAAQAAAAQAAMAAAAAAAQAAAARAAMAAAAEAAQAAAASAAMAAAAKAAQAAAATAAMAAAAKAAQAAAAUAAMAAAAKAAQAAAAVAAMAAAAKAAQAAAAWAAMAAAAKAAQAAAAXAAMAAAAJAAQAAAAAAAQAAAALAAQAAAABAAQAAAAAAAQAAAACAAQAAAAAAAQAAAADAAQAAAAAAAQAAAAEAAQA//////////8FAAQAAAAAAAQAAAAGAAQAAAAAAAQAAAAHAAQAAAAgAAQAAAAIAAQAAAAAAAQAAAAJAAQAAAAAAAQAAAAKAAQAAAAAAAQAAAALAAQAAAAAAAQAAAAMAAQAAAAAAAQAAAANAAQAAAAAAAQAAAAOAAQAAAAAAAQAAAAPAAQAAAAAAAQAAAAQAAQAAAAAAAQAAAARAAQAAAALAAQAAAASAAQAAAAAAAQAAAATAAQAAAAAAAQAAAAUAAQAAAAAAAQAAAAVAAQAAAAAAAQAAAAWAAQAAAAiAAQAAAAXAAQAAAAEAAQAAAAYAAQAAAAKAAQAAAAZAAQAAAAKAAQAAAAaAAQAAAAKAAQAAAAbAAQAAAAJAAQAAAAAAAUAAAALAAQAAAABAAUAAAAXAAQAAAACAAUAAAAAAAQAAAADAAUAAAAAAAQAAAAEAAUAAAALAAQAAAAFAAUAAAAAAAQAAAAGAAUAAAAHAAQAAAAHAAUAAAAKAAQAAAAIAAUAAAAKAAQAAAAJAAUAAAAKAAQAAAAKAAUAAAAKAAQAAAALAAUAAAAKAAQAAAAMAAUAAAAKAAQAAAANAAUAAAAKAAQAAAAOAAUAAAAKAAQAAAAPAAUAAAAJAAQAAAAQAAUAAAAAAAQAAAARAAUAAAALAAQAAAASAAUAAAAAAAQAAAATAAUAAAAAAAQAAAAUAAUAAAAAAAQAAAAVAAUAAAAAAAQAAAAWAAUAAAAAAAQAAAAXAAUAAAALAAQAAAAYAAUAAAAAAAQAAAAZAAUAAAAAAAQAAAAaAAUAAAAAAAQAAAAbAAUAAAAEAAQAAAAcAAUAAAAKAAQAAAAdAAUAAAAKAAQAAAAeAAUAAAAKAAQAAAAfAAUAAAAJAAQAAAAAAAYAAAALAAQAAAABAAYAAAAAAAQAAAACAAYAAAAAAAQAAAADAAYAAAAAAAQAAAAEAAYAAAALAAQAAAAFAAYAAAAAAAQAAAAGAAYAAAALAAQAAAAHAAYAAAAiAAQAAAAIAAYAAAAAAAQAAAAJAAYAAAAAAAQAAAAKAAYAAAAAAAQAAAALAAYAAAAAAAQAAAAMAAYAAAAAAAQAAAANAAYAAAAAAAQAAAAOAAYAAAAAAAQAAAAPAAYAAAALAAQAAAAQAAYAAAAAAAQAAAARAAYA//////////8SAAYAAAAAAAQAAAATAAYAAAAAAAQAAAAUAAYAAAAAAAQAAAAVAAYAAAAAAAQAAAAWAAYAAAAAAAQAAAAXAAYA//////////8YAAYAAAAAAAQAAAAZAAYAAAAAAAQAAAAaAAYAAAAAAAQAAAAbAAYA//////////8cAAYAAAAAAAQAAAAdAAYAAAAAAAQAAAAeAAYAAAAYAAQAAAAfAAYAAAALAAQAAAAAAAcAAAALAAQAAAABAAcAAAAAAAQAAAACAAcAAAAAAAQAAAADAAcAAAAAAAQAAAAEAAcAAAALAAQAAAAFAAcAAAAAAAQAAAAGAAcAAAALAAQAAAAHAAcAAAAQAAQAAAAIAAcAAAAAAAQAAAAJAAcAAAAAAAQAAAAKAAcAAAAAAAQAAAALAAcAAAAAAAQAAAAMAAcAAAAAAAQAAAANAAcAAAAAAAQAAAAOAAcAAAAYAAQAAAAPAAcAAAALAAQAAAAQAAcAAAAAAAQAAAARAAcAAAALAAQAAAASAAcAAAAAAAQAAAATAAcAAAAAAAQAAAAUAAcAAAAAAAQAAAAVAAcAAAAAAAQAAAAWAAcAAAAAAAQAAAAXAAcAAAALAAQAAAAYAAcAAAAAAAQAAAAZAAcAAAAAAAQAAAAaAAcAAAAAAAQAAAAbAAcAAAAEAAQAAAAcAAcAAAAKAAQAAAAdAAcAAAAKAAQAAAAeAAcAAAAKAAQAAAAfAAcAAAADAAQAAAAAAAgAAAAEAAQAAAABAAgAAAAKAAQAAAACAAgAAAAKAAQAAAADAAgAAAAKAAQAAAAEAAgAAAAGAAQAAAAFAAgAAAAAAAQAAAAGAAgAAAABAAQAAAAHAAgAAAAJAAQAAAAIAAgAAAAAAAQAAAAJAAgAAAAAAAQAAAAKAAgAAAAAAAQAAAALAAgAAAAAAAQAAAAMAAgAAAAAAAQAAAANAAgAAAAAAAQAAAAOAAgAAAAAAAQAAAAPAAgAAAALAAQAAAAQAAgAAAAAAAQAAAARAAgAAAALAAQAAAASAAgAAAAAAAQAAAATAAgAAAAAAAQAAAAUAAgAAAAAAAQAAAAVAAgAAAAAAAQAAAAWAAgAAAAaAAQAAAAXAAgAAAAEAAQAAAAYAAgAAAAKAAQAAAAZAAgAAAAKAAQAAAAaAAgAAAAKAAQAAAAbAAgAAAADAAQAAAAAAAkAAAALAAQAAAABAAkAAAAAAAQAAAACAAkAAAAAAAQAAAADAAkAAAAAAAQAAAAEAAkA//////////8FAAkAAAAAAAQAAAAGAAkAAAAAAAQAAAAHAAkAAAABAAQAAAAIAAkAAAAKAAQAAAAJAAkAAAAKAAQAAAAKAAkA//////////8LAAkAAAAKAAQAAAAMAAkAAAAKAAQAAAANAAkAAAAKAAQAAAAOAAkAAAAKAAQAAAAPAAkAAAADAAQAAAAQAAkAAAAAAAQAAAARAAkAAAAEAAQAAAASAAkAAAAKAAQAAAATAAkAAAAKAAQAAAAUAAkAAAAKAAQAAAAVAAkAAAAKAAQAAAAWAAkAAAAKAAQAAAAXAAkAAAADAAQAAAAAAAoAAAALAAQAAAABAAoAAAAAAAQAAAACAAoAAAAAAAQAAAADAAoAAAAAAAQAAAAEAAoAAAABAAQAAAAFAAoAAAAJAAQAAAAGAAoAAAAAAAQAAAAHAAoAAAAAAAQAAAAIAAoAAAAAAAQAAAAJAAoAAAAAAAQAAAAKAAoAAAAAAAQAAAALAAoAAAAAAAQAAAAMAAoAAAAAAAQAAAANAAoAAAAAAAQAAAAOAAoAAAAAAAQAAAAPAAoAAAAAAAQAAAAQAAoAAAAAAAQAAAARAAoAAAALAAQAAAAAAAsAAAALAAQAAAABAAsAAAAAAAQAAAACAAsAAAAAAAQAAAADAAsAAAAAAAQAAAAEAAsAAAAAAAQAAAAFAAsAAAALAAQAAAAGAAsAAAAmAAQAAAAHAAsAAAAHAAQAAAAIAAsAAAAKAAQAAAAJAAsAAAAKAAQAAAAKAAsAAAAKAAQAAAALAAsAAAAKAAQAAAAMAAsAAAAKAAQAAAANAAsAAAAKAAQAAAAOAAsAAAAKAAQAAAAPAAsAAAAKAAQAAAAQAAsAAAAKAAQAAAARAAsAAAADAAQAAAAAAAwAAAABAAQAAAABAAwAAAAKAAQAAAACAAwAAAAKAAQAAAADAAwAAAAKAAQAAAAEAAwAAAAKAAQAAAAFAAwAAAACAAQAAAAGAAwAAAAKAAQAAAAHAAwAAAADAAQAAAA=")
@@ -54,6 +56,18 @@ position = Vector2(672, 672)
 [node name="Waypoint_13" type="Marker2D" parent="." unique_id=1067415063]
 position = Vector2(1056, 672)
 
+[node name="Recharger_00" type="Area2D" parent="." unique_id=1897285245 instance=ExtResource("3_g141h")]
+position = Vector2(512, 128)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_hapfj")
+
+[node name="Recharger_01" type="Area2D" parent="." unique_id=2015597891 instance=ExtResource("3_g141h")]
+position = Vector2(1024, 128)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_hapfj")
+
 [node name="Door_00" type="AnimatableBody2D" parent="." unique_id=814216151 instance=ExtResource("2_rpmp5")]
 position = Vector2(320, 192)
 collision_layer = 4
@@ -61,7 +75,7 @@ collision_mask = 0
 script = ExtResource("3_roa4n")
 color = 4
 
-[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=116278233 instance=ExtResource("2_rpmp5")]
+[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=1665751353 instance=ExtResource("2_rpmp5")]
 position = Vector2(256, 256)
 collision_layer = 4
 collision_mask = 0
@@ -72,8 +86,14 @@ color = 4
 [node name="Elevator_00" type="Area2D" parent="." unique_id=939774510 instance=ExtResource("2_r8aof")]
 position = Vector2(448, 256)
 collision_layer = 8
-script = ExtResource("5_rpmp5")
+script = ExtResource("7_g141h")
 lift_index = 24
+
+[node name="Recharger_02" type="Area2D" parent="." unique_id=235444560 instance=ExtResource("3_g141h")]
+position = Vector2(1408, 256)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_hapfj")
 
 [node name="Console_00" type="Area2D" parent="." unique_id=2039009202 instance=ExtResource("4_rpmp5")]
 position = Vector2(64, 320)
@@ -81,7 +101,13 @@ collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_roa4n")
 
-[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=1682395594 instance=ExtResource("2_rpmp5")]
+[node name="Recharger_03" type="Area2D" parent="." unique_id=90727489 instance=ExtResource("3_g141h")]
+position = Vector2(448, 384)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_hapfj")
+
+[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=1470232373 instance=ExtResource("2_rpmp5")]
 position = Vector2(1088, 384)
 collision_layer = 4
 collision_mask = 0
@@ -89,7 +115,7 @@ script = ExtResource("3_roa4n")
 orientation = 1
 color = 4
 
-[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=529806001 instance=ExtResource("2_rpmp5")]
+[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=185591272 instance=ExtResource("2_rpmp5")]
 position = Vector2(1472, 384)
 collision_layer = 4
 collision_mask = 0
@@ -97,7 +123,7 @@ script = ExtResource("3_roa4n")
 orientation = 1
 color = 4
 
-[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=1588133664 instance=ExtResource("2_rpmp5")]
+[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=1872779644 instance=ExtResource("2_rpmp5")]
 position = Vector2(1728, 384)
 collision_layer = 4
 collision_mask = 0
@@ -105,28 +131,28 @@ script = ExtResource("3_roa4n")
 orientation = 1
 color = 4
 
-[node name="Console_01" type="Area2D" parent="." unique_id=1976655623 instance=ExtResource("4_rpmp5")]
+[node name="Console_01" type="Area2D" parent="." unique_id=3395147 instance=ExtResource("4_rpmp5")]
 position = Vector2(1920, 384)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_roa4n")
 facing = 1
 
-[node name="Console_02" type="Area2D" parent="." unique_id=1620223874 instance=ExtResource("4_rpmp5")]
+[node name="Console_02" type="Area2D" parent="." unique_id=1466256008 instance=ExtResource("4_rpmp5")]
 position = Vector2(896, 448)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_roa4n")
 facing = 1
 
-[node name="Console_03" type="Area2D" parent="." unique_id=1916346496 instance=ExtResource("4_rpmp5")]
+[node name="Console_03" type="Area2D" parent="." unique_id=1489805217 instance=ExtResource("4_rpmp5")]
 position = Vector2(1408, 512)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_roa4n")
 facing = 3
 
-[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=685352565 instance=ExtResource("2_rpmp5")]
+[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=1326934764 instance=ExtResource("2_rpmp5")]
 position = Vector2(256, 576)
 collision_layer = 4
 collision_mask = 0
@@ -134,7 +160,7 @@ script = ExtResource("3_roa4n")
 orientation = 1
 color = 4
 
-[node name="Door_06" type="AnimatableBody2D" parent="." unique_id=1200570679 instance=ExtResource("2_rpmp5")]
+[node name="Door_06" type="AnimatableBody2D" parent="." unique_id=1340903790 instance=ExtResource("2_rpmp5")]
 position = Vector2(640, 576)
 collision_layer = 4
 collision_mask = 0

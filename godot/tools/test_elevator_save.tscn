@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://entities/elevator/elevator.tscn" id="1_wd4ix"]
+[ext_resource type="Script" path="res://entities/elevator/elevator.gd" id="2_xj0n0"]
+
+[node name="Root" type="Node" unique_id=1271483167]
+
+[node name="Elevator" type="Area2D" parent="." unique_id=939774510 instance=ExtResource("1_wd4ix")]
+collision_layer = 8
+script = ExtResource("2_xj0n0")
+lift_index = 42

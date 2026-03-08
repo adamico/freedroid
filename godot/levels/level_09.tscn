@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dt26miohkquis"]
+[gd_scene format=4 uid="uid://lwxjq3l68gsj"]
 
 [ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_oaeiq"]
 [ext_resource type="PackedScene" uid="uid://b3oir7yrxhayt" path="res://entities/elevator/elevator.tscn" id="2_voxu1"]
@@ -37,7 +37,7 @@ collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_ccbon")
 
-[node name="Elevator_01" type="Area2D" parent="." unique_id=575957458 instance=ExtResource("2_voxu1")]
+[node name="Elevator_01" type="Area2D" parent="." unique_id=1480488932 instance=ExtResource("2_voxu1")]
 position = Vector2(1152, 320)
 collision_layer = 8
 script = ExtResource("3_voxu1")

@@ -1,11 +1,13 @@
-[gd_scene format=4 uid="uid://dp8iqaqlppfck"]
+[gd_scene format=4 uid="uid://3xxokfqvgfq6"]
 
 [ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_nnn84"]
 [ext_resource type="PackedScene" uid="uid://olp6ihn57lev" path="res://entities/console/console.tscn" id="2_didps"]
 [ext_resource type="Script" uid="uid://donmyv8uv1yd2" path="res://entities/console/console.gd" id="4_gia0r"]
 [ext_resource type="PackedScene" uid="uid://b3oir7yrxhayt" path="res://entities/elevator/elevator.tscn" id="4_mihb8"]
-[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="5_mihb8"]
+[ext_resource type="PackedScene" uid="uid://bwoywjrei1bbl" path="res://entities/recharger/recharger.tscn" id="5_2owmk"]
+[ext_resource type="Script" uid="uid://cl0x3rggf3xyy" path="res://entities/elevator/elevator.gd" id="5_cwmx8"]
 [ext_resource type="Script" uid="uid://c4u0pnqblu5rc" path="res://entities/door/door.gd" id="6_2owmk"]
+[ext_resource type="Script" uid="uid://b4xyrmfo75fv5" path="res://entities/recharger/recharger.gd" id="6_cwmx8"]
 [ext_resource type="PackedScene" uid="uid://cu20btrot15h1" path="res://entities/door/door.tscn" id="6_mihb8"]
 
 [node name="level_02" type="TileMapLayer" unique_id=1354161198]
@@ -46,16 +48,46 @@ facing = 1
 [node name="Elevator_00" type="Area2D" parent="." unique_id=939774510 instance=ExtResource("4_mihb8")]
 position = Vector2(64, 128)
 collision_layer = 8
-script = ExtResource("5_mihb8")
+script = ExtResource("5_cwmx8")
 lift_index = 21
 
-[node name="Elevator_01" type="Area2D" parent="." unique_id=850470895 instance=ExtResource("4_mihb8")]
+[node name="Recharger_00" type="Area2D" parent="." unique_id=1816652963 instance=ExtResource("5_2owmk")]
+position = Vector2(512, 128)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_cwmx8")
+
+[node name="Recharger_01" type="Area2D" parent="." unique_id=239185721 instance=ExtResource("5_2owmk")]
+position = Vector2(768, 128)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_cwmx8")
+
+[node name="Elevator_01" type="Area2D" parent="." unique_id=906819674 instance=ExtResource("4_mihb8")]
 position = Vector2(448, 192)
 collision_layer = 8
-script = ExtResource("5_mihb8")
+script = ExtResource("5_cwmx8")
 lift_index = 22
 
-[node name="Console_01" type="Area2D" parent="." unique_id=1047335038 instance=ExtResource("2_didps")]
+[node name="Recharger_02" type="Area2D" parent="." unique_id=2114376155 instance=ExtResource("5_2owmk")]
+position = Vector2(1024, 256)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_cwmx8")
+
+[node name="Recharger_03" type="Area2D" parent="." unique_id=237345224 instance=ExtResource("5_2owmk")]
+position = Vector2(512, 512)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_cwmx8")
+
+[node name="Recharger_04" type="Area2D" parent="." unique_id=1496628919 instance=ExtResource("5_2owmk")]
+position = Vector2(768, 512)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("6_cwmx8")
+
+[node name="Console_01" type="Area2D" parent="." unique_id=350832572 instance=ExtResource("2_didps")]
 position = Vector2(256, 576)
 collision_layer = 16
 collision_mask = 0
@@ -70,14 +102,14 @@ script = ExtResource("6_2owmk")
 orientation = 1
 color = 3
 
-[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=1497397193 instance=ExtResource("6_mihb8")]
+[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=1711533850 instance=ExtResource("6_mihb8")]
 position = Vector2(64, 256)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("6_2owmk")
 color = 3
 
-[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=1028195053 instance=ExtResource("6_mihb8")]
+[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=1747191808 instance=ExtResource("6_mihb8")]
 position = Vector2(832, 320)
 collision_layer = 4
 collision_mask = 0

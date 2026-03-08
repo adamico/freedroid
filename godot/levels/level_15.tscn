@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://v5gd5usv6k0w"]
+[gd_scene format=4 uid="uid://ccrixlcp4t4vs"]
 
 [ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_hyfp4"]
 [ext_resource type="PackedScene" uid="uid://olp6ihn57lev" path="res://entities/console/console.tscn" id="2_pmrv3"]
@@ -43,7 +43,7 @@ collision_mask = 0
 script = ExtResource("3_rlk64")
 facing = 2
 
-[node name="Console_01" type="Area2D" parent="." unique_id=333563416 instance=ExtResource("2_pmrv3")]
+[node name="Console_01" type="Area2D" parent="." unique_id=966707780 instance=ExtResource("2_pmrv3")]
 position = Vector2(320, 320)
 collision_layer = 16
 collision_mask = 0
@@ -57,14 +57,14 @@ collision_mask = 0
 script = ExtResource("5_i1ncm")
 color = 5
 
-[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=723876260 instance=ExtResource("4_jx20j")]
+[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=1826453186 instance=ExtResource("4_jx20j")]
 position = Vector2(256, 704)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_i1ncm")
 color = 5
 
-[node name="Console_02" type="Area2D" parent="." unique_id=718962259 instance=ExtResource("2_pmrv3")]
+[node name="Console_02" type="Area2D" parent="." unique_id=612823592 instance=ExtResource("2_pmrv3")]
 position = Vector2(512, 704)
 collision_layer = 16
 collision_mask = 0

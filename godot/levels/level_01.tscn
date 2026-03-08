@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://c08l058dv8sm7"]
+[gd_scene format=4 uid="uid://dokbwlspwvg3e"]
 
 [ext_resource type="TileSet" uid="uid://cy341fpq31uuo" path="res://assets/tilesets/classic_tileset.tres" id="1_ty3hu"]
 [ext_resource type="PackedScene" uid="uid://olp6ihn57lev" path="res://entities/console/console.tscn" id="2_mllcm"]
@@ -69,7 +69,7 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=779020636 instance=ExtResource("4_j0sdw")]
+[node name="Door_01" type="AnimatableBody2D" parent="." unique_id=1466147585 instance=ExtResource("4_j0sdw")]
 position = Vector2(256, 256)
 collision_layer = 4
 collision_mask = 0
@@ -77,20 +77,20 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=93292977 instance=ExtResource("4_j0sdw")]
+[node name="Door_02" type="AnimatableBody2D" parent="." unique_id=1827710214 instance=ExtResource("4_j0sdw")]
 position = Vector2(704, 384)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_jy02f")
 color = 5
 
-[node name="Console_01" type="Area2D" parent="." unique_id=1273375732 instance=ExtResource("2_mllcm")]
+[node name="Console_01" type="Area2D" parent="." unique_id=1881956962 instance=ExtResource("2_mllcm")]
 position = Vector2(448, 448)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_q7ibo")
 
-[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=454309874 instance=ExtResource("4_j0sdw")]
+[node name="Door_03" type="AnimatableBody2D" parent="." unique_id=1730505261 instance=ExtResource("4_j0sdw")]
 position = Vector2(640, 448)
 collision_layer = 4
 collision_mask = 0
@@ -104,7 +104,7 @@ collision_layer = 8
 script = ExtResource("7_cg8v6")
 lift_index = 1
 
-[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=2004094627 instance=ExtResource("4_j0sdw")]
+[node name="Door_04" type="AnimatableBody2D" parent="." unique_id=1870273711 instance=ExtResource("4_j0sdw")]
 position = Vector2(1216, 448)
 collision_layer = 4
 collision_mask = 0
@@ -112,34 +112,34 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Console_02" type="Area2D" parent="." unique_id=902059664 instance=ExtResource("2_mllcm")]
+[node name="Console_02" type="Area2D" parent="." unique_id=402607076 instance=ExtResource("2_mllcm")]
 position = Vector2(1344, 448)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("3_q7ibo")
 facing = 1
 
-[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=1256406800 instance=ExtResource("4_j0sdw")]
+[node name="Door_05" type="AnimatableBody2D" parent="." unique_id=1254921384 instance=ExtResource("4_j0sdw")]
 position = Vector2(704, 512)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_jy02f")
 color = 5
 
-[node name="Elevator_01" type="Area2D" parent="." unique_id=122129317 instance=ExtResource("4_cg8v6")]
+[node name="Elevator_01" type="Area2D" parent="." unique_id=908067784 instance=ExtResource("4_cg8v6")]
 position = Vector2(2496, 512)
 collision_layer = 8
 script = ExtResource("7_cg8v6")
 lift_index = 20
 
-[node name="Door_06" type="AnimatableBody2D" parent="." unique_id=696626350 instance=ExtResource("4_j0sdw")]
+[node name="Door_06" type="AnimatableBody2D" parent="." unique_id=1215812537 instance=ExtResource("4_j0sdw")]
 position = Vector2(2688, 576)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_jy02f")
 color = 5
 
-[node name="Door_07" type="AnimatableBody2D" parent="." unique_id=83716540 instance=ExtResource("4_j0sdw")]
+[node name="Door_07" type="AnimatableBody2D" parent="." unique_id=1999540929 instance=ExtResource("4_j0sdw")]
 position = Vector2(256, 640)
 collision_layer = 4
 collision_mask = 0
@@ -147,7 +147,7 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Door_08" type="AnimatableBody2D" parent="." unique_id=838260668 instance=ExtResource("4_j0sdw")]
+[node name="Door_08" type="AnimatableBody2D" parent="." unique_id=1258824695 instance=ExtResource("4_j0sdw")]
 position = Vector2(1216, 704)
 collision_layer = 4
 collision_mask = 0
@@ -155,7 +155,7 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Door_09" type="AnimatableBody2D" parent="." unique_id=1792232844 instance=ExtResource("4_j0sdw")]
+[node name="Door_09" type="AnimatableBody2D" parent="." unique_id=1316638698 instance=ExtResource("4_j0sdw")]
 position = Vector2(2752, 704)
 collision_layer = 4
 collision_mask = 0
@@ -163,7 +163,7 @@ script = ExtResource("5_jy02f")
 orientation = 1
 color = 5
 
-[node name="Console_03" type="Area2D" parent="." unique_id=1887595857 instance=ExtResource("2_mllcm")]
+[node name="Console_03" type="Area2D" parent="." unique_id=1808467632 instance=ExtResource("2_mllcm")]
 position = Vector2(128, 768)
 collision_layer = 16
 collision_mask = 0
