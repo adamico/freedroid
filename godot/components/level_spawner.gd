@@ -2,9 +2,11 @@ class_name LevelSpawner
 extends Node
 
 @export var level_number: int = 0
+@export var min_spawn_distance_from_player_tiles: float = 4.0
 
 var _enemies_spawned: int = 0
 var _level_completed: bool = false
+var _spawning_finished: bool = false
 var _level_data: LevelData
 var _spawn_data: DroidSpawnData
 
@@ -27,9 +29,14 @@ func _ready() -> void:
 		_level_data = load(level_path) as LevelData
 
 	if _spawn_data:
-		# Initial spawn of special forces
-		_spawn_special_forces()
-		_spawn_random_droids()
+		# Defer spawn so player placement for this level is available for proximity filtering.
+		call_deferred("_spawn_initial_droids")
+
+
+func _spawn_initial_droids() -> void:
+	_spawn_special_forces()
+	_spawn_random_droids()
+	_spawning_finished = true
 
 
 func _process(_delta: float) -> void:
@@ -54,6 +61,9 @@ func _spawn_special_forces() -> void:
 
 		var pos = Vector2(sf["x"], sf["y"]) * GameConstantsData.TILE_SIZE \
 		+ Vector2(GameConstantsData.TILE_SIZE / 2.0, GameConstantsData.TILE_SIZE / 2.0)
+		if _is_too_close_to_player(pos):
+			continue
+
 		enemy.global_position = pos
 		_inject_ai_data(enemy, type_scene)
 		get_parent().add_child(enemy)
@@ -66,14 +76,27 @@ func _spawn_random_droids() -> void:
 
 	var types = _spawn_data.allowed_droid_types
 	var half := GameConstantsData.TILE_SIZE / 2.0
+	var candidate_waypoints: Array[WaypointData] = []
 
-	for i in range(_spawn_data.max_random_droids):
+	for wp in _level_data.waypoints:
+		var candidate_pos = Vector2(wp.position) * GameConstantsData.TILE_SIZE + Vector2(half, half)
+		if not _is_too_close_to_player(candidate_pos):
+			candidate_waypoints.append(wp)
+
+	if candidate_waypoints.is_empty():
+		return
+
+	var max_spawnable = mini(_spawn_data.max_random_droids, candidate_waypoints.size())
+
+	for i in range(max_spawnable):
 		var r_type = types[randi() % types.size()]
 		var type_res = _load_droid_data(r_type)
 		if not type_res:
 			continue
 
-		var wp = _level_data.waypoints[randi() % _level_data.waypoints.size()]
+		var wp_index = randi() % candidate_waypoints.size()
+		var wp = candidate_waypoints[wp_index]
+		candidate_waypoints.remove_at(wp_index)
 		var pos = Vector2(wp.position) * GameConstantsData.TILE_SIZE \
 		+ Vector2(half, half)
 
@@ -88,6 +111,15 @@ func _spawn_random_droids() -> void:
 		_inject_ai_data(enemy, type_res)
 		get_parent().add_child(enemy)
 		_enemies_spawned += 1
+
+
+func _is_too_close_to_player(spawn_pos: Vector2) -> bool:
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return false
+
+	var min_distance = min_spawn_distance_from_player_tiles * GameConstantsData.TILE_SIZE
+	return spawn_pos.distance_to(player.global_position) < min_distance
 
 
 func _load_droid_data(droid_name: String) -> DroidData:
@@ -105,22 +137,20 @@ func _inject_ai_data(enemy: Node, droid_res: DroidData) -> void:
 
 
 func _check_level_completed() -> void:
-	var expected_special_forces_count = _spawn_data.special_forces.size()
-	var max_total_droids = expected_special_forces_count + _spawn_data.max_random_droids
+	if not _spawning_finished:
+		return
 
-	# First condition: all expected droids have been spawned
-	if _enemies_spawned >= max_total_droids:
-		var current_droids = get_tree().get_nodes_in_group("enemy")
-		var count = 0
-		# Count remaining enemies in this level
-		for d in current_droids:
-			if d.get_parent() == get_parent():
-				count += 1
+	var current_droids = get_tree().get_nodes_in_group("enemy")
+	var count = 0
+	# Count remaining enemies in this level
+	for d in current_droids:
+		if d.get_parent() == get_parent():
+			count += 1
 
-		# Second condition: no enemies left alive
-		if count == 0:
-			_level_completed = true
-			_convert_level_to_greyscale()
+	# Level completes when all spawned enemies on this level are gone.
+	if count == 0:
+		_level_completed = true
+		_convert_level_to_greyscale()
 
 
 func _convert_level_to_greyscale() -> void:
