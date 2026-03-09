@@ -53,7 +53,7 @@ func setup(direction: Vector2, gun_id: int = 0, shooter_is_player: bool = false)
 	if shooter_is_player:
 		hitbox.collision_mask = 2 # hits the enemy droid
 	else:
-		hitbox.collision_mask = 1 # hits the player
+		hitbox.collision_mask = (1 << 1 - 1) | (1 << 2 - 1) # hits the player and other enemy droids
 
 	if BULLET_TYPES_CONFIG.has(_gun_id):
 		_anim_frames_count = BULLET_TYPES_CONFIG[_gun_id].phases
