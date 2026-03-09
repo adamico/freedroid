@@ -86,7 +86,10 @@ func _spawn_random_droids() -> void:
 	if candidate_waypoints.is_empty():
 		return
 
-	var max_spawnable = mini(_spawn_data.max_random_droids, candidate_waypoints.size())
+	var min_random = mini(_spawn_data.min_random_droids, _spawn_data.max_random_droids)
+	var max_random = maxi(_spawn_data.min_random_droids, _spawn_data.max_random_droids)
+	var requested_random_droids = randi_range(min_random, max_random)
+	var max_spawnable = mini(requested_random_droids, candidate_waypoints.size())
 
 	for i in range(max_spawnable):
 		var r_type = types[randi() % types.size()]

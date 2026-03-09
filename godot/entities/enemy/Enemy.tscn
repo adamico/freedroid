@@ -59,4 +59,5 @@ metadata/_custom_type_script = "uid://bjnpvvuq5ugtr"
 script = ExtResource("8_ai")
 input = NodePath("../AIInputComponent")
 patrol = NodePath("../WaypointPatrolComponent")
+collision_pause_duration = 0.5
 metadata/_custom_type_script = "uid://d3qh4qqwjy3ch"

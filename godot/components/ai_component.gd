@@ -18,8 +18,10 @@ enum State {
 @export var patrol: WaypointPatrolComponent
 @export var aggression: int = 0
 @export var actor: Node2D
+@export var collision_pause_duration: float = 0.18
 
 var target: Node2D = null
+var _collision_pause_remaining: float = 0.0
 
 var _los_raycast: RayCast2D
 
@@ -48,6 +50,13 @@ func _can_see_target() -> bool:
 
 func _physics_process(delta: float) -> void:
 	if input == null:
+		return
+
+	if _collision_pause_remaining > 0.0:
+		_collision_pause_remaining = maxf(0.0, _collision_pause_remaining - delta)
+		input.current_movement_direction = Vector2.ZERO
+		input.current_aim_direction = Vector2.ZERO
+		input.current_is_firing = false
 		return
 
 	var distance_to_target := INF
@@ -101,6 +110,11 @@ func _physics_process(delta: float) -> void:
 			input.current_movement_direction = Vector2.ZERO
 			input.current_aim_direction = global_position.direction_to(target.global_position)
 			input.current_is_firing = true
+
+
+func pause_after_player_collision(duration: float = -1.0) -> void:
+	var requested := collision_pause_duration if duration < 0.0 else duration
+	_collision_pause_remaining = maxf(_collision_pause_remaining, requested)
 
 
 func _process_patrol(delta: float) -> void:

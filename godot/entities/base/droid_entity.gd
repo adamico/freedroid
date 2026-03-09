@@ -15,6 +15,12 @@ signal entity_died
 @onready var weapon: WeaponComponent = $WeaponComponent
 
 var _bump_cooldown: float = 0.0
+var _cached_body_radius: float = -1.0
+
+## Fallback bump used when game constants do not provide a value.
+@export var min_collision_bump_force: float = 72.0
+## Small positional nudge to break persistent overlap with the player.
+@export var player_collision_separation: float = 4.0
 
 
 func _ready() -> void:
@@ -68,13 +74,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var pushed_velocity := Vector2.ZERO
+	var effective_bump_force := maxf(GameConstants.bump_force, min_collision_bump_force)
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider is DroidEntity:
 			var other_droid := collider as DroidEntity
+			if is_in_group("player") and other_droid.is_in_group("enemy"):
+				continue
 			_handle_droid_collision(other_droid)
-			pushed_velocity += collision.get_normal() * GameConstants.bump_force
+
+			var away := global_position - other_droid.global_position
+			if away.length_squared() > 0.0001:
+				away = away.normalized()
+			else:
+				away = collision.get_normal()
+
+			pushed_velocity += away * effective_bump_force
+			if is_in_group("enemy") and other_droid.is_in_group("player"):
+				_pause_ai_after_player_collision()
+			_separate_from_droid(other_droid, away)
 
 	movement.velocity = velocity + pushed_velocity
 
@@ -100,6 +119,45 @@ func _handle_droid_collision(other: DroidEntity) -> void:
 	elif class_diff < 0:
 		var dmg = -class_diff * GameConstants.collision_lose_energy_calibrator
 		other.health.take_damage(dmg)
+
+
+func _separate_from_droid(other: DroidEntity, fallback_away: Vector2) -> void:
+	var delta := global_position - other.global_position
+	var distance := delta.length()
+	var min_distance := _get_body_radius() + other._get_body_radius()
+
+	if distance >= min_distance:
+		return
+
+	var away := fallback_away
+	if distance > 0.0001:
+		away = delta / distance
+	elif away.length_squared() > 0.0001:
+		away = away.normalized()
+	else:
+		away = Vector2.RIGHT
+
+	var overlap := (min_distance - distance) + player_collision_separation
+	global_position += away * overlap
+
+
+func _get_body_radius() -> float:
+	if _cached_body_radius > 0.0:
+		return _cached_body_radius
+
+	var body_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if body_shape and body_shape.shape is CircleShape2D:
+		_cached_body_radius = (body_shape.shape as CircleShape2D).radius
+	else:
+		_cached_body_radius = 16.0
+
+	return _cached_body_radius
+
+
+func _pause_ai_after_player_collision() -> void:
+	var ai := get_node_or_null("AIComponent") as AIComponent
+	if ai:
+		ai.pause_after_player_collision()
 
 
 func _on_died() -> void:
