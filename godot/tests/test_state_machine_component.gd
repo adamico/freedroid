@@ -17,7 +17,7 @@ func before_each() -> void:
 	_sm.add_child(_state_b)
 	_sm.initial_state = _state_a
 
-	add_child(_sm) # triggers _ready
+	add_child_autofree(_sm) # triggers _ready
 
 
 func after_each() -> void:

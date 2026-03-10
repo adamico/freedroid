@@ -6,6 +6,7 @@ This directory contains the phased implementation plan for porting Freedroid fro
 
 - [architecture.md](architecture.md) — Architectural mapping (singletons, components, tilemap, takeover)
 - [data_migration.md](data_migration.md) — Static conversion of legacy files to `.tres` resources
+- [porting_reference.md](porting_reference.md) — Canonical implementation-first feature reference
 
 ## Phases
 

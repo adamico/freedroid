@@ -6,7 +6,7 @@ var _door: Door
 func before_each() -> void:
 	var door_scene = load("res://entities/door/door.tscn")
 	_door = door_scene.instantiate()
-	add_child(_door)
+	add_child_autofree(_door)
 
 
 func after_each() -> void:

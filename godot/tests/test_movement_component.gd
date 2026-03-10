@@ -8,7 +8,7 @@ func before_each() -> void:
 	_movement.max_speed = 5.0
 	_movement.acceleration = 10.0
 	_movement.friction = 7.0
-	add_child(_movement)
+	add_child_autofree(_movement)
 
 
 func after_each() -> void:

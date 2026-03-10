@@ -12,7 +12,7 @@ func before_each() -> void:
 
 	_weapon = WeaponComponent.new()
 	_weapon.bullet_data = _bullet
-	add_child(_weapon)
+	add_child_autofree(_weapon)
 
 
 func after_each() -> void:

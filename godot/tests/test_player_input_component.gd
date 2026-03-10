@@ -5,7 +5,7 @@ var _input: InputComponent
 
 func before_each() -> void:
 	_input = PlayerInputComponent.new()
-	add_child(_input)
+	add_child_autofree(_input)
 
 
 func after_each() -> void:

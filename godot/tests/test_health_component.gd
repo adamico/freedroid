@@ -7,7 +7,7 @@ func before_each() -> void:
 	_health = HealthComponent.new()
 	_health.max_energy = 100.0
 	_health.lose_health_rate = 0.0
-	add_child(_health)
+	add_child_autofree(_health)
 	# _ready sets health and energy to max_energy
 	assert_not_null(_health)
 
