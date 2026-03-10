@@ -29,6 +29,7 @@ const _LEGACY_FIRE_DISTANCE_TILES := 8.0
 var target: Node2D = null
 var _collision_pause_remaining: float = 0.0
 var _legacy_fire_hesitation_remaining: float = 0.0
+var _weapon: WeaponComponent = null
 
 var _los_raycast: RayCast2D
 
@@ -37,10 +38,15 @@ func _ready() -> void:
 	if not actor:
 		actor = get_parent() as Node2D
 
+	if actor:
+		_weapon = actor.get_node_or_null("WeaponComponent") as WeaponComponent
+
 	target = get_tree().get_first_node_in_group("player")
 	_los_raycast = RayCast2D.new()
 	add_child(_los_raycast)
-	_los_raycast.collision_mask = 1 | 4 # Hit walls (1) and doors (4)
+	_los_raycast.collision_mask = 0
+	_los_raycast.set_collision_mask_value(3, true) # world
+	_los_raycast.set_collision_mask_value(6, true) # door
 
 	# Avoid the raycast hitting the player and returning blocked
 	if target and target is CollisionObject2D:
@@ -141,6 +147,9 @@ func _process_patrol(delta: float) -> void:
 
 
 func _should_fire_in_attack_state() -> bool:
+	if _weapon and not _weapon.can_fire():
+		return false
+
 	if not use_legacy_fire_probability:
 		return true
 

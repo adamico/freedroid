@@ -34,6 +34,8 @@ func _ready() -> void:
 
 
 func take_damage(amount: float) -> void:
+	if god_mode_invulnerable:
+		return
 	if amount <= 0.0:
 		return
 	energy -= amount
@@ -52,6 +54,8 @@ func heal(amount: float) -> void:
 ## Whether this health component belongs to the player.
 ## If true, health permanently drains. If false, energy heals over time.
 @export var is_player: bool = false
+## Cheat flag to ignore all incoming damage for quick behavior playtesting.
+@export var god_mode_invulnerable: bool = false
 
 
 ## Call every frame to apply the permanent health drain or energy heal.
@@ -61,6 +65,8 @@ func process_time_tick(delta: float) -> void:
 		return
 
 	if is_player:
+		if god_mode_invulnerable:
+			return
 		health -= lose_health_rate * delta
 		if energy > health:
 			energy = health

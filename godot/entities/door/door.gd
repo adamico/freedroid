@@ -94,7 +94,6 @@ func _on_detection_body_exited(body: Node2D) -> void:
 
 func _set_blocked(blocked: bool) -> void:
 	_collision.set_deferred("disabled", not blocked)
-	set_collision_layer_value(1, blocked)
 
 
 ## Returns the current phase (0–4) for visual representation.
