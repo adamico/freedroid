@@ -220,8 +220,9 @@ For features marked implemented, Godot code paths listed here are canonical.
 7. Tests:
    - tests/test_health_component.gd
    - tests/test_combat_routing.gd
+   - tests/test_combat_exchange_integration.gd
 8. Remaining gaps:
-   - No multi-entity integration test for chained combat exchanges over time.
+   - None for multi-entity chained combat exchanges over time; covered by integration test.
 9. Legacy mapping:
    - Not required for implemented behavior.
 
