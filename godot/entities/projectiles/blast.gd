@@ -14,6 +14,8 @@ enum BlastType {
 
 var _blast_type: int = BlastType.COSMETIC
 
+const BULLET_BLAST_TYPE := 0
+
 
 func setup(type: int = 0) -> void:
 	_blast_type = type
@@ -58,3 +60,37 @@ func _ready() -> void:
 
 func _on_animation_finished() -> void:
 	queue_free()
+
+
+func _physics_process(_delta: float) -> void:
+	_clear_bullets_in_radius()
+
+
+func _clear_bullets_in_radius() -> void:
+	if not BulletManager:
+		return
+
+	var radius := _blast_radius()
+	var radius_sq := radius * radius
+
+	for child in BulletManager.get_children():
+		if not (child is Bullet):
+			continue
+
+		var bullet := child as Bullet
+		if not bullet.is_active():
+			continue
+		if bullet.is_flash_projectile():
+			continue
+		if global_position.distance_squared_to(bullet.global_position) >= radius_sq:
+			continue
+
+		bullet.deactivate()
+		BulletManager.spawn_blast(bullet.global_position, BULLET_BLAST_TYPE)
+
+
+func _blast_radius() -> float:
+	var shape_node := hitbox.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if shape_node and shape_node.shape is CircleShape2D:
+		return (shape_node.shape as CircleShape2D).radius
+	return 32.0

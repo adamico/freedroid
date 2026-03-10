@@ -17,6 +17,10 @@ var _anim_timer: float = 0.0
 var _anim_frame: int = 0
 var _anim_frames_count: int = 4
 var _anim_fps: float = 20.0
+var _active := true
+
+const FLASH_GUN_ID := 3
+const BULLET_COLLISION_BLAST_TYPE := 1
 
 const BULLET_TYPES_CONFIG = {
 	0: { "phases": 4, "fps": 20.0 },
@@ -75,16 +79,18 @@ func _update_sprite_region() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not data:
+	if not _active or not data:
 		return
 
 	# Move at constant speed directly
 	var step = _direction * data.speed * delta * FRAME_RATE
 	position += step
 	_distance_traveled += step.length()
+	_check_bullet_collision()
 
 	if data.range_dist > 0.0 and _distance_traveled >= data.range_dist:
-		queue_free()
+		_deactivate()
+		return
 
 	_anim_timer += delta
 	var frame_time = 1.0 / _anim_fps if _anim_fps > 0 else 1.0
@@ -95,9 +101,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	if not _active:
+		return
 	# Ignore the shooter (assuming shooter doesn't have collision layer mask matching bullet)
 	_spawn_blast()
-	queue_free()
+	_deactivate()
 
 
 func _spawn_blast() -> void:
@@ -108,4 +116,65 @@ func _spawn_blast() -> void:
 
 
 func _on_hit(_hurtbox: Area2D) -> void:
+	_deactivate()
+
+
+func _check_bullet_collision() -> void:
+	if _gun_id == FLASH_GUN_ID:
+		return
+	if not BulletManager:
+		return
+
+	var other := _find_colliding_bullet()
+	if not other:
+		return
+	if other._gun_id == FLASH_GUN_ID:
+		return
+
+	var blast_position := global_position.lerp(other.global_position, 0.5)
+	_deactivate()
+	other._deactivate()
+	BulletManager.spawn_blast(blast_position, BULLET_COLLISION_BLAST_TYPE)
+
+
+func _find_colliding_bullet() -> Bullet:
+	for child in BulletManager.get_children():
+		if child == self:
+			continue
+		if not (child is Bullet):
+			continue
+
+		var other := child as Bullet
+		if not other._active or other.is_queued_for_deletion():
+			continue
+
+		var collision_distance := _collision_radius() + other._collision_radius()
+		if global_position.distance_squared_to(other.global_position) <= collision_distance * collision_distance:
+			return other
+
+	return null
+
+
+func _collision_radius() -> float:
+	if collision_shape and collision_shape.shape is CircleShape2D:
+		return (collision_shape.shape as CircleShape2D).radius
+	return 4.0
+
+
+func is_flash_projectile() -> bool:
+	return _gun_id == FLASH_GUN_ID
+
+
+func is_active() -> bool:
+	return _active and not is_queued_for_deletion()
+
+
+func deactivate() -> void:
+	_deactivate()
+
+
+func _deactivate() -> void:
+	if not _active:
+		return
+	_active = false
 	queue_free()

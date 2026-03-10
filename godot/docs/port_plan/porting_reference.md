@@ -186,16 +186,20 @@ For features marked implemented, Godot code paths listed here are canonical.
 5. Runtime flow summary:
    - Bullet setup stores normalized direction, configures collision mask by shooter side, and configures animation profile by gun id.
    - Physics step moves bullet at constant speed and tracks traveled distance.
+   - Bullets perform side-agnostic projectile-vs-projectile collision checks and mutually destroy on overlap, spawning one impact blast.
    - Bullet self-destroys on range exhaustion or on collision events.
    - Hitbox routes damage to Hurtbox, which applies it to HealthComponent.
    - Body collisions trigger blast spawn and bullet cleanup.
+   - Blast radius checks also clear bullets in range and spawn bullet-blast follow-up effects.
 6. Behavioral notes:
    - Bullet flight uses manual position updates in Area2D physics process.
+   - Legacy parity is currently strict for projectile-vs-projectile interactions (same-side and opposite-side bullets collide); future branch work can add tuning switches if design diverges from classic behavior.
 7. Tests:
    - tests/test_combat_routing.gd
    - tests/test_bullet_lifecycle.gd
+   - tests/test_bullet_manager_integration.gd
 8. Remaining gaps:
-   - None for shooter mask switching, animation frame progression, or range-expiry cleanup; covered by dedicated lifecycle tests.
+   - None for shooter mask switching, animation frame progression, range-expiry cleanup, side-agnostic projectile collision cleanup, and blast-vs-bullet parity cleanup; covered by dedicated lifecycle and integration tests.
 9. Legacy mapping:
    - Not required for implemented behavior.
 
