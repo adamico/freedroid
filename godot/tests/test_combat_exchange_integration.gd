@@ -88,7 +88,8 @@ func test_multi_entity_chained_combat_exchanges_over_time() -> void:
 			"Each round should spawn one bullet per active enemy",
 		)
 
-		for child in BulletManager.get_children():
+		for i in range(bullets_before, bullets_after):
+			var child := BulletManager.get_child(i)
 			if not (child is Bullet):
 				continue
 			var bullet := child as Bullet

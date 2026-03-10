@@ -40,9 +40,9 @@ For features marked implemented, Godot code paths listed here are canonical.
 6. Behavioral notes:
    - This currently acts as both signal hub and mutable state store.
 7. Tests:
-   - Missing dedicated tests for signal contracts and level detection.
+   - tests/test_global_state.gd
 8. Remaining gaps:
-   - Add focused tests for detect_current_level and elevator_requested signal payload.
+   - None for detect_current_level and elevator_requested signal payload; covered by focused global-state tests.
 9. Legacy mapping:
    - Minimal mapping needed for implemented flow.
 
@@ -66,7 +66,7 @@ For features marked implemented, Godot code paths listed here are canonical.
 7. Tests:
    - tests/test_player_input_component.gd
 8. Remaining gaps:
-   - No explicit tests for per-action transition edges for interact timing.
+   - None for interact timing transition edges; covered by explicit input action event tests.
 9. Legacy mapping:
    - Not required for implemented behavior.
 
@@ -89,8 +89,9 @@ For features marked implemented, Godot code paths listed here are canonical.
    - Speed clamping is per axis instead of radial vector magnitude clamping.
 7. Tests:
    - tests/test_movement_component.gd
+   - tests/test_player_movement_integration.gd
 8. Remaining gaps:
-   - No direct scene-level movement integration test tying component velocity to full player movement loop.
+   - None for scene-level movement integration; covered by player scene loop integration test.
 9. Legacy mapping:
    - Not required for implemented behavior.
 
@@ -110,9 +111,9 @@ For features marked implemented, Godot code paths listed here are canonical.
 6. Behavioral notes:
    - Resource fields are pre-baked during conversion and treated as runtime config.
 7. Tests:
-   - No dedicated resource schema validation test present.
+   - tests/test_data_resources.gd
 8. Remaining gaps:
-   - Add load/validation tests for required fields across converted droid resources.
+   - None for converted droid required-field validation; covered by dedicated resource validation tests.
 9. Legacy mapping:
    - Optional and only needed when converter semantics change.
 
@@ -135,8 +136,9 @@ For features marked implemented, Godot code paths listed here are canonical.
    - Indirectly covered by weapon and combat tests.
    - tests/test_weapon_component.gd
    - tests/test_combat_routing.gd
+   - tests/test_data_resources.gd
 8. Remaining gaps:
-   - Add explicit data validation tests for converted bullet resources.
+   - None for converted bullet required-field validation; covered by dedicated resource validation tests.
 9. Legacy mapping:
    - Optional and only needed for converter updates.
 
@@ -246,7 +248,7 @@ For features marked implemented, Godot code paths listed here are canonical.
 7. Tests:
    - tests/test_door.gd
 8. Remaining gaps:
-   - No tests for color/orientation region mapping and collision-layer toggling edge cases.
+   - None for color/orientation region mapping and collision-layer toggling edge cases; covered by door edge-case tests.
 9. Legacy mapping:
    - Not required for implemented behavior.
 
@@ -264,13 +266,13 @@ For features marked implemented, Godot code paths listed here are canonical.
    - Elevator subscribes to player interact intent while player is in trigger area.
    - Activation requires low movement speed and proximity to elevator center.
    - On success, elevator emits elevator_activated and forwards request through GlobalState.
+   - Main consumes GlobalState.elevator_requested to open LiftUI, then applies level transition in _change_level after floor selection.
 6. Behavioral notes:
    - Transition handling appears intended for higher-level manager logic.
 7. Tests:
-   - Missing dedicated tests.
+   - tests/test_elevator.gd
 8. Remaining gaps:
-   - Add tests for activation preconditions and signal emission payload.
-   - Document or implement level transition consumer path for GlobalState.elevator_requested.
+   - None for activation preconditions, signal emission payload, or consumer-path documentation.
 9. Legacy mapping:
    - Keep minimal mapping only while transition handling remains partial.
 
@@ -297,9 +299,9 @@ For features marked implemented, Godot code paths listed here are canonical.
 6. Behavioral notes:
    - Visibility and attack/chase switching are coupled with patrol through shared AI state updates.
 7. Tests:
-   - No dedicated tests found for waypoint patrol logic.
+   - tests/test_waypoint_patrol_component.gd
+   - tests/test_ai_component.gd
 8. Remaining gaps:
-   - Add deterministic tests for waypoint arrival, overshoot handling, and next-waypoint selection.
-   - Add coverage for AI transitions in relation to patrol fallback paths.
+   - None for deterministic waypoint arrival/overshoot/next-waypoint selection or AI transition coverage related to patrol fallback paths.
 9. Legacy mapping:
    - Keep minimal references while parity verification is still in progress.

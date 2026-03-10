@@ -21,6 +21,7 @@ var _cached_body_radius: float = -1.0
 @export var min_collision_bump_force: float = 72.0
 ## Small positional nudge to break persistent overlap with the player.
 @export var player_collision_separation: float = 4.0
+@export var debug_logs: bool = false
 
 
 func _ready() -> void:
@@ -44,13 +45,14 @@ func _ready() -> void:
 	var patrol := get_node_or_null("WaypointPatrolComponent") as WaypointPatrolComponent
 	if patrol and patrol.level_data == null:
 		patrol.level_data = _detect_level_data()
-		print(
-			"[DroidEntity] %s: patrol.level_data = %s (waypoints: %d)" % [
-				droid_data.droid_name,
-				patrol.level_data,
-				patrol.level_data.waypoints.size() if patrol.level_data else 0,
-			],
-		)
+		if debug_logs:
+			print(
+				"[DroidEntity] %s: patrol.level_data = %s (waypoints: %d)" % [
+					droid_data.droid_name,
+					patrol.level_data,
+					patrol.level_data.waypoints.size() if patrol.level_data else 0,
+				],
+			)
 
 	health.died.connect(_on_died)
 

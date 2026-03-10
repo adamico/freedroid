@@ -2,6 +2,7 @@ extends Node2D
 
 var _bullet_scene: PackedScene = preload("res://entities/projectiles/bullet.tscn")
 var _blast_scene: PackedScene = preload("res://entities/projectiles/blast.tscn")
+const DEBUG_LOGS := false
 
 
 func _ready() -> void:
@@ -25,7 +26,8 @@ func spawn_bullet(
 	bullet.data = bullet_data
 
 	add_child(bullet)
-	print("BulletManager: spawned bullet at", pos)
+	if DEBUG_LOGS:
+		print("BulletManager: spawned bullet at", pos)
 
 	bullet.global_position = pos + direction * spawn_offset
 	if bullet.has_method("setup"):

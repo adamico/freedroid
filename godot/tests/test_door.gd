@@ -54,3 +54,35 @@ func test_closing_reduces_phases() -> void:
 		_door.call("_physics_process", 0.02)
 	assert_eq(_door.get_phase(), 0)
 	assert_eq(_door.get_state(), Door.DoorState.CLOSED)
+
+
+func test_region_mapping_respects_orientation_and_color() -> void:
+	_door.orientation = Door.Orientation.HORIZONTAL
+	_door.set("_phase", 0)
+	_door.set_color(2)
+	var sprite := _door.get_node("DoorSprite") as Sprite2D
+	assert_eq(sprite.region_rect.position.x, 18.0 * 66.0)
+	assert_eq(sprite.region_rect.position.y, 2.0 * 66.0)
+
+	_door.orientation = Door.Orientation.VERTICAL
+	_door.call("_update_sprite_region")
+	assert_eq(sprite.region_rect.position.x, 27.0 * 66.0)
+	assert_eq(sprite.region_rect.position.y, 2.0 * 66.0)
+
+
+func test_collision_layer_toggles_when_door_fully_opens_and_closes() -> void:
+	_door.phase_time = 0.01
+	_door.set("_state", Door.DoorState.OPENING)
+	_door.set("_phase", 0)
+	for i in 10:
+		_door.call("_physics_process", 0.02)
+
+	assert_eq(_door.get_state(), Door.DoorState.OPEN)
+	assert_false(_door.get_collision_layer_value(1))
+
+	_door.set("_state", Door.DoorState.CLOSING)
+	for i in 10:
+		_door.call("_physics_process", 0.02)
+
+	assert_eq(_door.get_state(), Door.DoorState.CLOSED)
+	assert_true(_door.get_collision_layer_value(1))
