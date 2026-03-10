@@ -121,7 +121,9 @@ func test_select_next_waypoint_avoids_blocked_path() -> void:
 
 	var blocker := CharacterBody2D.new()
 	blocker.add_to_group("player")
-	blocker.global_position = Vector2(6464.0, 6432.0) # blocks path from wp0 to wp1
+	# Position chosen for legacy shared radius (0.3 tiles):
+	# blocks wp0->wp1 horizontal segment, but stays outside wp0->wp2 segment clearance.
+	blocker.global_position = Vector2(6464.0, 6408.0)
 	var blocker_shape := CollisionShape2D.new()
 	var blocker_circle := CircleShape2D.new()
 	blocker_circle.radius = 16.0
