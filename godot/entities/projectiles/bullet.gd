@@ -18,8 +18,10 @@ var _anim_frame: int = 0
 var _anim_frames_count: int = 4
 var _anim_fps: float = 20.0
 var _active := true
+var _flash_time_alive := 0.0
 
 const FLASH_GUN_ID := 3
+const FLASH_DURATION := 0.1
 const BULLET_COLLISION_BLAST_TYPE := 1
 
 const BULLET_TYPES_CONFIG = {
@@ -53,8 +55,16 @@ func setup(direction: Vector2, gun_id: int = 0, shooter_is_player: bool = false)
 	_direction = direction.normalized()
 	rotation = _direction.angle() + PI / 2.0
 	_gun_id = gun_id
+	_flash_time_alive = 0.0
 
-	if shooter_is_player:
+	if _gun_id == FLASH_GUN_ID:
+		hitbox.monitoring = false
+		hitbox.monitorable = false
+		hitbox.damage = 0.0
+		hitbox.collision_mask = 0
+		monitoring = false
+		monitorable = false
+	elif shooter_is_player:
 		hitbox.collision_mask = 2 # hits the enemy droid
 	else:
 		hitbox.collision_mask = (1 << 1 - 1) | (1 << 2 - 1) # hits the player and other enemy droids
@@ -82,6 +92,12 @@ func _physics_process(delta: float) -> void:
 	if not _active or not data:
 		return
 
+	if _gun_id == FLASH_GUN_ID:
+		_flash_time_alive += delta
+		if _flash_time_alive >= FLASH_DURATION:
+			_deactivate()
+		return
+
 	# Move at constant speed directly
 	var step = _direction * data.speed * delta * FRAME_RATE
 	position += step
@@ -103,6 +119,8 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	if not _active:
 		return
+	if _gun_id == FLASH_GUN_ID:
+		return
 	# Ignore the shooter (assuming shooter doesn't have collision layer mask matching bullet)
 	_spawn_blast()
 	_deactivate()
@@ -116,6 +134,8 @@ func _spawn_blast() -> void:
 
 
 func _on_hit(_hurtbox: Area2D) -> void:
+	if _gun_id == FLASH_GUN_ID:
+		return
 	_deactivate()
 
 

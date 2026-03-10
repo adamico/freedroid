@@ -17,6 +17,9 @@ func before_each() -> void:
 
 func after_each() -> void:
 	_weapon.queue_free()
+	var overlay := get_tree().root.get_node_or_null("LegacyFlashOverlay")
+	if overlay:
+		overlay.queue_free()
 
 
 func test_can_fire_initially() -> void:
@@ -53,3 +56,11 @@ func test_cooldown_override() -> void:
 	_weapon.cooldown_override = 1.0
 	_weapon.try_fire(Vector2.ZERO, Vector2.RIGHT)
 	assert_almost_eq(_weapon.get_cooldown_remaining(), 1.0, 0.01)
+
+
+func test_flash_gun_spawns_screen_flash_overlay() -> void:
+	_weapon.setup(3)
+	var result: bool = _weapon.try_fire(Vector2.ZERO, Vector2.RIGHT)
+	assert_true(result)
+	var overlay := get_tree().root.get_node_or_null("LegacyFlashOverlay")
+	assert_not_null(overlay, "Gun 3 should trigger legacy screen flash overlay")
