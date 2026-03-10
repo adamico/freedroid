@@ -5,6 +5,10 @@ class_name WaypointPatrolComponent
 extends Node
 
 @export var level_data: LevelData
+@export var traffic_blocking_enabled: bool = true
+@export var traffic_block_fallback_radius: float = 16.0
+
+const GameConstants := preload("res://data/converted/game_constants.tres")
 
 const _HALF_TILE := GameConstantsData.TILE_SIZE / 2.0
 const _TILE_CENTER_OFFSET := Vector2(_HALF_TILE, _HALF_TILE)
@@ -71,7 +75,7 @@ func get_patrol_direction(entity: Node2D, _delta: float) -> Vector2:
 		# 	print(log_msg)
 
 		# Arrived — match legacy snap behavior
-		_on_waypoint_reached()
+		_on_waypoint_reached(entity)
 		return Vector2.ZERO
 
 	return current_pos.direction_to(wp_pos)
@@ -80,6 +84,18 @@ func get_patrol_direction(entity: Node2D, _delta: float) -> Vector2:
 func process_wait(delta: float) -> void:
 	if _wait_timer > 0.0:
 		_wait_timer -= delta
+
+
+func reverse_course_after_collision(wait_duration: float = 0.0) -> void:
+	if _current_wp_idx < 0 or _last_wp_idx < 0:
+		return
+
+	var previous_target := _current_wp_idx
+	_current_wp_idx = _last_wp_idx
+	_last_wp_idx = previous_target
+
+	if wait_duration > 0.0:
+		_wait_timer = maxf(_wait_timer, wait_duration)
 
 
 func _find_closest_waypoint(current_pos: Vector2) -> void:
@@ -96,20 +112,71 @@ func _find_closest_waypoint(current_pos: Vector2) -> void:
 	_last_wp_idx = _current_wp_idx
 
 
-func _on_waypoint_reached() -> void:
+func _on_waypoint_reached(entity: Node2D = null) -> void:
 	_last_wp_idx = _current_wp_idx
 	_wait_timer = randf_range(0.0, GameConstantsData.ENEMY_MAX_WAIT)
-	_select_next_waypoint()
+	_select_next_waypoint(entity)
 
 
-func _select_next_waypoint() -> void:
+func _select_next_waypoint(entity: Node2D = null) -> void:
 	var wp := level_data.waypoints[_current_wp_idx]
 	if wp.connections.size() > 0:
-		# Pick a random connection — indices are 0-based.
-		var next_wp: int = wp.connections[randi() % wp.connections.size()]
-		if next_wp >= 0 and next_wp < level_data.waypoints.size():
-			_current_wp_idx = next_wp
+		var valid_connections: Array[int] = []
+		for candidate in wp.connections:
+			if candidate < 0 or candidate >= level_data.waypoints.size():
+				continue
+			if not traffic_blocking_enabled or entity == null:
+				valid_connections.append(candidate)
+				continue
+
+			var candidate_pos := _waypoint_center(level_data.waypoints[candidate])
+			if not _is_segment_traffic_blocked(entity, entity.global_position, candidate_pos):
+				valid_connections.append(candidate)
+
+		if not valid_connections.is_empty():
+			_current_wp_idx = valid_connections[randi() % valid_connections.size()]
 		else:
-			_current_wp_idx = randi() % level_data.waypoints.size()
+			var next_wp: int = wp.connections[randi() % wp.connections.size()]
+			if next_wp >= 0 and next_wp < level_data.waypoints.size():
+				_current_wp_idx = next_wp
+			else:
+				_current_wp_idx = randi() % level_data.waypoints.size()
 	else:
 		_current_wp_idx = randi() % level_data.waypoints.size()
+
+
+func _waypoint_center(wp: WaypointData) -> Vector2:
+	return Vector2(wp.position) * GameConstantsData.TILE_SIZE + _TILE_CENTER_OFFSET
+
+
+func _is_segment_traffic_blocked(entity: Node2D, from_pos: Vector2, to_pos: Vector2) -> bool:
+	var tree := get_tree()
+	if tree == null:
+		return false
+
+	var blockers: Array[Node] = []
+	blockers.append_array(tree.get_nodes_in_group("enemy"))
+	blockers.append_array(tree.get_nodes_in_group("player"))
+
+	for blocker in blockers:
+		if blocker == entity or not (blocker is Node2D):
+			continue
+
+		var blocker_node := blocker as Node2D
+		var clearance := _body_radius(entity) + _body_radius(blocker_node)
+		var distance := Geometry2D.get_closest_point_to_segment(blocker_node.global_position, from_pos, to_pos).distance_to(blocker_node.global_position)
+		if distance < clearance:
+			return true
+
+	return false
+
+
+func _body_radius(node: Node2D) -> float:
+	var legacy_radius := GameConstants.droid_radius * GameConstantsData.TILE_SIZE
+	if legacy_radius > 0.0:
+		return legacy_radius
+
+	var body_shape := node.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if body_shape and body_shape.shape is CircleShape2D:
+		return (body_shape.shape as CircleShape2D).radius
+	return traffic_block_fallback_radius

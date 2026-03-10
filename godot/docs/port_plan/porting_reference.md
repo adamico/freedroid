@@ -19,6 +19,7 @@ For features marked implemented, Godot code paths listed here are canonical.
 - Projectile stats resources
 - Projectiles and collision routing
 - Health and damage flow
+- Droid body collision and bumping
 - Doors and elevators interaction flow
 - Enemy waypoint patrol baseline
 
@@ -227,6 +228,55 @@ For features marked implemented, Godot code paths listed here are canonical.
    - None for multi-entity chained combat exchanges over time; covered by integration test.
 9. Legacy mapping:
    - Not required for implemented behavior.
+
+## Droid Body Collision And Bumping
+
+### Enemy and player body-contact response
+
+1. Feature name: Enemy and player body-contact response
+2. Status: partial
+3. Canonical Godot implementation:
+   - entities/base/droid_entity.gd
+   - components/ai_component.gd
+   - components/waypoint_patrol_component.gd
+4. Data dependencies:
+   - game_constants.bump_force
+   - game_constants.collision_lose_energy_calibrator
+   - game_constants.droid_radius
+5. Runtime flow summary:
+   - DroidEntity reads move_and_slide contacts and processes droid-to-droid collisions.
+   - Collision response applies class-difference-based energy loss on contact, with per-physics-frame duplicate suppression.
+   - Bodies receive a bump impulse and positional overlap resolution to prevent persistent clipping.
+   - Enemy AI pauses briefly after player contact to match intended collision hesitation behavior.
+6. Behavioral notes:
+   - Collision handling is reactive after contact; proactive steering avoidance around the player is not yet implemented.
+   - Legacy parity audit complete: waypoint planning historically treated the influencer as a traffic blocker, so pre-contact avoidance is not optional if strict parity is required.
+7. Tests:
+   - tests/test_droid_collision_bumping.gd
+   - tests/test_waypoint_patrol_component.gd
+8. Remaining gaps:
+   - None for collision parity items tracked in this feature.
+9. Legacy mapping:
+   - Legacy influencer-enemy collision behavior includes immediate bounce, short enemy pause, waypoint reversal, and class-difference energy transfer.
+   - Legacy enemy-enemy collision behavior applies pushback and short waits/turnaround but does not apply collision damage.
+   - Legacy waypoint selection checks line segments for traffic occupancy and marks routes blocked by the influencer or other droids.
+
+### Legacy parity checklist (verified)
+
+1. Influencer-enemy body contact energy transfer by class difference
+   - Current status: implemented (class-based damage exchange exists).
+2. Influencer-enemy immediate bounce and push-out on contact
+   - Current status: partial (separation/push exists, but tuning and symmetry differ).
+3. Enemy short pause after influencer collision
+   - Current status: implemented (AI pause hook exists).
+4. Enemy waypoint reversal after influencer collision
+   - Current status: implemented.
+5. Enemy-enemy collision handling as non-damaging traffic interaction
+   - Current status: implemented.
+6. Proactive waypoint traffic blocking by influencer/droids
+   - Current status: implemented.
+7. Shared collision radius semantics
+   - Current status: implemented.
 
 ## Doors And Elevators Interaction Flow
 

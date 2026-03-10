@@ -15,6 +15,7 @@ signal entity_died
 @onready var weapon: WeaponComponent = $WeaponComponent
 
 var _bump_cooldown: float = 0.0
+var _last_collision_damage_frame: int = -1
 var _cached_body_radius: float = -1.0
 
 ## Fallback bump used when game constants do not provide a value.
@@ -95,6 +96,7 @@ func _physics_process(delta: float) -> void:
 			pushed_velocity += away * effective_bump_force
 			if is_in_group("enemy") and other_droid.is_in_group("player"):
 				_pause_ai_after_player_collision()
+				_reverse_patrol_after_player_collision()
 			_separate_from_droid(other_droid, away)
 
 	movement.velocity = velocity + pushed_velocity
@@ -107,12 +109,21 @@ func _physics_process(delta: float) -> void:
 
 
 func _handle_droid_collision(other: DroidEntity) -> void:
-	if _bump_cooldown > 0.0:
+	# Legacy parity: only player-enemy contact transfers collision damage.
+	# Enemy-enemy body contact is traffic resolution only.
+	if not (is_in_group("player") or other.is_in_group("player")):
 		return
-	_bump_cooldown = 0.5
 
 	if not other.droid_data or not self.droid_data:
 		return
+
+	# Legacy parity allows repeated contact damage over time; we only guard
+	# against duplicate handling in the same physics frame.
+	var frame := Engine.get_physics_frames()
+	if _last_collision_damage_frame == frame:
+		return
+	_last_collision_damage_frame = frame
+	_bump_cooldown = maxf(_bump_cooldown, 0.1)
 
 	var class_diff = other.droid_data.droid_class - self.droid_data.droid_class
 	if class_diff > 0:
@@ -147,6 +158,11 @@ func _get_body_radius() -> float:
 	if _cached_body_radius > 0.0:
 		return _cached_body_radius
 
+	var legacy_radius := GameConstants.droid_radius * GameConstantsData.TILE_SIZE
+	if legacy_radius > 0.0:
+		_cached_body_radius = legacy_radius
+		return _cached_body_radius
+
 	var body_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
 	if body_shape and body_shape.shape is CircleShape2D:
 		_cached_body_radius = (body_shape.shape as CircleShape2D).radius
@@ -160,6 +176,19 @@ func _pause_ai_after_player_collision() -> void:
 	var ai := get_node_or_null("AIComponent") as AIComponent
 	if ai:
 		ai.pause_after_player_collision()
+
+
+func _reverse_patrol_after_player_collision() -> void:
+	var patrol := get_node_or_null("WaypointPatrolComponent") as WaypointPatrolComponent
+	if not patrol:
+		return
+
+	var wait_duration := 0.5
+	var ai := get_node_or_null("AIComponent") as AIComponent
+	if ai:
+		wait_duration = ai.collision_pause_duration
+
+	patrol.reverse_course_after_collision(wait_duration)
 
 
 func _on_died() -> void:
