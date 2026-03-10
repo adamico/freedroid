@@ -355,3 +355,33 @@ For features marked implemented, Godot code paths listed here are canonical.
    - None for deterministic waypoint arrival/overshoot/next-waypoint selection or AI transition coverage related to patrol fallback paths.
 9. Legacy mapping:
    - Keep minimal references while parity verification is still in progress.
+
+### Aggressive enemy chase and firing behavior
+
+1. Feature name: Aggressive enemy chase and firing behavior
+2. Status: partial
+3. Canonical Godot implementation:
+   - components/ai_component.gd
+   - components/weapon_component.gd
+   - entities/base/droid_entity.gd
+4. Data dependencies:
+   - DroidData.aggression
+   - DroidData.gun
+   - AI attack_radius and chase_radius exports
+   - BulletData.recharging_time
+5. Runtime flow summary:
+   - Strict-legacy default keeps waypoint-driven movement active while evaluating attack opportunities.
+   - AIComponent enters ATTACK within legacy fire distance and uses legacy-style aggression probability plus randomized hesitation before setting fire intent.
+   - DroidEntity consumes fire intent and delegates to WeaponComponent cooldown gating.
+   - On LOS loss, out-of-range, or passive aggression value, AI remains in IDLE patrol.
+6. Behavioral notes:
+   - Legacy baseline does not implement a dedicated hunt/chase movement mode; modern CHASE state is retained but disabled by default.
+   - Legacy combat droids fire while still following waypoint motion; ATTACK now preserves patrol movement in default mode.
+   - Legacy fire-probability behavior is the default model in AIComponent, with explicit opt-outs for deterministic firing or modern chase experiments.
+7. Tests:
+   - tests/test_ai_component.gd
+   - tests/test_weapon_component.gd
+8. Remaining gaps:
+   - None for strict-legacy aggressive firing baseline (probability gating, fire hesitation, waypoint-while-firing, and no default chase).
+9. Legacy mapping:
+   - Legacy logic evaluates attack opportunity independently of waypoint movement and gates firing by LOS, aggression roll, firewait, and fixed fire distance (8-tile baseline).

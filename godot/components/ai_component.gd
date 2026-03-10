@@ -11,7 +11,9 @@ enum State {
 	FLEE,
 }
 
-@export var attack_radius := 150.0
+const _LEGACY_FIRE_DISTANCE_TILES := 8.0
+
+@export var attack_radius := GameConstantsData.TILE_SIZE * _LEGACY_FIRE_DISTANCE_TILES
 @export var chase_radius := 300.0
 @export var current_state: AIComponent.State = State.IDLE
 @export var input: AIInputComponent
@@ -19,9 +21,14 @@ enum State {
 @export var aggression: int = 0
 @export var actor: Node2D
 @export var collision_pause_duration: float = 0.18
+@export var use_legacy_fire_probability: bool = true
+@export var legacy_aggression_max: int = 100
+@export var legacy_max_shot_hesitation: float = 5.0
+@export var use_modern_chase_state: bool = false
 
 var target: Node2D = null
 var _collision_pause_remaining: float = 0.0
+var _legacy_fire_hesitation_remaining: float = 0.0
 
 var _los_raycast: RayCast2D
 
@@ -52,6 +59,9 @@ func _physics_process(delta: float) -> void:
 	if input == null:
 		return
 
+	if _legacy_fire_hesitation_remaining > 0.0:
+		_legacy_fire_hesitation_remaining = maxf(0.0, _legacy_fire_hesitation_remaining - delta)
+
 	if _collision_pause_remaining > 0.0:
 		_collision_pause_remaining = maxf(0.0, _collision_pause_remaining - delta)
 		input.current_movement_direction = Vector2.ZERO
@@ -77,7 +87,7 @@ func _physics_process(delta: float) -> void:
 		current_state = State.IDLE
 	elif distance_to_target <= attack_radius:
 		current_state = State.ATTACK
-	elif distance_to_target <= chase_radius:
+	elif use_modern_chase_state and distance_to_target <= chase_radius:
 		current_state = State.CHASE
 	else:
 		current_state = State.IDLE
@@ -106,10 +116,9 @@ func _physics_process(delta: float) -> void:
 			input.current_aim_direction = input.current_movement_direction
 			input.current_is_firing = false
 		State.ATTACK:
-			# Stay still and shoot
-			input.current_movement_direction = Vector2.ZERO
+			_process_patrol(delta)
 			input.current_aim_direction = global_position.direction_to(target.global_position)
-			input.current_is_firing = true
+			input.current_is_firing = _should_fire_in_attack_state()
 
 
 func pause_after_player_collision(duration: float = -1.0) -> void:
@@ -129,3 +138,19 @@ func _process_patrol(delta: float) -> void:
 	# if Engine.get_physics_frames() % 60 == 0:
 	# 	print("[AIComponent] patrol dir=%s pos=%s" % [dir, global_position])
 	input.current_movement_direction = dir
+
+
+func _should_fire_in_attack_state() -> bool:
+	if not use_legacy_fire_probability:
+		return true
+
+	if _legacy_fire_hesitation_remaining > 0.0:
+		return false
+
+	var roll_ceiling := maxi(1, legacy_aggression_max)
+	var roll := randi() % roll_ceiling
+	if roll >= aggression:
+		_legacy_fire_hesitation_remaining = randf_range(0.0, maxf(0.0, legacy_max_shot_hesitation))
+		return false
+
+	return true

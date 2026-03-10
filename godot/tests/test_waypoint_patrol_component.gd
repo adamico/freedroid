@@ -14,6 +14,15 @@ func _single_waypoint_level() -> LevelData:
 	return level
 
 
+func _clear_group_nodes(group_name: String) -> void:
+	for node in get_tree().get_nodes_in_group(group_name):
+		if node == self:
+			continue
+		if node is Node:
+			(node as Node).queue_free()
+	await get_tree().process_frame
+
+
 func test_arrival_snaps_to_center_and_zeroes_velocity() -> void:
 	var patrol := WaypointPatrolComponent.new()
 	patrol.level_data = _single_waypoint_level()
@@ -85,12 +94,15 @@ func test_reverse_course_after_collision_swaps_waypoints_and_sets_wait() -> void
 
 
 func test_select_next_waypoint_avoids_blocked_path() -> void:
+	await _clear_group_nodes("enemy")
+	await _clear_group_nodes("player")
+
 	var patrol := WaypointPatrolComponent.new()
 	var level := LevelData.new()
 	level.waypoints = [
-		_make_waypoint(Vector2i(0, 0), PackedInt32Array([1, 2])),
-		_make_waypoint(Vector2i(1, 0), PackedInt32Array([0])),
-		_make_waypoint(Vector2i(0, 1), PackedInt32Array([0])),
+		_make_waypoint(Vector2i(100, 100), PackedInt32Array([1, 2])),
+		_make_waypoint(Vector2i(101, 100), PackedInt32Array([0])),
+		_make_waypoint(Vector2i(100, 101), PackedInt32Array([0])),
 	]
 	patrol.level_data = level
 	patrol.set("_current_wp_idx", 0)
@@ -98,7 +110,7 @@ func test_select_next_waypoint_avoids_blocked_path() -> void:
 
 	var actor := CharacterBody2D.new()
 	actor.add_to_group("enemy")
-	actor.global_position = Vector2(32.0, 32.0)
+	actor.global_position = Vector2(6432.0, 6432.0)
 	var actor_shape := CollisionShape2D.new()
 	var actor_circle := CircleShape2D.new()
 	actor_circle.radius = 16.0
@@ -109,7 +121,7 @@ func test_select_next_waypoint_avoids_blocked_path() -> void:
 
 	var blocker := CharacterBody2D.new()
 	blocker.add_to_group("player")
-	blocker.global_position = Vector2(64.0, 32.0) # blocks path from wp0 to wp1
+	blocker.global_position = Vector2(6464.0, 6432.0) # blocks path from wp0 to wp1
 	var blocker_shape := CollisionShape2D.new()
 	var blocker_circle := CircleShape2D.new()
 	blocker_circle.radius = 16.0

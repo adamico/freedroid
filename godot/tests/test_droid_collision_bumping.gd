@@ -109,6 +109,7 @@ func test_scene_level_enemy_player_contact_triggers_bump_path() -> void:
 	ai.aggression = 10
 	ai.attack_radius = 0.0
 	ai.chase_radius = 1000.0
+	ai.use_modern_chase_state = true
 
 	await get_tree().physics_frame
 

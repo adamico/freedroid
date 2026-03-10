@@ -58,19 +58,19 @@ func test_passive_ai_stays_idle_and_uses_patrol_direction() -> void:
 	assert_eq(input.current_is_firing, false)
 
 
-func test_aggressive_ai_transitions_to_chase_and_attack() -> void:
+func test_strict_legacy_default_skips_chase_and_attacks_from_patrol_flow() -> void:
 	var rig := _spawn_ai_rig()
 	var ai := rig["ai"] as AIComponent
 	var input := rig["input"] as AIInputComponent
 	var player := rig["player"] as CharacterBody2D
 
-	ai.aggression = 10
-	ai.attack_radius = 40.0
+	ai.aggression = 100
+	ai.attack_radius = 60.0
 	ai.chase_radius = 120.0
 
-	player.global_position = Vector2(80, 0) # chase range
+	player.global_position = Vector2(80, 0) # outside attack range, inside chase range
 	ai._physics_process(0.016)
-	assert_eq(ai.current_state, AIComponent.State.CHASE)
+	assert_eq(ai.current_state, AIComponent.State.IDLE)
 	assert_false(input.current_is_firing)
 	assert_ne(input.current_movement_direction, Vector2.ZERO)
 
@@ -78,6 +78,23 @@ func test_aggressive_ai_transitions_to_chase_and_attack() -> void:
 	ai._physics_process(0.016)
 	assert_eq(ai.current_state, AIComponent.State.ATTACK)
 	assert_true(input.current_is_firing)
+	assert_ne(input.current_movement_direction, Vector2.ZERO)
+
+
+func test_modern_chase_can_be_reenabled_explicitly() -> void:
+	var rig := _spawn_ai_rig()
+	var ai := rig["ai"] as AIComponent
+	var player := rig["player"] as CharacterBody2D
+
+	ai.aggression = 100
+	ai.use_modern_chase_state = true
+	ai.attack_radius = 40.0
+	ai.chase_radius = 120.0
+
+	player.global_position = Vector2(80, 0)
+	ai._physics_process(0.016)
+
+	assert_eq(ai.current_state, AIComponent.State.CHASE)
 
 
 func test_idle_with_missing_patrol_falls_back_to_zero_movement() -> void:
@@ -91,3 +108,39 @@ func test_idle_with_missing_patrol_falls_back_to_zero_movement() -> void:
 
 	assert_eq(ai.current_state, AIComponent.State.IDLE)
 	assert_eq(input.current_movement_direction, Vector2.ZERO)
+
+
+func test_attack_respects_legacy_hesitation_timer() -> void:
+	var rig := _spawn_ai_rig()
+	var ai := rig["ai"] as AIComponent
+	var input := rig["input"] as AIInputComponent
+	var player := rig["player"] as CharacterBody2D
+
+	ai.aggression = 100
+	ai.attack_radius = 80.0
+	player.global_position = Vector2(10, 0)
+	ai.set("_legacy_fire_hesitation_remaining", 0.2)
+
+	ai._physics_process(0.016)
+
+	assert_eq(ai.current_state, AIComponent.State.ATTACK)
+	assert_false(input.current_is_firing)
+	assert_gt(ai.get("_legacy_fire_hesitation_remaining"), 0.0)
+
+
+func test_attack_can_disable_legacy_fire_probability() -> void:
+	var rig := _spawn_ai_rig()
+	var ai := rig["ai"] as AIComponent
+	var input := rig["input"] as AIInputComponent
+	var player := rig["player"] as CharacterBody2D
+
+	ai.aggression = 1
+	ai.use_legacy_fire_probability = false
+	ai.attack_radius = 80.0
+	player.global_position = Vector2(10, 0)
+	ai.set("_legacy_fire_hesitation_remaining", 1.0)
+
+	ai._physics_process(0.016)
+
+	assert_eq(ai.current_state, AIComponent.State.ATTACK)
+	assert_true(input.current_is_firing)
